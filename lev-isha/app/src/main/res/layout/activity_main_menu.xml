@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:columnCount="2"
+    android:stretchColumns="*"
+    tools:context="com.hadassah.azrieli.lev_isha.MainMenuActivity">
+
+
+    <TableRow
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/nutrition_btn"
+            android:text="@string/nutrition_label"
+            style="@style/MainMenuButtonStyle" />
+
+        <Button
+            android:id="@+id/personal_health_recommendation_btn"
+            android:text="@string/personal_health_recommendation_label"
+            style="@style/MainMenuButtonStyle" />
+    </TableRow>
+
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/community_btn"
+            android:text="@string/community_label"
+            style="@style/MainMenuButtonStyle" />
+
+        <Button
+            android:id="@+id/physical_exercise_btn"
+            android:text="@string/physical_exercise_label"
+            style="@style/MainMenuButtonStyle" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/personal_profile_btn"
+            android:text="@string/personal_profile_label"
+            style="@style/MainMenuButtonStyle" />
+
+        <Button
+            android:id="@+id/locating_services_btn"
+            android:text="@string/locating_services_label"
+            style="@style/MainMenuButtonStyle" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/blood_test_result_guide_btn"
+            android:text="@string/blood_test_result_guide_label"
+            style="@style/MainMenuButtonStyle" />
+
+        <Button
+            android:id="@+id/set_reminder_btn"
+            android:text="@string/set_reminder_label"
+            style="@style/MainMenuButtonStyle" />
+
+    </TableRow>
+
+
+</TableLayout>
+

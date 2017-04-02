@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">לב אישה</string>
+
+    <!-- Label Names <START> -->
+    <string name="nutrition_label">תזונה</string>
+    <string name="community_label">קהילה</string>
+    <string name="personal_profile_label">פרופיל אישי</string>
+    <string name="blood_test_result_guide_label">מדריך לקריאת תוצאות בדיקת דם</string>
+    <string name="personal_health_recommendation_label">המלצות הבריאות שלך</string>
+    <string name="physical_exercise_label">פעילות גופנית</string>
+    <string name="locating_services_label">איתור שירותים</string>
+    <string name="set_reminder_label">הוסף תזכורת</string>
+    <!-- Label Names <END> -->
+
+
+</resources>
