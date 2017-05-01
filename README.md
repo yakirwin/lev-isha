@@ -27,7 +27,7 @@ We're trying to use the best tools and practices in order to produce a quality e
 | Security | [![Known Vulnerabilities](https://snyk.io/test/github/jce-il/project-template/badge.svg)](https://snyk.io/test/github/jce-il/project-template) |
 | Project Course Status | Progressing |
 
-## Please visit our [application](https://github.com/yakirwin/lev-isha/tree/master/lev-isha)
+## Please visit our [application prototype](https://github.com/yakirwin/lev-isha/tree/master/lev-isha)
 
 
 ## Disclaimer
