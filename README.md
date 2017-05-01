@@ -11,7 +11,7 @@ We're trying to use the best tools and practices in order to produce a quality e
 
 |Category|Status|
 |---|---|
-| Version Control System| git & github |
+| Version Control System| [git](https://git-scm.com/) & [github](https://github.com/yakirwin/lev-isha/) |
 | Recommended IDE | [Android Studio](https://developer.android.com/studio/index.html) |
 | Group Chat | [![Join the chat at https://gitter.im/jce-il/lev-isha](https://badges.gitter.im/jce-il/lev-isha.svg)](https://gitter.im/jce-il/lev-isha?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) |
 | Build Status (CI) |  [![Build Status](https://travis-ci.org/jce-il/project-template.svg?branch=master)](https://travis-ci.org/jce-il/project-template) |
@@ -27,8 +27,7 @@ We're trying to use the best tools and practices in order to produce a quality e
 | Security | [![Known Vulnerabilities](https://snyk.io/test/github/jce-il/project-template/badge.svg)](https://snyk.io/test/github/jce-il/project-template) |
 | Project Course Status | ... |
 
-## Please visit our [live application](http://www.lev-isha.org/health_recommendations_app/)
-- Alright, currently only a web prototype...
+## Please visit our [application](https://github.com/yakirwin/lev-isha/tree/master/lev-isha)
 
 
 ## Disclaimer
@@ -46,11 +45,7 @@ Please visit our wiki for furthur project info:
 - [User Manual](../../wiki/User-Manual)
 
 ### Iteration Pages
-- [Iteration 0 - ZFR](../../wiki/Iteration-0)
-- [Iteration 1 - MVP]()
-- [Iteration 2]()
-- [Iteration 3]()
-- [Iteration 4]()
-
-
-
+- [Iteration 0 - ZFR](../../wiki/Iter0-ZFR)
+- [Iteration 1 - MVP](../../wiki/Iter1-MVP)
+- [Iteration 2](../../wiki/Iter2-AOFF)
+- [Iteration 3](../../wiki/Iter3-AONF)
