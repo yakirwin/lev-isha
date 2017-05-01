@@ -1,5 +1,5 @@
 # Lev-Isha
-
+an android app to help women improve quality of life, get more out of doctors appointments and remember to take needed health precautions
 <p align="center">
 <img src="http://www.aaci.org.il/upimages/mercaz%20habriut%20le%20yisha%20hadassah.jpg" width="550" height="300" /></p>
 
