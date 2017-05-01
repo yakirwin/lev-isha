@@ -25,7 +25,7 @@ We're trying to use the best tools and practices in order to produce a quality e
 | Project Management Board| [Project Board](https://github.com/yakirwin/lev-isha/projects/1) |
 | Deployment | [![Heroku](http://heroku-badge.herokuapp.com/?app=my-app&style=flat&svg=1&root=index.html)] |
 | Security | [![Known Vulnerabilities](https://snyk.io/test/github/jce-il/project-template/badge.svg)](https://snyk.io/test/github/jce-il/project-template) |
-| Project Course Status | ... |
+| Project Course Status | Progressing |
 
 ## Please visit our [application](https://github.com/yakirwin/lev-isha/tree/master/lev-isha)
 
