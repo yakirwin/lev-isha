@@ -1,9 +1,4 @@
-package com.hadassah.azrieli.lev_isha.core; /**
-
- /**
- * Created by Avihu Harush on 05/05/2017
- * E-Mail: tchvu3@gmail.com
- */
+package com.hadassah.azrieli.lev_isha.core;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -15,6 +10,11 @@ import android.widget.ImageView;
 
 import com.hadassah.azrieli.lev_isha.R;
 import com.hadassah.azrieli.lev_isha.core.MainMenuActivity;
+
+/**
+ * Created by Avihu Harush on 05/05/2017
+ * E-Mail: tchvu3@gmail.com
+ */
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -49,13 +49,3 @@ public class SplashScreen extends AppCompatActivity {
         logo.startAnimation(zoomIn);
     }
 }
-
-
-
-/*
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        }, 15000);*/

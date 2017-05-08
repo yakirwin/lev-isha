@@ -64,6 +64,12 @@
     <string name="add">Add</string>
     <string name="title_activity_check_list">CheckList</string>
     <string name="title_activity_checklist">ChecklistActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="welcome">Welcome</string>
+    <string name="setup_profile_initial_question">
+        Thank You For Using Our App!\n
+        It Is Highly Recommended To Set Up Your Profile As Soon As Possible,\n
+        Would You Like To Do So Now?</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -153,7 +159,6 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
-    <string name="action_settings">Settings</string>
     <!-- General Labels <END> -->
 
 </resources>
