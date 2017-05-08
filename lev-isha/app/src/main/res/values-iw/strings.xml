@@ -1,16 +1,57 @@
 <resources>
     <string name="app_name">לב אישה</string>
 
-    <!-- Label Names <START> -->
+    <!-- MainMenu Labels <START> -->
     <string name="nutrition_label">תזונה</string>
     <string name="community_label">קהילה</string>
     <string name="personal_profile_label">פרופיל אישי</string>
-    <string name="blood_test_result_guide_label">מדריך לקריאת תוצאות בדיקת דם</string>
+    <string name="blood_test_result_guide_label">תוצאות בדיקת דם</string>
     <string name="personal_health_recommendation_label">המלצות הבריאות שלך</string>
     <string name="physical_exercise_label">פעילות גופנית</string>
     <string name="locating_services_label">איתור שירותים</string>
     <string name="set_reminder_label">הוסף תזכורת</string>
-    <!-- Label Names <END> -->
+    <!-- MainMenu Labels <END> -->
 
+    <!-- Personal Profile Labels <START> -->
+    <string name="first_name">שם פרטי</string>
+    <string name="last_name">שם משפחה</string>
+    <string name="weight">משקל</string>
+    <string name="height">גובה</string>
+    <string name="bmi">BMI</string>
+    <string name="latest_checkup">ביקורת אחרונה</string>
+    <!-- Personal Profile Labels <END> -->
+
+    <!-- Checklist Labels <START> -->
+    <string name="doctor_name">שם הרופא:</string>
+    <string name="address">כתובת:</string>
+    <string name="appointment_date">תאריך התור:</string>
+    <string name="appointment_hour">שעה:</string>
+    <string name="remember_to_bring_with_you">זכרי להביא איתך</string>
+    <string name="references">הפניות</string>
+    <string name="prescription">מרשמים</string>
+    <string name="Previous_diagnoses">אבחונים קודמים</string>
+    <string name="tests_results">תוצאות בדיקות ותרשימים</string>
+    <string name="subjects_i_want_to_talk_about">נושאים אותם אני רוצה להעלות (מהחשוב יותר לחשוב פחות):</string>
+    <string name="new_symptoms">סימפטומים חדשים (מתי התחיל, מתי מופיע, תדירות, עצמה):</string>
+    <string name="additional_information">מידע נוסף:</string>
+    <string name="changes_in_life">שינויים בחיים:</string>
+    <string name="personal_medical_history">היסטוריה רפואית אישית:</string>
+    <string name="family_health_background">רקע בריאותי משפחתי:</string>
+    <string name="drugs_i_take">תרופות שאני לוקחת (שמות ומינונים):</string>
+    <string name="additional_questions_to_the_doctor">שאלות ספציפיות לרופא:</string>
+    <string name="summary_of_the_doctors_Remarks">סיכום דבריו של הרופא:</string>
+    <string name="determine_your_risk_of_heart_disease">בררי את הסיכון האישי שלך למחלות לב</string>
+    <string name="ask_about_future_treatment">בררי לגבי המשך טיפול//הפנייה לרופא אחר</string>
+    <string name="should_you_come_back_for_further_inspections">האם/מתי את צריכה לחזור לביקורת?</string>
+    <string name="have_you_got_answers_for_these_questions">האם קיבלת מענה לשלוש השאלות:</string>
+    <string name="what_is_my_medical_condition">מה הבעיה הרפואית שלי?</string>
+    <string name="what_should_i_do_to_address_my_problem">מה עליי לעשות על מנת לטפל בבעיה?</string>
+    <string name="why_should_i_do_so">למה חשוב שאעשה זאת?</string>
+    <string name="if_not_ask_again">אם לא- כדאי לשאול שנית ולוודא שקיבלת מענה</string>
+    <!-- Checklist Labels <END> -->
+
+    <!-- General Labels <START> -->
+    <string name="undefined">לא הוגדר</string>
+    <!-- General Labels <END> -->
 
 </resources>
