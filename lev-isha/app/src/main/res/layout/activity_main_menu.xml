@@ -7,7 +7,7 @@
     android:layout_margin="10dp"
     android:columnCount="2"
     android:stretchColumns="*"
-    tools:context="com.hadassah.azrieli.lev_isha.MainMenuActivity">
+    tools:context="com.hadassah.azrieli.lev_isha.core.MainMenuActivity">
 
 
     <TableRow
@@ -50,12 +50,14 @@
 
         <Button
             android:id="@+id/personal_profile_btn"
-            android:text="@string/personal_profile_label"
-            style="@style/MainMenuButtonStyle" />
+            style="@style/MainMenuButtonStyle"
+            android:onClick="changeActivity"
+            android:text="@string/personal_profile_label" />
 
         <Button
-            android:id="@+id/locating_services_btn"
-            android:text="@string/locating_services_label"
+            android:id="@+id/checklist_btn"
+            android:onClick="changeActivity"
+            android:text="@string/checklist_label"
             style="@style/MainMenuButtonStyle" />
     </TableRow>
 
@@ -71,8 +73,9 @@
 
         <Button
             android:id="@+id/set_reminder_btn"
-            android:text="@string/set_reminder_label"
-            style="@style/MainMenuButtonStyle" />
+            style="@style/MainMenuButtonStyle"
+            android:onClick="addReminder"
+            android:text="@string/set_reminder_label" />
 
     </TableRow>
 
