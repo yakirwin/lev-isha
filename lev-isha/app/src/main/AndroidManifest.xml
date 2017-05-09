@@ -3,6 +3,7 @@
     package="com.hadassah.azrieli.lev_isha">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,13 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".core.MainMenuActivity"
+        <activity
+            android:name=".core.MainMenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".core.SplashScreen"
+        <activity
+            android:name=".core.SplashScreen"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,11 +30,14 @@
         </activity>
         <activity
             android:name=".core.PersonalProfileActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="@string/personal_profile" />
+            android:label="@string/personal_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".core.ChecklistActivity"
             android:label="@string/title_activity_checklist" />
+        <activity
+            android:name=".core.HealthRecommendationsActivity"
+            android:label="@string/personal_health_recommendation_label"/>
     </application>
 
 </manifest>

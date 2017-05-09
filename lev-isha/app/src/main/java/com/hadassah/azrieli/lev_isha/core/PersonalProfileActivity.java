@@ -39,6 +39,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.MAYBE_VALUE;
+import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.NO_VALUE;
+import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.YES_VALUE;
+
 
 public class PersonalProfileActivity extends AppCompatActivity {
 
@@ -118,6 +122,12 @@ public class PersonalProfileActivity extends AppCompatActivity {
             PersonalProfileEntry entry = mDataset.get(position);
             holder.title.setText(entry.getName());
             holder.summary.setText((entry.getValue() == null) ? context.getResources().getText(R.string.undefined) : entry.getValue());
+            if(holder.summary.getText().toString().equals(YES_VALUE))
+                holder.summary.setText(getResources().getString(R.string.yes));
+            else if(holder.summary.getText().toString().equals(NO_VALUE))
+                holder.summary.setText(getResources().getString(R.string.no));
+            else if(holder.summary.getText().toString().equals(MAYBE_VALUE))
+                holder.summary.setText(getResources().getString(R.string.not_sure));
             if(entry.isEssential())
                 holder.delete.setVisibility(View.INVISIBLE);
             else
@@ -126,6 +136,8 @@ public class PersonalProfileActivity extends AppCompatActivity {
                 holder.icon.setBackgroundResource(R.drawable.icon_date);
             else if(entry.getInputType() == PersonalProfileEntry.REAL_NUMBERS)
                 holder.icon.setBackgroundResource(R.drawable.icon_number);
+            else if(entry.getInputType() == PersonalProfileEntry.FINITE_STATES)
+                holder.icon.setBackgroundResource(R.drawable.icon_mult_choice);
             else
                 holder.icon.setBackgroundResource(R.drawable.icon_text);
             holder.layout.setTag(position);
@@ -137,7 +149,6 @@ public class PersonalProfileActivity extends AppCompatActivity {
         }
 
     }
-
 
 
     private void addNewEntry() {
@@ -191,10 +202,10 @@ public class PersonalProfileActivity extends AppCompatActivity {
     }
 
 
-       private boolean deleteEntry(View view, final int index) {
+    private boolean deleteEntry(View view, final int index) {
         if(mAdapter == null)
             return false;
-           final PersonalProfileEntry toDelete;
+        final PersonalProfileEntry toDelete;
         try {
             toDelete = mAdapter.getItem(index);
         }catch(Exception ignore){return false;}
@@ -227,6 +238,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
         if(toEdit.getName().equals(this.getResources().getText(R.string.bmi)))
             return;
         final PersonalProfile profile = PersonalProfile.getInstance(PersonalProfileActivity.this);
+        final Resources res = this.getResources();
         if(toEdit.getInputType() == PersonalProfileEntry.DATE) {
             Calendar currentTime = Calendar.getInstance();
             int year, month, day;
@@ -255,6 +267,56 @@ public class PersonalProfileActivity extends AppCompatActivity {
                     profile.commitChanges(PersonalProfileActivity.this);
                 }
             }, year, month, day).show();
+        }
+        else if(toEdit.getInputType() == PersonalProfileEntry.FINITE_STATES) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(toEdit.getName());
+            builder.setNegativeButton(R.string.cancel,null);
+            final View dialogView = this.getLayoutInflater().inflate(R.layout.text_input, null);
+            builder.setView(dialogView);
+            final EditText editText = (EditText)dialogView.findViewById(R.id.text_input_text_box);
+            editText.setVisibility(View.GONE);
+            final RadioGroup radioGroup = (RadioGroup)dialogView.findViewById(R.id.text_input_radio_group);
+            radioGroup.setPadding(0,50,0,0);
+            RadioButton rb1 = new RadioButton(this);
+            rb1.setText(res.getText(R.string.yes));
+            radioGroup.addView(rb1);
+            rb1.setPadding(10,0,10,0);
+            rb1.setChecked(true);
+            RadioButton rb2 = new RadioButton(this);
+            rb2.setText(res.getText(R.string.no));
+            radioGroup.addView(rb2);
+            rb2.setPadding(10,0,10,0);
+            RadioButton rb3 = new RadioButton(this);
+            if(toEdit.getName().equals(res.getString(R.string.family_history_personal_profile))) {
+                rb3.setText(res.getText(R.string.not_sure));
+                radioGroup.addView(rb3);
+                rb3.setPadding(10,0,10,0);
+            }
+            if(toEdit.getValue() != null) {
+                if(toEdit.getValue().equals(NO_VALUE))
+                    rb2.setChecked(true);
+                else if(toEdit.getValue().equals(MAYBE_VALUE))
+                    rb3.setChecked(true);
+            }
+            builder.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    int type;
+                    type = radioGroup.getCheckedRadioButtonId();
+                    String rawType = ((RadioButton)dialogView.findViewById(type)).getText().toString();
+                    if(rawType.equals(res.getText(R.string.not_sure)))
+                        toEdit.setValue(PersonalProfileEntry.MAYBE_VALUE);
+                    else if(rawType.equals(res.getText(R.string.yes)))
+                        toEdit.setValue(YES_VALUE);
+                    else
+                        toEdit.setValue(NO_VALUE);
+                    mAdapter.mDataset = PersonalProfile.getInstance(PersonalProfileActivity.this).getEntriesCopy();
+                    mAdapter.notifyItemChanged(index);
+                    profile.commitChanges(PersonalProfileActivity.this);
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
         else {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -293,12 +355,12 @@ public class PersonalProfileActivity extends AppCompatActivity {
         PersonalProfile profile = PersonalProfile.getInstance(this);
         PersonalProfileEntry heightEntry = profile.findEntryByName(this.getResources().getText(R.string.height).toString());
         PersonalProfileEntry weightEntry = profile.findEntryByName(this.getResources().getText(R.string.weight).toString());
-        double weight,height;
+        int weight,height;
         try {
-            weight = Double.parseDouble(weightEntry.getValue());
-            height = Double.parseDouble(heightEntry.getValue());
+            weight = Integer.parseInt(weightEntry.getValue());
+            height = Integer.parseInt(heightEntry.getValue());
         }catch(Exception ignore){return false;}
-        String resultBMI = new DecimalFormat("#.##").format(weight/(height*height));
+        String resultBMI = new DecimalFormat("#.##").format((double)(weight*10000)/(height*height));
         PersonalProfileEntry BMIEntry = profile.findEntryByName(this.getResources().getText(R.string.bmi).toString());
         BMIEntry.setValue(resultBMI);
         profile.commitChanges(PersonalProfileActivity.this);

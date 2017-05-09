@@ -3,6 +3,7 @@ package com.hadassah.azrieli.lev_isha.utility;
 import android.support.annotation.NonNull;
 import android.text.InputType;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -17,10 +18,14 @@ public class PersonalProfileEntry implements Serializable, Comparable<PersonalPr
     public static final int PLAIN_TEXT = InputType.TYPE_CLASS_TEXT;
     public static final int REAL_NUMBERS = InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL;
     public static final int DATE = InputType.TYPE_CLASS_DATETIME;
+    public static final int FINITE_STATES = InputType.TYPE_NULL;
+    public static final String YES_VALUE = "finite_options_yes";
+    public static final String NO_VALUE = "finite_options_no";
+    public static final String MAYBE_VALUE = "finite_options_dont";
 
     private String name;
     private String val;
-    private Date modified;
+    private Calendar modified;
     private boolean essential;
     private int index;
     private int inputType;
@@ -28,7 +33,7 @@ public class PersonalProfileEntry implements Serializable, Comparable<PersonalPr
     public PersonalProfileEntry(String name, String val, boolean essential,int index, int inputType) {
         this.name = name;
         this.val = val;
-        this.modified = new Date();
+        this.modified = Calendar.getInstance();
         this.essential = essential;
         this.index = index;
         this.inputType = inputType;
@@ -38,7 +43,7 @@ public class PersonalProfileEntry implements Serializable, Comparable<PersonalPr
         return name;
     }
 
-    public Date getLastModified() {
+    public Calendar getLastModified() {
         return modified;
     }
 
@@ -47,8 +52,11 @@ public class PersonalProfileEntry implements Serializable, Comparable<PersonalPr
     }
 
     public void setValue(String val) {
+        if(inputType == FINITE_STATES)
+            if(!val.equals(YES_VALUE) && !val.equals(NO_VALUE) && !val.equals(MAYBE_VALUE))
+                return;
         this.val = val;
-        this.modified = new Date();
+        this.modified = Calendar.getInstance();
     }
 
     public boolean isEssential() {

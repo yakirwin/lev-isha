@@ -17,9 +17,12 @@
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="weight">Weight (KG)</string>
-    <string name="height">Height (Meter)</string>
+    <string name="height">Height (CM)</string>
     <string name="bmi">BMI</string>
     <string name="latest_checkup">Latest Checkup</string>
+    <string name="birth_date">Birth Date</string>
+    <string name="smoking">Smoking</string>
+    <string name="family_history_personal_profile">Family Heart Disease History</string>
     <!-- Personal Profile Labels <END> -->
 
     <!-- Checklist Labels <START> -->
@@ -55,6 +58,7 @@
     <string name="undefined">Undefined</string>
     <string name="accept">Accept</string>
     <string name="cancel">Cancel</string>
+    <string name="understood">Understood</string>
     <string name="add_new_property">Add New Property…</string>
     <string name="plain_text">Text</string>
     <string name="real_numbers">Number</string>
@@ -66,10 +70,28 @@
     <string name="title_activity_checklist">ChecklistActivity</string>
     <string name="action_settings">Settings</string>
     <string name="welcome">Welcome</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="not_sure">Not Sure</string>
     <string name="setup_profile_initial_question">
         Thank You For Using Our App!\n
         It Is Highly Recommended To Set Up Your Profile As Soon As Possible,\n
         Would You Like To Do So Now?</string>
+    <string name="missing_param_for_health_recommendations">To Provide Your Health\nRecommendations You Need To Provide The Following Details:</string>
+
+
+    <string name="personal_health_recommendations_disclaimer_header">אני מאשרת שקראתי והבנתי את ההערה הבאה:</string>
+
+    <string name ="personal_health_recommendations_disclaimer_body">
+        התכנים באפליקציה זאת מבוססים על המלצות רשמיות של משרד הבריאות, ההסתדרות הרפואית בישראל ומומחי המרכז לבריאות לב האישה.
+מטרתם לספק מידע בלבד, הם אינם מהווים תחליף להתייעצות עם רופא ואין לראות בהם הצדקה לקבלה או לדחייה של טיפול רפואי מכל סוג שהוא.
+המידע המוצג באתר הוא כללי ומותאם לנשים בריאות.
+לאור זאת, כל אישה שסובלת מבעיה בריאותית או כל מחלה הדורשת טיפול ומעקב, לרבות נשים שעברו אירוע לבבי, סרטן, שבץ מוחי,
+נשים הרות ומיניקות או מי שנוטלת תרופות מרשם - חייבת להיוועץ ברופא על מנת לקבל המלצות המתאימות למצבה.
+בכל מקרה של ספק או של חירום רפואי אין להסתמך על המידע שמספקת האפליקציה ,אלא לפנות לרופא או לבית חולים לקבלת עזרה רפואית.
+במקרים רבים, שיהוי בפניה לטיפול רפואי עלול להיות מסוכן ואף קטלני.
+    </string>
+
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

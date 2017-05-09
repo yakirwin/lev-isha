@@ -2,11 +2,7 @@ package com.hadassah.azrieli.lev_isha.utility;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.database.DataSetObserver;
-
 import com.hadassah.azrieli.lev_isha.R;
-import com.hadassah.azrieli.lev_isha.core.PersonalProfileActivity;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -16,6 +12,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.DATE;
+import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.FINITE_STATES;
+import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.PLAIN_TEXT;
+import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.REAL_NUMBERS;
 
 /**
  * Created by Avihu Harush on 05/05/2017
@@ -32,11 +32,10 @@ public class PersonalProfile implements Serializable {
     private static PersonalProfile instance;
     private static ArrayList<String> defaults;
     private static final int[] rKeys = {
-            R.string.first_name,R.string.last_name,R.string.weight,
-            R.string.height,R.string.bmi,R.string.latest_checkup};
-    private static final int[] rKeysTypes = {
-            PersonalProfileEntry.PLAIN_TEXT,PersonalProfileEntry.PLAIN_TEXT,PersonalProfileEntry.REAL_NUMBERS,
-            PersonalProfileEntry.REAL_NUMBERS,PersonalProfileEntry.REAL_NUMBERS,PersonalProfileEntry.DATE};
+            R.string.first_name,R.string.last_name,R.string.weight, R.string.height,R.string.bmi,
+            R.string.birth_date, R.string.smoking, R.string.family_history_personal_profile};
+    private static final int[] rKeysTypes = {PLAIN_TEXT, PLAIN_TEXT,REAL_NUMBERS,
+            REAL_NUMBERS, REAL_NUMBERS,DATE, FINITE_STATES, FINITE_STATES};
     private static final String FILE_NAME = "personal_profile.data";
 
     public static PersonalProfile getInstance(Context context) {

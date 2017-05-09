@@ -23,6 +23,7 @@
         <Button
             android:id="@+id/personal_health_recommendation_btn"
             android:text="@string/personal_health_recommendation_label"
+            android:onClick="personHealthRecommendations"
             style="@style/MainMenuButtonStyle" />
     </TableRow>
 
@@ -74,7 +75,7 @@
         <Button
             android:id="@+id/set_reminder_btn"
             style="@style/MainMenuButtonStyle"
-            android:onClick="addReminder"
+            android:onClick="setupReminder"
             android:text="@string/set_reminder_label" />
 
     </TableRow>
