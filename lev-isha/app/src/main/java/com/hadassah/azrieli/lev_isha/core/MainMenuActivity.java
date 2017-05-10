@@ -1,16 +1,25 @@
 package com.hadassah.azrieli.lev_isha.core;
 
+import android.app.DatePickerDialog;
+import android.content.ContentUris;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.provider.CalendarContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import com.hadassah.azrieli.lev_isha.R;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry;
@@ -29,6 +38,8 @@ import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.YES_VAL
 public class MainMenuActivity extends AppCompatActivity {
 
     private Button personalProfileButton;
+    private Button personHealthRecommendationsButton;
+    private Button setReminderButton;
     private Button checklistButton;
     private Intent personHealthRecommendationsIntent;
 
@@ -37,12 +48,24 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         personalProfileButton = (Button)findViewById(R.id.personal_profile_btn);
+        personHealthRecommendationsButton = (Button)findViewById(R.id.personal_health_recommendation_btn);
+        setReminderButton = (Button)findViewById(R.id.set_reminder_btn);
         checklistButton = (Button)findViewById(R.id.checklist_btn);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         if(prefs.getBoolean("show_question_to_setup_profile",true)) {
             prefs.edit().putBoolean("show_question_to_setup_profile", false).apply();
             showMessageToSetupProfile();
         }
+        animateButtons();
+    }
+
+    private void animateButtons() {
+        Animation leftToRight = AnimationUtils.loadAnimation(this, R.anim.main_menu_button_left_to_right);
+        Animation rightToLeft = AnimationUtils.loadAnimation(this, R.anim.main_menu_button_right_to_left);
+        personalProfileButton.startAnimation(leftToRight);
+        personHealthRecommendationsButton.startAnimation(rightToLeft);
+        setReminderButton.startAnimation(leftToRight);
+        checklistButton.startAnimation(rightToLeft);
     }
 
     public void changeActivity(View view) {
@@ -121,8 +144,26 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     public void setupReminder(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
+        Calendar now = Calendar.getInstance();
+        int year = now.get(Calendar.YEAR), month = now.get(Calendar.MONTH), day = now.get(Calendar.DAY_OF_MONTH);
+        new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                Calendar dueDate = Calendar.getInstance();
+                dueDate.set(i,i1,i2);
+                dueDate.set(Calendar.HOUR_OF_DAY, dueDate.getActualMinimum(Calendar.HOUR_OF_DAY));
+                dueDate.set(Calendar.MINUTE, dueDate.getActualMinimum(Calendar.MINUTE));
+                dueDate.set(Calendar.SECOND, dueDate.getActualMinimum(Calendar.SECOND));
+                dueDate.set(Calendar.MILLISECOND, dueDate.getActualMinimum(Calendar.MILLISECOND));
+                Intent calendarIntent = new Intent(Intent.ACTION_INSERT);
+                calendarIntent.setData(CalendarContract.Events.CONTENT_URI);
+                calendarIntent.setType("vnd.android.cursor.item/event");
+                calendarIntent.putExtra(CalendarContract.Events.TITLE,getResources().getString(R.string.calendar_reminder_header));
+                calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, false);
+                calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,dueDate.getTimeInMillis());
+                calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, dueDate.getTimeInMillis());
+                startActivity(calendarIntent);
+            }
+        }, year, month, day).show();
     }
 
     private void showMessageToSetupProfile() {

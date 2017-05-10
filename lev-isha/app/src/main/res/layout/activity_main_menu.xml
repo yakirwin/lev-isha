@@ -5,47 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
-    android:columnCount="2"
+    android:columnCount="1"
     android:stretchColumns="*"
     tools:context="com.hadassah.azrieli.lev_isha.core.MainMenuActivity">
 
-
     <TableRow
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <Button
-            android:id="@+id/nutrition_btn"
-            android:text="@string/nutrition_label"
-            style="@style/MainMenuButtonStyle" />
-
-        <Button
-            android:id="@+id/personal_health_recommendation_btn"
-            android:text="@string/personal_health_recommendation_label"
-            android:onClick="personHealthRecommendations"
-            style="@style/MainMenuButtonStyle" />
-    </TableRow>
-
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <Button
-            android:id="@+id/community_btn"
-            android:text="@string/community_label"
-            style="@style/MainMenuButtonStyle" />
-
-        <Button
-            android:id="@+id/physical_exercise_btn"
-            android:text="@string/physical_exercise_label"
-            style="@style/MainMenuButtonStyle" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
 
@@ -55,11 +20,20 @@
             android:onClick="changeActivity"
             android:text="@string/personal_profile_label" />
 
+    </TableRow>
+
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
         <Button
-            android:id="@+id/checklist_btn"
-            android:onClick="changeActivity"
-            android:text="@string/checklist_label"
-            style="@style/MainMenuButtonStyle" />
+            android:id="@+id/personal_health_recommendation_btn"
+            style="@style/MainMenuButtonStyle"
+            android:onClick="personHealthRecommendations"
+            android:text="@string/personal_health_recommendation_label" />
+
     </TableRow>
 
     <TableRow
@@ -68,16 +42,22 @@
         android:layout_weight="1">
 
         <Button
-            android:id="@+id/blood_test_result_guide_btn"
-            android:text="@string/blood_test_result_guide_label"
-            style="@style/MainMenuButtonStyle" />
-
-        <Button
             android:id="@+id/set_reminder_btn"
             style="@style/MainMenuButtonStyle"
             android:onClick="setupReminder"
             android:text="@string/set_reminder_label" />
+    </TableRow>
 
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/checklist_btn"
+            style="@style/MainMenuButtonStyle"
+            android:onClick="changeActivity"
+            android:text="@string/checklist_label" />
     </TableRow>
 
 

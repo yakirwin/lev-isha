@@ -9,21 +9,20 @@
         android:id="@+id/text_input_text_box"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:maxLines="1"></EditText>
+        android:layout_margin="10dp"
+        android:maxLines="1"/>
 
     <FrameLayout
         android:id="@+id/text_input_additional_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:layout_height="wrap_content">
 
         <RadioGroup
             android:id="@+id/text_input_radio_group"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
         </RadioGroup>
 

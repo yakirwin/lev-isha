@@ -12,9 +12,11 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +28,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -162,19 +165,26 @@ public class PersonalProfileActivity extends AppCompatActivity {
         builder.setView(dialogView);
         final EditText editText = (EditText)dialogView.findViewById(R.id.text_input_text_box);
         final RadioGroup radioGroup = (RadioGroup)dialogView.findViewById(R.id.text_input_radio_group);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.weight = 1.0f;
+        params.gravity = Gravity.START;
+        params.leftMargin = 40;
         RadioButton rb1 = new RadioButton(this);
         rb1.setText(res.getText(R.string.plain_text));
         radioGroup.addView(rb1);
         rb1.setPadding(10,0,10,0);
         rb1.setChecked(true);
+        rb1.setLayoutParams(params);
         RadioButton rb2 = new RadioButton(this);
         rb2.setText(res.getText(R.string.real_numbers));
         radioGroup.addView(rb2);
         rb2.setPadding(10,0,10,0);
+        rb2.setLayoutParams(params);
         RadioButton rb3 = new RadioButton(this);
         rb3.setText(res.getText(R.string.date));
         radioGroup.addView(rb3);
         rb3.setPadding(10,0,10,0);
+        rb3.setLayoutParams(params);
         builder.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 if(editText.getText().length() == 0)
@@ -277,21 +287,28 @@ public class PersonalProfileActivity extends AppCompatActivity {
             final EditText editText = (EditText)dialogView.findViewById(R.id.text_input_text_box);
             editText.setVisibility(View.GONE);
             final RadioGroup radioGroup = (RadioGroup)dialogView.findViewById(R.id.text_input_radio_group);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            params.weight = 1.0f;
+            params.gravity = Gravity.START;
+            params.leftMargin = 40;
             radioGroup.setPadding(0,50,0,0);
             RadioButton rb1 = new RadioButton(this);
             rb1.setText(res.getText(R.string.yes));
             radioGroup.addView(rb1);
             rb1.setPadding(10,0,10,0);
             rb1.setChecked(true);
+            rb1.setLayoutParams(params);
             RadioButton rb2 = new RadioButton(this);
             rb2.setText(res.getText(R.string.no));
             radioGroup.addView(rb2);
             rb2.setPadding(10,0,10,0);
+            rb2.setLayoutParams(params);
             RadioButton rb3 = new RadioButton(this);
             if(toEdit.getName().equals(res.getString(R.string.family_history_personal_profile))) {
                 rb3.setText(res.getText(R.string.not_sure));
                 radioGroup.addView(rb3);
                 rb3.setPadding(10,0,10,0);
+                rb3.setLayoutParams(params);
             }
             if(toEdit.getValue() != null) {
                 if(toEdit.getValue().equals(NO_VALUE))
