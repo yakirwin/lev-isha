@@ -30,6 +30,8 @@ public class MainMenuActivity extends AppCompatActivity {
 
     private Button personalProfileButton;
     private Button checklistButton;
+    private Intent personHealthRecommendationsIntent;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,18 +84,22 @@ public class MainMenuActivity extends AppCompatActivity {
             builder.setNeutralButton(res.getText(R.string.understood),null).create().show();
         }
         else {
-            Intent transfer = new Intent(this, HealthRecommendationsActivity.class);
-            transfer.putExtra(HealthRecommendationsActivity.EXTRA_SMOKE,(smoke.equals(YES_VALUE)) ? "yes" : "no");
+            personHealthRecommendationsIntent = new Intent(this, HealthRecommendationsActivity.class);
+            personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_SMOKE,(smoke.equals(YES_VALUE)) ? "yes" : "no");
             if(smoke.equals(YES_VALUE))
-                transfer.putExtra(HealthRecommendationsActivity.EXTRA_HISTORY,"yes");
+                personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_HISTORY,"yes");
             else if(smoke.equals(NO_VALUE))
-                transfer.putExtra(HealthRecommendationsActivity.EXTRA_HISTORY,"no");
+                personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_HISTORY,"no");
             else
-                transfer.putExtra(HealthRecommendationsActivity.EXTRA_HISTORY,"dont");
-            transfer.putExtra(HealthRecommendationsActivity.EXTRA_HEIGHT, bmi_h);
-            transfer.putExtra(HealthRecommendationsActivity.EXTRA_WEIGHT, bmi_w);
-            transfer.putExtra(HealthRecommendationsActivity.EXTRA_AGE,age);
-            startActivity(transfer);
+                personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_HISTORY,"dont");
+            personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_HEIGHT, bmi_h);
+            personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_WEIGHT, bmi_w);
+            personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_AGE,age);
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            if(!prefs.getBoolean("personal_health_recommendations_disclaimer_approved", false))
+                askUserForHisConsent();
+            else
+                startActivity(personHealthRecommendationsIntent);
         }
     }
 
@@ -127,6 +133,22 @@ public class MainMenuActivity extends AppCompatActivity {
         builder.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 startActivity(new Intent(MainMenuActivity.this, PersonalProfileActivity.class));
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void askUserForHisConsent() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getResources().getText(R.string.personal_health_recommendations_disclaimer_header));
+        builder.setMessage(getResources().getText(R.string.personal_health_recommendations_disclaimer_body));
+        builder.setNegativeButton(R.string.cancel,null);
+        builder.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                prefs.edit().putBoolean("personal_health_recommendations_disclaimer_approved", true).commit();
+                startActivity(personHealthRecommendationsIntent);
             }
         });
         AlertDialog dialog = builder.create();

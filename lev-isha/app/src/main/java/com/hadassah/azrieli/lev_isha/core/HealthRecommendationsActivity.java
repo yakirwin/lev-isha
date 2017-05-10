@@ -35,13 +35,6 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health_recommendations);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        if(!prefs.getBoolean("personal_health_recommendations_disclaimer_approved",false))
-            askUserForHisConsent();
-        else
-            disclaimerCallback();
-    }
-
-    private void disclaimerCallback() {
         Intent data = getIntent();
         profile = PersonalProfile.getInstance(this);
         smoke = data.getStringExtra(EXTRA_SMOKE);
@@ -57,7 +50,6 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
         webView.loadUrl("http://www.lev-isha.org/hra_result/?age="+age+"&smoke="+smoke+"&history="+history+"&bmi_weight="+weight+"&bmi_height="+height+"&approve=1");
 
     }
-
 
     public class WebViewController extends WebViewClient {
 
@@ -100,24 +92,4 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
     }
 
 
-
-    private void askUserForHisConsent() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(getResources().getText(R.string.personal_health_recommendations_disclaimer_header));
-        builder.setMessage(getResources().getText(R.string.personal_health_recommendations_disclaimer_body));
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogInterface, int i) {
-                finish();
-            }
-        });
-        builder.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                prefs.edit().putBoolean("personal_health_recommendations_disclaimer_approved", true).apply();
-                disclaimerCallback();
-            }
-        });
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
 }
