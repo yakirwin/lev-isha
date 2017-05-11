@@ -46,6 +46,10 @@ import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.MAYBE_V
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.NO_VALUE;
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.YES_VALUE;
 
+/**
+ * Created by Avihu Harush on 06/05/2017
+ * E-Mail: tchvu3@gmail.com
+ */
 
 public class PersonalProfileActivity extends AppCompatActivity {
 
@@ -58,7 +62,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_profile);
         mRecyclerView = (RecyclerView) findViewById(R.id.personal_profile_Recycler_view);
-        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setHasFixedSize(false);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new ProfileAdapter(this);

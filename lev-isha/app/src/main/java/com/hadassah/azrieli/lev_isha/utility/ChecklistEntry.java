@@ -13,9 +13,14 @@ class ChecklistEntry {
     * This class relevancy is still under investigation
     * */
 
+    public enum types {
+        SINGLE_LINE, MULTI_LINE, CHECK_BOX
+    }
+
     private String name;
     private String field;
     private boolean done;
+    private types type;
 
     public ChecklistEntry(String name, String field) {
         this.name = name;

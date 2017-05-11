@@ -22,6 +22,7 @@
     <!-- Personal Profile Labels <END> -->
 
     <!-- Checklist Labels <START> -->
+    <string name="check_list_1st_part_header">הכנה לביקור אצל הרופא</string>
     <string name="doctor_name">שם הרופא:</string>
     <string name="address">כתובת:</string>
     <string name="appointment_date">תאריך התור:</string>
@@ -39,6 +40,7 @@
     <string name="family_health_background">רקע בריאותי משפחתי:</string>
     <string name="drugs_i_take">תרופות שאני לוקחת (שמות ומינונים):</string>
     <string name="additional_questions_to_the_doctor">שאלות ספציפיות לרופא:</string>
+    <string name="check_list_2nd_part_header">אצל הרופא</string>
     <string name="summary_of_the_doctors_Remarks">סיכום דבריו של הרופא:</string>
     <string name="determine_your_risk_of_heart_disease">בררי את הסיכון האישי שלך למחלות לב</string>
     <string name="ask_about_future_treatment">בררי לגבי המשך טיפול//הפנייה לרופא אחר</string>

@@ -19,6 +19,11 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
+/**
+ * Created by Avihu Harush on 06/05/2017
+ * E-Mail: tchvu3@gmail.com
+ */
+
 public class HealthRecommendationsActivity extends AppCompatActivity {
 
     private PersonalProfile profile;

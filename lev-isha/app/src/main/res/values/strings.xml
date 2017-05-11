@@ -26,6 +26,7 @@
     <!-- Personal Profile Labels <END> -->
 
     <!-- Checklist Labels <START> -->
+    <string name="check_list_1st_part_header">Prepare For The Visit</string>
     <string name="doctor_name">Doctor Name:</string>
     <string name="address">Address:</string>
     <string name="appointment_date">Appointment Date:</string>
@@ -43,6 +44,7 @@
     <string name="family_health_background">Family Health Background:</string>
     <string name="drugs_i_take">Drugs I Take (Names And Doses):</string>
     <string name="additional_questions_to_the_doctor">Additional Questions To The Doctor:</string>
+    <string name="check_list_2nd_part_header">At The Doctor</string>
     <string name="summary_of_the_doctors_Remarks">Summary Of The Doctor\'s Remarks:</string>
     <string name="determine_your_risk_of_heart_disease">Determine Your Risk Of Heart Disease</string>
     <string name="ask_about_future_treatment">Ask About Future Treatment</string>
@@ -82,7 +84,7 @@
 
     <string name="personal_health_recommendations_disclaimer_header">אני מאשרת שקראתי והבנתי את ההערה הבאה:</string>
 
-    <string name ="personal_health_recommendations_disclaimer_body">
+    <string name="personal_health_recommendations_disclaimer_body">
         התכנים באפליקציה זאת מבוססים על המלצות רשמיות של משרד הבריאות, ההסתדרות הרפואית בישראל ומומחי המרכז לבריאות לב האישה.
 מטרתם לספק מידע בלבד, הם אינם מהווים תחליף להתייעצות עם רופא ואין לראות בהם הצדקה לקבלה או לדחייה של טיפול רפואי מכל סוג שהוא.
 המידע המוצג באתר הוא כללי ומותאם לנשים בריאות.
@@ -92,7 +94,7 @@
 במקרים רבים, שיהוי בפניה לטיפול רפואי עלול להיות מסוכן ואף קטלני.
     </string>
 
-    <string  name="calendar_reminder_header">Doctor Examination</string>
+    <string name="calendar_reminder_header">Doctor Examination</string>
 
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -183,6 +185,9 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- General Labels <END> -->
 
 </resources>
