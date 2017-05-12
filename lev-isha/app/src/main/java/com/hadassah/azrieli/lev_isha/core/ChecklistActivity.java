@@ -41,6 +41,8 @@ public class ChecklistActivity extends AppCompatActivity {
     }
 
 
+
+
     class customPager extends FragmentPagerAdapter {
 
         BeforeDoctorFragment beforeFragment = (getSupportFragmentManager().getFragments() != null && getSupportFragmentManager().getFragments().size() >= 1) ? (BeforeDoctorFragment)getSupportFragmentManager().getFragments().get(0) : BeforeDoctorFragment.newInstance();
@@ -58,6 +60,16 @@ public class ChecklistActivity extends AppCompatActivity {
             }
         }
 
+        public void setPrimaryItem(ViewGroup container, int position, Object object) {
+            super.setPrimaryItem(container, position, object);
+            if(object == null)
+                return;
+            if(object instanceof BeforeDoctorFragment && beforeFragment.isVisible())
+                beforeFragment.reloadSavedFields();
+            else if(object instanceof AfterDoctorFragment && afterFragment.isVisible())
+                afterFragment.reloadSavedFields();
+        }
+
         public int getCount() {
             return 2;
         }
@@ -70,7 +82,5 @@ public class ChecklistActivity extends AppCompatActivity {
             }
         }
     }
-
-
 
 }
