@@ -5,4 +5,6 @@
     <color name="colorAccent">#ff2424</color>
     <color name="mainButtonColor">#92D050</color>
     <color name="transparent">#00ffffff</color>
+    <color name="colorBackground">#eeeeee</color>
+    <color name="tabs_undercolor">#ffffff</color>
 </resources>

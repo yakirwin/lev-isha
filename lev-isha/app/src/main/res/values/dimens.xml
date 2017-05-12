@@ -4,4 +4,10 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="checklist_font_size_header">18sp</dimen>
+    <dimen name="checklist_font_size_normal">17sp</dimen>
+    <dimen name="checklist_margin_between_sections">28dp</dimen>
+    <dimen name="checklist_margin_between_components">8dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="edit_text_single_line_height">29dp</dimen>
 </resources>

@@ -5,13 +5,17 @@ import android.content.ContentUris;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.provider.CalendarContract;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -26,6 +30,7 @@ import com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.NO_VALUE;
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.YES_VALUE;

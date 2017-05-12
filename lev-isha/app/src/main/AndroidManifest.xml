@@ -34,7 +34,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".core.ChecklistActivity"
-            android:label="@string/title_activity_checklist" />
+            android:label="@string/title_activity_check_list"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".core.HealthRecommendationsActivity"
             android:label="@string/personal_health_recommendation_label"/>

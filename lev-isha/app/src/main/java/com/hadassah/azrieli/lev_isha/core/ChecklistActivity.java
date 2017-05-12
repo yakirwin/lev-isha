@@ -31,13 +31,13 @@ public class ChecklistActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checklist);
-        /*ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
-        if (customPagerAdapter != null)
-            mViewPager.setAdapter(customPagerAdapter);
-        else
-            mViewPager.setAdapter(customPagerAdapter);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        customPagerAdapter = new customPager(getSupportFragmentManager());
+        ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setAdapter(customPagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);*/
+        tabLayout.setupWithViewPager(mViewPager);
     }
 
 
