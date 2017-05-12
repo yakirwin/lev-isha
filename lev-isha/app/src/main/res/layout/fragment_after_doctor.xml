@@ -11,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="10dp"
+    android:paddingTop="15dp"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:paddingBottom="@dimen/checklist_margin_between_sections">
@@ -32,7 +32,8 @@
         android:hint="@string/summary_of_the_doctors_Remarks_text_box_hint"
         android:inputType="textMultiLine"
         android:padding="10dp"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        android:textSize="@dimen/checklist_font_size_normal" />
 
     <!--<View
         android:layout_width="match_parent"
@@ -45,19 +46,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/checklist_margin_between_sections"
-        android:text="@string/determine_your_risk_of_heart_disease" />
+        android:text="@string/determine_your_risk_of_heart_disease"
+        android:textSize="@dimen/checklist_font_size_normal" />
 
     <CheckBox
         android:id="@+id/check_box_ask_about_future_treatment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ask_about_future_treatment" />
+        android:text="@string/ask_about_future_treatment"
+        android:textSize="@dimen/checklist_font_size_normal" />
 
     <CheckBox
         android:id="@+id/check_box_should_you_come_back_for_further_inspections"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/should_you_come_back_for_further_inspections" />
+        android:text="@string/should_you_come_back_for_further_inspections"
+        android:textSize="@dimen/checklist_font_size_normal" />
 
     <TextView
         android:layout_width="match_parent"

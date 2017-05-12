@@ -42,8 +42,11 @@
     <string name="new_symptoms_hint">New Symptoms…</string>
     <string name="additional_information">Additional Information:</string>
     <string name="changes_in_life">Changes In Life:</string>
+    <string name="changes_in_life_hint">Changes In Life</string>
     <string name="personal_medical_history">Personal Medical History:</string>
+    <string name="personal_medical_history_hint">Personal Medical History</string>
     <string name="family_health_background">Family Health Background:</string>
+    <string name="family_health_background_hint">Family Health Background</string>
     <string name="drugs_i_take">Drugs I Take (Names And Doses):</string>
     <string name="drugs_i_take_hint">Drugs I Take…</string>
     <string name="additional_questions_to_the_doctor">Additional Questions To The Doctor:</string>

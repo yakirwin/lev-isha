@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingTop="10dp"
+        android:paddingTop="20dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="@dimen/checklist_margin_between_sections">
@@ -40,7 +40,8 @@
                 android:background="@drawable/background_textbox"
                 android:lines="1"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp" />
+                android:paddingRight="10dp"
+                android:textSize="@dimen/checklist_font_size_normal" />
 
         </LinearLayout>
 
@@ -68,7 +69,8 @@
                 android:background="@drawable/background_textbox"
                 android:lines="1"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp" />
+                android:paddingRight="10dp"
+                android:textSize="@dimen/checklist_font_size_normal" />
 
         </LinearLayout>
 
@@ -95,7 +97,8 @@
                 android:background="@drawable/background_textbox"
                 android:lines="1"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp" />
+                android:paddingRight="10dp"
+                android:textSize="@dimen/checklist_font_size_normal" />
 
         </LinearLayout>
 
@@ -122,7 +125,8 @@
                 android:background="@drawable/background_textbox"
                 android:lines="1"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp" />
+                android:paddingRight="10dp"
+                android:textSize="@dimen/checklist_font_size_normal" />
 
         </LinearLayout>
 
@@ -139,25 +143,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/checklist_margin_between_components"
-            android:text="@string/references"/>
+            android:text="@string/references"
+            android:textSize="@dimen/checklist_font_size_normal" />
 
         <CheckBox
             android:id="@+id/check_box_prescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/prescription"/>
+            android:text="@string/prescription"
+            android:textSize="@dimen/checklist_font_size_normal" />
 
         <CheckBox
             android:id="@+id/check_box_Previous_diagnoses"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Previous_diagnoses"/>
+            android:text="@string/Previous_diagnoses"
+            android:textSize="@dimen/checklist_font_size_normal" />
 
         <CheckBox
             android:id="@+id/check_box_tests_results"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tests_results"/>
+            android:text="@string/tests_results"
+            android:textSize="@dimen/checklist_font_size_normal" />
 
         <TextView
             android:layout_width="match_parent"
@@ -176,15 +184,16 @@
             android:hint="@string/subjects_i_want_to_talk_about_hint"
             android:inputType="textMultiLine"
             android:padding="10dp"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical"
+            android:textSize="@dimen/checklist_font_size_normal" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/checklist_margin_between_sections"
+            android:text="@string/new_symptoms"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/checklist_font_size_header"
-            android:text="@string/new_symptoms"/>
+            android:textSize="@dimen/checklist_font_size_header" />
 
         <EditText
             android:id="@+id/text_box_new_symptoms"
@@ -195,107 +204,86 @@
             android:hint="@string/new_symptoms_hint"
             android:inputType="textMultiLine"
             android:padding="10dp"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical"
+            android:textSize="@dimen/checklist_font_size_normal" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/checklist_margin_between_sections"
+            android:text="@string/additional_information"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/checklist_font_size_header"
-            android:text="@string/additional_information"/>
+            android:textSize="@dimen/checklist_font_size_header" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/checklist_margin_between_components"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:text="@string/changes_in_life"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/checklist_font_size_normal" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/changes_in_life"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/checklist_font_size_normal" />
-
-
-            <EditText
-                android:id="@+id/edit_text_changes_in_life"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/edit_text_single_line_height"
-                android:layout_weight="1"
-                android:background="@drawable/background_textbox"
-                android:lines="1"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
+        <EditText
+            android:id="@+id/text_box_changes_in_life"
             android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="@dimen/checklist_margin_between_components"
+            android:background="@drawable/background_textbox"
+            android:hint="@string/changes_in_life_hint"
+            android:inputType="textMultiLine"
+            android:padding="10dp"
+            android:scrollbars="vertical"
+            android:textSize="@dimen/checklist_font_size_normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/checklist_margin_between_components"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_weight="1"
+            android:text="@string/personal_medical_history"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/checklist_font_size_normal" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/personal_medical_history"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/checklist_font_size_normal" />
-
-
-            <EditText
-                android:id="@+id/edit_text_personal_medical_history"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/edit_text_single_line_height"
-                android:layout_weight="1"
-                android:background="@drawable/background_textbox"
-                android:lines="1"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
+        <EditText
+            android:id="@+id/text_box_personal_medical_history"
             android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="@dimen/checklist_margin_between_components"
+            android:background="@drawable/background_textbox"
+            android:hint="@string/personal_medical_history_hint"
+            android:inputType="textMultiLine"
+            android:padding="10dp"
+            android:scrollbars="vertical"
+            android:textSize="@dimen/checklist_font_size_normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/checklist_margin_between_components"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_weight="1"
+            android:text="@string/family_health_background"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/checklist_font_size_normal" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/family_health_background"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/checklist_font_size_normal" />
-
-
-            <EditText
-                android:id="@+id/edit_text_family_health_background"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/edit_text_single_line_height"
-                android:layout_weight="1"
-                android:background="@drawable/background_textbox"
-                android:lines="1"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp" />
-
-        </LinearLayout>
+        <EditText
+            android:id="@+id/text_box_family_health_background"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="@dimen/checklist_margin_between_components"
+            android:background="@drawable/background_textbox"
+            android:hint="@string/family_health_background_hint"
+            android:inputType="textMultiLine"
+            android:padding="10dp"
+            android:scrollbars="vertical"
+            android:textSize="@dimen/checklist_font_size_normal" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/checklist_margin_between_sections"
+            android:text="@string/drugs_i_take"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/checklist_font_size_header"
-            android:text="@string/drugs_i_take"/>
+            android:textSize="@dimen/checklist_font_size_header" />
 
         <EditText
             android:id="@+id/text_box_drugs_i_take"
@@ -306,7 +294,8 @@
             android:hint="@string/drugs_i_take_hint"
             android:inputType="textMultiLine"
             android:padding="10dp"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical"
+            android:textSize="@dimen/checklist_font_size_normal" />
 
         <TextView
             android:layout_width="match_parent"
@@ -325,7 +314,8 @@
             android:hint="@string/additional_questions_to_the_doctor_hint"
             android:inputType="textMultiLine"
             android:padding="10dp"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical"
+            android:textSize="@dimen/checklist_font_size_normal" />
 
     </LinearLayout>
 
