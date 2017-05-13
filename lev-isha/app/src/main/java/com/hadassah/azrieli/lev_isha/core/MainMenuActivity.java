@@ -21,7 +21,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hadassah.azrieli.lev_isha.R;
@@ -31,6 +33,7 @@ import com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+
 
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.NO_VALUE;
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.YES_VALUE;
@@ -42,20 +45,20 @@ import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.YES_VAL
 
 public class MainMenuActivity extends AppCompatActivity {
 
-    private Button personalProfileButton;
-    private Button personHealthRecommendationsButton;
-    private Button setReminderButton;
-    private Button checklistButton;
+    private LinearLayout personalProfileButton;
+    private LinearLayout personHealthRecommendationsButton;
+    private LinearLayout setReminderButton;
+    private LinearLayout checklistButton;
     private Intent personHealthRecommendationsIntent;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        personalProfileButton = (Button)findViewById(R.id.personal_profile_btn);
-        personHealthRecommendationsButton = (Button)findViewById(R.id.personal_health_recommendation_btn);
-        setReminderButton = (Button)findViewById(R.id.set_reminder_btn);
-        checklistButton = (Button)findViewById(R.id.checklist_btn);
+        personalProfileButton = (LinearLayout)findViewById(R.id.personal_profile_btn);
+        personHealthRecommendationsButton = (LinearLayout)findViewById(R.id.personal_health_recommendation_btn);
+        setReminderButton = (LinearLayout)findViewById(R.id.set_reminder_btn);
+        checklistButton = (LinearLayout)findViewById(R.id.checklist_btn);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         if(prefs.getBoolean("show_question_to_setup_profile",true)) {
             prefs.edit().putBoolean("show_question_to_setup_profile", false).apply();

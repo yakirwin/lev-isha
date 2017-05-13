@@ -52,6 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/add_new_white"
+        android:visibility="gone"
         app:layout_anchor="@id/profile_app_bar"
         app:layout_anchorGravity="bottom|end" />
 
@@ -59,6 +60,7 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <android.support.v7.widget.RecyclerView

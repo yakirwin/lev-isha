@@ -13,12 +13,14 @@
     <!-- MainMenu Labels <END> -->
 
     <!-- Personal Profile Labels <START> -->
+    <string name="name">שמך</string>
     <string name="first_name">שם פרטי</string>
     <string name="last_name">שם משפחה</string>
     <string name="weight">משקל</string>
     <string name="height">גובה</string>
     <string name="bmi">BMI</string>
     <string name="latest_checkup">ביקורת אחרונה</string>
+    <string name="family_history_explanation">האם במשפחתך הקרובה (הורים ואחים) קיים רקע של מחלות לב, שבץ מוחי וכלי דם?</string>
     <!-- Personal Profile Labels <END> -->
 
     <!-- Checklist Labels <START> -->
@@ -54,11 +56,8 @@
 
     <!-- General Labels <START> -->
     <string name="undefined">לא הוגדר</string>
-    <!-- General Labels <END> -->
-
-
+    <string name="yes">כן</string>
     <string name="personal_health_recommendations_disclaimer_header">אני מאשרת שקראתי והבנתי את ההערה הבאה:</string>
-
     <string name ="personal_health_recommendations_disclaimer_body">
         התכנים באפליקציה זאת מבוססים על המלצות רשמיות של משרד הבריאות, ההסתדרות הרפואית בישראל ומומחי המרכז לבריאות לב האישה.
 מטרתם לספק מידע בלבד, הם אינם מהווים תחליף להתייעצות עם רופא ואין לראות בהם הצדקה לקבלה או לדחייה של טיפול רפואי מכל סוג שהוא.
@@ -68,5 +67,6 @@
 בכל מקרה של ספק או של חירום רפואי אין להסתמך על המידע שמספקת האפליקציה ,אלא לפנות לרופא או לבית חולים לקבלת עזרה רפואית.
 במקרים רבים, שיהוי בפניה לטיפול רפואי עלול להיות מסוכן ואף קטלני.
     </string>
+    <!-- General Labels <END> -->
 
 </resources>

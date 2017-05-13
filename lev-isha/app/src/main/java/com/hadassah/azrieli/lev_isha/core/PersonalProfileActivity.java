@@ -309,6 +309,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
             rb2.setLayoutParams(params);
             RadioButton rb3 = new RadioButton(this);
             if(toEdit.getName().equals(res.getString(R.string.family_history_personal_profile))) {
+                builder.setMessage(R.string.family_history_explanation);
                 rb3.setText(res.getText(R.string.not_sure));
                 radioGroup.addView(rb3);
                 rb3.setPadding(10,0,10,0);

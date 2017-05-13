@@ -1,65 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
-    android:columnCount="1"
-    android:stretchColumns="*"
+    android:background="@drawable/main_menu_background"
+    android:orientation="vertical"
+    android:paddingTop="20dp"
     tools:context="com.hadassah.azrieli.lev_isha.core.MainMenuActivity">
 
-    <TableRow
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <Button
-            android:id="@+id/personal_profile_btn"
-            style="@style/MainMenuButtonStyle"
-            android:onClick="changeActivity"
-            android:text="@string/personal_profile_label" />
-
-    </TableRow>
-
-
-    <TableRow
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        app:srcCompat="@drawable/lev_isha_main_logo" />
 
-        <Button
-            android:id="@+id/personal_health_recommendation_btn"
-            style="@style/MainMenuButtonStyle"
-            android:onClick="personHealthRecommendations"
-            android:text="@string/personal_health_recommendation_label" />
-
-    </TableRow>
-
-    <TableRow
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <Button
-            android:id="@+id/set_reminder_btn"
-            style="@style/MainMenuButtonStyle"
-            android:onClick="setupReminder"
-            android:text="@string/set_reminder_label" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <Button
-            android:id="@+id/checklist_btn"
-            style="@style/MainMenuButtonStyle"
-            android:onClick="changeActivity"
-            android:text="@string/checklist_label" />
-    </TableRow>
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_weight="4"
+        android:columnCount="2"
+        android:stretchColumns="*">
 
 
-</TableLayout>
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
 
+            <LinearLayout
+                android:id="@+id/personal_profile_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:onClick="changeActivity"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_profile" />
+
+                <TextView
+                    style="@style/MainMenuTextButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/transparent"
+                    android:text="@string/personal_profile_label" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/personal_health_recommendation_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:onClick="personHealthRecommendations"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/personal_health_recc_icon" />
+
+                <TextView
+                    style="@style/MainMenuTextButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/transparent"
+                    android:gravity="center"
+                    android:text="@string/personal_health_recommendation_label" />
+
+            </LinearLayout>
+
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+
+            <LinearLayout
+                android:id="@+id/set_reminder_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:onClick="setupReminder"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_set_reminder" />
+
+                <TextView
+                    style="@style/MainMenuTextButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/transparent"
+                    android:text="@string/set_reminder_label" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/checklist_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:onClick="changeActivity"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_checklist" />
+
+                <TextView
+                    style="@style/MainMenuTextButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/transparent"
+                    android:text="@string/checklist_label" />
+
+            </LinearLayout>
+
+        </TableRow>
+
+
+    </TableLayout>
+
+</LinearLayout>

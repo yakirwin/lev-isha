@@ -32,9 +32,9 @@ public class PersonalProfile implements Serializable {
     private static PersonalProfile instance;
     private static ArrayList<String> defaults;
     private static final int[] rKeys = {
-            R.string.first_name,R.string.last_name,R.string.weight, R.string.height,R.string.bmi,
+            R.string.name,R.string.weight, R.string.height,R.string.bmi,
             R.string.birth_date, R.string.smoking, R.string.family_history_personal_profile};
-    private static final int[] rKeysTypes = {PLAIN_TEXT, PLAIN_TEXT,REAL_NUMBERS,
+    private static final int[] rKeysTypes = {PLAIN_TEXT,REAL_NUMBERS,
             REAL_NUMBERS, REAL_NUMBERS,DATE, FINITE_STATES, FINITE_STATES};
     private static final String FILE_NAME = "personal_profile.data";
 
