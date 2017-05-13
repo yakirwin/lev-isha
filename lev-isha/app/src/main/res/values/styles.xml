@@ -11,16 +11,9 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="MainMenuButtonStyle">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_margin">5dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:background">@drawable/main_button_style</item>
-        <item name="android:paddingLeft">5dp</item>
-        <item name="android:paddingRight">5dp</item>
+    <style name="MainMenuTextButtonStyle">
         <item name="android:textColor">@android:color/background_light</item>
-        <item name="android:textSize">@dimen/font_size_button</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
