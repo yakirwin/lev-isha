@@ -1,7 +1,7 @@
 # Lev-Isha
 an android app to help women improve quality of life, get more out of doctors appointments and remember to take needed health precautions
 <p align="center">
-<img src="http://www.aaci.org.il/upimages/mercaz%20habriut%20le%20yisha%20hadassah.jpg" width="550" height="300" /></p>
+<img src="https://github.com/yakirwin/lev-isha/blob/master/raw_materials/lev_isha_main_logo.png?raw=true" width="700" height="300" /></p>
 
 After a brief research Hadassah-Ein-Kerem concluded that one of the main problems that effect the women that attend their clinic is medical awareness and ambiguity, and thus they decided that its due time to create a website where women could insert their personal data and details about their habits to get somewhat appropriate recommendations regarding health and periodic checkups.
 Those results, however, were not tailor made for each and every individual that used their site, and so they reached us in an attempt to compose an android app that will be more up-front and personal, with a more coherent user-experience and results that are tailored for each user.
