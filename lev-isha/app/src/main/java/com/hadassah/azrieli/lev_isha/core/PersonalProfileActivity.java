@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.database.Observable;
 import android.os.Bundle;
+import android.support.annotation.IntegerRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -56,7 +57,9 @@ public class PersonalProfileActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ProfileAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-
+    private final int MAX_HEIGHT = 250, MIN_HEIGHT = 30;
+    private final int MAX_WEIGHT = 250, MIN_WEIGHT = 30;
+    private final int MAX_AGE = 120, MIN_AGE = 20;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -273,6 +276,12 @@ public class PersonalProfileActivity extends AppCompatActivity {
                     Calendar calendar = Calendar.getInstance();
                     calendar.set(i,i1,i2);
                     String format = df.format(calendar.getTime());
+                    int age = calculateAge(format);
+                    if(age < MIN_AGE || age > MAX_AGE)
+                    {
+                        showDeviationMessage(getResources().getString(R.string.age),MIN_AGE,MAX_AGE);
+                        return;
+                    }
                     toEdit.setValue(format);
                     TextView summary = (TextView)view.findViewById(R.id.entry_summary);
                     summary.setText(format);
@@ -352,11 +361,27 @@ public class PersonalProfileActivity extends AppCompatActivity {
             editText.setInputType(toEdit.getInputType());
             builder.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                    if(editText.getText().length() == 0)
+                    String text = editText.getText().toString();
+                    if(text.length() == 0)
                         return;
-                    toEdit.setValue(editText.getText().toString());
+                    int value = 0;
+                    try {
+                        value = (int)Double.parseDouble(text);
+                        text = ""+value;
+                    }catch(Exception ignore){}
+                    if(toEdit.getName().equals(getResources().getString(R.string.height)))
+                        if(value > MAX_HEIGHT || value < MIN_HEIGHT) {
+                            showDeviationMessage(getResources().getString(R.string.height),MIN_HEIGHT,MAX_HEIGHT);
+                            return;
+                        }
+                    if(toEdit.getName().equals(getResources().getString(R.string.weight)))
+                        if(value > MAX_WEIGHT || value < MIN_WEIGHT) {
+                            showDeviationMessage(getResources().getString(R.string.weight),MIN_WEIGHT,MAX_WEIGHT);
+                            return;
+                        }
+                    toEdit.setValue(text);
                     TextView summary = (TextView)view.findViewById(R.id.entry_summary);
-                    summary.setText(editText.getText().toString());
+                    summary.setText(text);
                     if(calculateBMI())
                     {
                         mAdapter.mDataset = PersonalProfile.getInstance(PersonalProfileActivity.this).getEntriesCopy();
@@ -373,20 +398,46 @@ public class PersonalProfileActivity extends AppCompatActivity {
         }
     }
 
+    private void showDeviationMessage(String field, int min, int max) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(field+" "+getResources().getString(R.string.deviation_header));
+        builder.setMessage(getResources().getString(R.string.deviation_body)+" "+min+"-"+max);
+        builder.setPositiveButton(R.string.understood,null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
     private boolean calculateBMI() {
         PersonalProfile profile = PersonalProfile.getInstance(this);
         PersonalProfileEntry heightEntry = profile.findEntryByName(this.getResources().getText(R.string.height).toString());
         PersonalProfileEntry weightEntry = profile.findEntryByName(this.getResources().getText(R.string.weight).toString());
         int weight,height;
         try {
-            weight = Integer.parseInt(weightEntry.getValue());
-            height = Integer.parseInt(heightEntry.getValue());
+            weight = (int)Double.parseDouble(weightEntry.getValue());
+            height = (int)Double.parseDouble(heightEntry.getValue());
         }catch(Exception ignore){return false;}
         String resultBMI = new DecimalFormat("#.##").format((double)(weight*10000)/(height*height));
         PersonalProfileEntry BMIEntry = profile.findEntryByName(this.getResources().getText(R.string.bmi).toString());
         BMIEntry.setValue(resultBMI);
         profile.commitChanges(PersonalProfileActivity.this);
         return true;
+    }
+
+    private int calculateAge(String format) {
+        if(format == null)
+            return -1;
+        try {
+            DateFormat df = DateFormat.getDateInstance();
+            Calendar birthDate = Calendar.getInstance();
+            Calendar currentDay = Calendar.getInstance();
+            birthDate.setTime(df.parse(format));
+            int diff = currentDay.get(Calendar.YEAR) - birthDate.get(Calendar.YEAR);
+            if (birthDate.get(Calendar.MONTH) > currentDay.get(Calendar.MONTH)
+                    || (birthDate.get(Calendar.MONTH) == currentDay.get(Calendar.MONTH)
+                    && birthDate.get(Calendar.DATE) > currentDay.get(Calendar.DATE)))
+                diff--;
+            return diff;
+        }catch(Exception ignore){return -1;}
     }
 
 

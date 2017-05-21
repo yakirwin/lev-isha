@@ -9,13 +9,35 @@
         android:id="@+id/personal_health_recommendation_webview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:scrollbars="none"
-        />
+        android:fadeScrollbars="false"
+        android:scrollbarAlwaysDrawHorizontalTrack="false"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarThumbVertical="@android:color/darker_gray"
+        android:scrollbars="vertical" />
 
     <ProgressBar
         android:id="@+id/personal_health_recommendation_progress_bar"
         android:layout_width="wrap_content"
         android:layout_centerInParent="true"
         android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/personal_health_recommendation_dim_screen_background"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:src="@android:color/black"/>
+
+    <ImageView
+        android:id="@+id/personal_health_recommendation_scrolling_indication_icon"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:src="@drawable/scrolling_indication"
+        android:visibility="gone" />
+
 
 </RelativeLayout>

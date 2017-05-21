@@ -5,7 +5,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +15,17 @@ import android.os.Bundle;
 import com.hadassah.azrieli.lev_isha.R;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 
+import android.view.DragEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 /**
@@ -35,11 +44,11 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
     private String smoke, history;
     private int height, weight, age;
     private ProgressBar progressBar;
+    private WebView webView;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health_recommendations);
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Intent data = getIntent();
         profile = PersonalProfile.getInstance(this);
         smoke = data.getStringExtra(EXTRA_SMOKE);
@@ -47,13 +56,11 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
         height = data.getIntExtra(EXTRA_HEIGHT,-1);
         weight = data.getIntExtra(EXTRA_WEIGHT,-1);
         age = data.getIntExtra(EXTRA_AGE,-1);
-        WebView webView;
         webView = (WebView)findViewById(R.id.personal_health_recommendation_webview);
         progressBar = (ProgressBar)findViewById(R.id.personal_health_recommendation_progress_bar);
         webView.setWebViewClient(new WebViewController());
         //webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl("http://www.lev-isha.org/hra_result/?age="+age+"&smoke="+smoke+"&history="+history+"&bmi_weight="+weight+"&bmi_height="+height+"&approve=1");
-
     }
 
     public class WebViewController extends WebViewClient {
@@ -92,9 +99,29 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
             } else
                 redirect = false;
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            if(prefs.getBoolean("show_scrolling_indication_inside_health_recommendation_activity", true))
+            {
+                prefs.edit().putBoolean("show_scrolling_indication_inside_health_recommendation_activity",false).apply();
+                presentScrollingIndication();
+            }
         }
-
     }
 
+    private void presentScrollingIndication() {
+        final ImageView dimBackground = (ImageView)findViewById(R.id.personal_health_recommendation_dim_screen_background);
+        dimBackground.setVisibility(View.VISIBLE);
+        final ImageView icon  = (ImageView)findViewById(R.id.personal_health_recommendation_scrolling_indication_icon);
+        icon.setVisibility(View.VISIBLE);
+        Animation slideAnimation = AnimationUtils.loadAnimation(this, R.anim.slide_up);
+        icon.startAnimation(slideAnimation);
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                dimBackground.setVisibility(View.GONE);
+                icon.clearAnimation();
+                icon.setVisibility(View.GONE);
+            }
+        }, 3600);
+    }
 
 }

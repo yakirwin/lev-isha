@@ -28,7 +28,7 @@ public class SplashScreen extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         final ImageView logo = (ImageView)this.findViewById(R.id.splash_screen_logo);
-        final Animation zoomIn = AnimationUtils.loadAnimation(this, R.anim.splash_screen_zoom_in);
+            final Animation zoomIn = AnimationUtils.loadAnimation(this, R.anim.splash_screen_zoom_in);
         final Animation zoomOut = AnimationUtils.loadAnimation(SplashScreen.this, R.anim.splash_screen_zoom_out);
         zoomIn.setAnimationListener(new Animation.AnimationListener() {
             public void onAnimationStart(Animation animation) {}

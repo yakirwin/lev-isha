@@ -25,6 +25,9 @@
     <string name="smoking">Smoking</string>
     <string name="family_history_personal_profile">Family Heart Disease History</string>
     <string name="family_history_explanation">Is There Anyone In You Family (Parents And Sibling) With History Of Heart Disease, Stroke Or Hypertension?</string>
+    <string name="deviation_header">Out Of Bound</string>
+    <string name="deviation_body">Valid Range:</string>
+    <string name="age">Age</string>
     <!-- Personal Profile Labels <END> -->
 
     <!-- Checklist Labels <START> -->
