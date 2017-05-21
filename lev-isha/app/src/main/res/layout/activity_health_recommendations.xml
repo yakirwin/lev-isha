@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     tools:context="com.hadassah.azrieli.lev_isha.core.HealthRecommendationsActivity">
 
-    <WebView xmlns:android="http://schemas.android.com/apk/res/android"
+    <WebView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/personal_health_recommendation_webview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -30,14 +31,68 @@
         android:src="@android:color/black"/>
 
     <ImageView
-        android:id="@+id/personal_health_recommendation_scrolling_indication_icon"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
+        android:id="@+id/personal_health_recommendation_scrolling_indication_icon1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp"
-        android:src="@drawable/scrolling_indication"
-        android:visibility="gone" />
+        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
+        android:alpha="0"
+        android:scaleX="4"
+        android:scaleY="4"
+        android:src="@drawable/arrow_up" />
+
+    <ImageView
+        android:id="@+id/personal_health_recommendation_scrolling_indication_icon2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/personal_health_recommendation_scrolling_indication_icon1"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
+        android:alpha="0"
+        android:scaleX="4"
+        android:scaleY="4"
+        android:src="@drawable/arrow_up" />
+
+    <ImageView
+        android:id="@+id/personal_health_recommendation_scrolling_indication_icon3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/personal_health_recommendation_scrolling_indication_icon2"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
+        android:alpha="0"
+        android:scaleX="4"
+        android:scaleY="4"
+        android:src="@drawable/arrow_up" />
+
+    <ImageView
+        android:id="@+id/personal_health_recommendation_scrolling_indication_icon4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/personal_health_recommendation_scrolling_indication_icon3"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
+        android:alpha="0"
+        android:scaleX="4"
+        android:scaleY="4"
+        android:src="@drawable/arrow_up" />
+
+    <ImageView
+        android:id="@+id/personal_health_recommendation_scrolling_indication_icon5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/personal_health_recommendation_scrolling_indication_icon4"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
+        android:alpha="0"
+        android:scaleX="4"
+        android:scaleY="4"
+        android:src="@drawable/arrow_up" />
 
 
 </RelativeLayout>

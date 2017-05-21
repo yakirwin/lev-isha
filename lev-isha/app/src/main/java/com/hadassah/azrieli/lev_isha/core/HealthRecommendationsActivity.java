@@ -1,11 +1,16 @@
 package com.hadassah.azrieli.lev_isha.core;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.TimeInterpolator;
 import android.annotation.TargetApi;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.os.Build;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -19,14 +24,22 @@ import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Avihu Harush on 06/05/2017
@@ -45,6 +58,8 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
     private int height, weight, age;
     private ProgressBar progressBar;
     private WebView webView;
+    private ImageView[] arrows = new ImageView[5];
+    ObjectAnimator[] arrowsAnimators = new ObjectAnimator[arrows.length];
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +75,11 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
         progressBar = (ProgressBar)findViewById(R.id.personal_health_recommendation_progress_bar);
         webView.setWebViewClient(new WebViewController());
         //webView.getSettings().setJavaScriptEnabled(true);
+        arrows[0] = (ImageView)findViewById(R.id.personal_health_recommendation_scrolling_indication_icon1);
+        arrows[1] = (ImageView)findViewById(R.id.personal_health_recommendation_scrolling_indication_icon2);
+        arrows[2] = (ImageView)findViewById(R.id.personal_health_recommendation_scrolling_indication_icon3);
+        arrows[3] = (ImageView)findViewById(R.id.personal_health_recommendation_scrolling_indication_icon4);
+        arrows[4] = (ImageView)findViewById(R.id.personal_health_recommendation_scrolling_indication_icon5);
         webView.loadUrl("http://www.lev-isha.org/hra_result/?age="+age+"&smoke="+smoke+"&history="+history+"&bmi_weight="+weight+"&bmi_height="+height+"&approve=1");
     }
 
@@ -111,17 +131,34 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
     private void presentScrollingIndication() {
         final ImageView dimBackground = (ImageView)findViewById(R.id.personal_health_recommendation_dim_screen_background);
         dimBackground.setVisibility(View.VISIBLE);
-        final ImageView icon  = (ImageView)findViewById(R.id.personal_health_recommendation_scrolling_indication_icon);
-        icon.setVisibility(View.VISIBLE);
-        Animation slideAnimation = AnimationUtils.loadAnimation(this, R.anim.slide_up);
-        icon.startAnimation(slideAnimation);
+        startAnimation();
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 dimBackground.setVisibility(View.GONE);
-                icon.clearAnimation();
-                icon.setVisibility(View.GONE);
+                stopAnimation();
             }
-        }, 3600);
+        }, 4000);
+    }
+
+    private void startAnimation() {
+        for(int i=0;i<arrows.length;i++)
+        {
+            arrowsAnimators[i] = ObjectAnimator.ofFloat(arrows[i], "alpha", 0f, 1f);
+            arrowsAnimators[i].setInterpolator(new LinearInterpolator());
+            arrowsAnimators[i].setRepeatCount(ObjectAnimator.INFINITE);
+            arrowsAnimators[i].setRepeatMode(ObjectAnimator.REVERSE);
+            arrowsAnimators[i].setDuration(1000);
+            arrowsAnimators[i].setStartDelay(300*i);
+            arrowsAnimators[i].start();
+        }
+    }
+
+    private void stopAnimation() {
+        for(int i=0;i<arrows.length;i++)
+        {
+            arrowsAnimators[i].end();
+            arrows[i].setAlpha(0f);
+        }
     }
 
 }
