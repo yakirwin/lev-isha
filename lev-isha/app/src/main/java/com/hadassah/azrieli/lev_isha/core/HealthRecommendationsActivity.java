@@ -132,12 +132,20 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
         final ImageView dimBackground = (ImageView)findViewById(R.id.personal_health_recommendation_dim_screen_background);
         dimBackground.setVisibility(View.VISIBLE);
         startAnimation();
-        new Handler().postDelayed(new Runnable() {
-            public void run() {
-                dimBackground.setVisibility(View.GONE);
-                stopAnimation();
-            }
-        }, 4000);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            webView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                public void onScrollChange(View view, int i, int i1, int i2, int i3) {
+                    dimBackground.setVisibility(View.GONE);
+                    stopAnimation();
+                }
+            });
+        else
+            new Handler().postDelayed(new Runnable() {
+                public void run() {
+                    dimBackground.setVisibility(View.GONE);
+                    stopAnimation();
+                }
+            }, 4000);
     }
 
     private void startAnimation() {
