@@ -7,105 +7,108 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.hadassah.azrieli.lev_isha.core.AfterDoctorFragment">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingTop="15dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingBottom="@dimen/checklist_margin_between_sections">
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/checklist_font_size_header"
-        android:text="@string/summary_of_the_doctors_Remarks" />
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/checklist_margin_between_sections"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp">
 
-    <EditText
-        android:id="@+id/text_box_summary_of_the_doctors_Remarks"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginTop="@dimen/checklist_margin_between_components"
-        android:background="@drawable/background_textbox"
-        android:hint="@string/summary_of_the_doctors_Remarks_text_box_hint"
-        android:inputType="textMultiLine"
-        android:padding="10dp"
-        android:scrollbars="vertical"
-        android:textSize="@dimen/checklist_font_size_normal" />
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/checklist_margin_between_components">
 
-    <!--<View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_margin="8dp"
-        android:background="@android:color/black" />-->
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/text_box_summary_of_the_doctors_Remarks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/summary_of_the_doctors_Remarks"
+                android:inputType="textMultiLine"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:scrollbars="vertical" />
+        </android.support.design.widget.TextInputLayout>
 
-    <CheckBox
-        android:id="@+id/check_box_determine_your_risk_of_heart_disease"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/checklist_margin_between_sections"
-        android:text="@string/determine_your_risk_of_heart_disease"
-        android:textSize="@dimen/checklist_font_size_normal" />
+        <Button
+            android:id="@+id/record_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/checklist_margin_between_components"
+            android:layout_weight="1"
+            android:text="@string/doctor_record_start" />
 
-    <CheckBox
-        android:id="@+id/check_box_ask_about_future_treatment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/ask_about_future_treatment"
-        android:textSize="@dimen/checklist_font_size_normal" />
+        <TextView
+            android:id="@+id/doctor_record_timer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="00:00:00"
+            android:textColor="@android:color/black" />
 
-    <CheckBox
-        android:id="@+id/check_box_should_you_come_back_for_further_inspections"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/should_you_come_back_for_further_inspections"
-        android:textSize="@dimen/checklist_font_size_normal" />
+        <CheckBox
+            android:id="@+id/check_box_determine_your_risk_of_heart_disease"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/checklist_margin_between_sections"
+            android:text="@string/determine_your_risk_of_heart_disease" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/have_you_got_answers_for_these_questions"
-        android:layout_marginTop="@dimen/checklist_margin_between_sections"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/checklist_font_size_header"/>
+        <CheckBox
+            android:id="@+id/check_box_ask_about_future_treatment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ask_about_future_treatment" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/what_is_my_medical_condition"
-        android:layout_marginTop="@dimen/checklist_margin_between_components"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/checklist_font_size_normal"/>
+        <CheckBox
+            android:id="@+id/check_box_should_you_come_back_for_further_inspections"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/should_you_come_back_for_further_inspections" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/what_should_i_do_to_address_my_problem"
-        android:layout_marginTop="@dimen/checklist_margin_between_components"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/checklist_font_size_normal"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/checklist_margin_between_sections"
+            android:text="@string/have_you_got_answers_for_these_questions"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/checklist_font_size_normal" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/checklist_margin_between_components"
+            android:text="@string/what_is_my_medical_condition"
+            android:textColor="@android:color/black" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/why_should_i_do_so"
-        android:layout_marginTop="@dimen/checklist_margin_between_components"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/checklist_font_size_normal"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/if_not_ask_again"
-        android:layout_marginTop="@dimen/checklist_margin_between_sections"
-        android:textColor="@android:color/black"
-        android:gravity="center"
-        android:textSize="@dimen/checklist_font_size_header"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/checklist_margin_between_components"
+            android:text="@string/what_should_i_do_to_address_my_problem"
+            android:textColor="@android:color/black" />
 
 
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/checklist_margin_between_components"
+            android:text="@string/why_should_i_do_so"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/checklist_margin_between_sections"
+            android:gravity="center"
+            android:text="@string/if_not_ask_again"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/checklist_font_size_normal" />
+
+
+    </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

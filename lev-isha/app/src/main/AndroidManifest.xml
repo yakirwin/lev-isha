@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -24,6 +27,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -34,11 +38,32 @@
         <activity
             android:name=".core.ChecklistActivity"
             android:label="@string/title_activity_check_list"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".core.HealthRecommendationsActivity"
-            android:label="@string/personal_health_recommendation_label"/>
+            android:label="@string/personal_health_recommendation_label" />
+        <activity
+            android:name=".core.RecordsActivity"
+            android:label="@string/doctor_records_label" />
+
+        <service android:name=".utility.GeneralPurposeService">
+            <intent-filter>
+                <action android:name="com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name=".utility.NotificationPublisher"
+            android:enabled="true"
+            android:exported="true"
+            android:label="NotificationPublisher">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".core.BloodTestActivity"></activity>
     </application>
 
 </manifest>

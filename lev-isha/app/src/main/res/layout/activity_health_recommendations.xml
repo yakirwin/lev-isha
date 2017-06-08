@@ -16,12 +16,6 @@
         android:scrollbarThumbVertical="@android:color/darker_gray"
         android:scrollbars="vertical" />
 
-    <ProgressBar
-        android:id="@+id/personal_health_recommendation_progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_height="wrap_content" />
-
     <ImageView
         android:id="@+id/personal_health_recommendation_dim_screen_background"
         android:visibility="gone"
@@ -29,6 +23,12 @@
         android:layout_height="match_parent"
         android:alpha="0.5"
         android:src="@android:color/black"/>
+
+    <ProgressBar
+        android:id="@+id/personal_health_recommendation_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 
     <ImageView
         android:id="@+id/personal_health_recommendation_scrolling_indication_icon1"

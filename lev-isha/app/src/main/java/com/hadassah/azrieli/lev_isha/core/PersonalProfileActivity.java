@@ -35,6 +35,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.hadassah.azrieli.lev_isha.utility.OverallNotificationManager;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry;
 import java.text.DateFormat;
@@ -54,9 +56,7 @@ import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.YES_VAL
 
 public class PersonalProfileActivity extends AppCompatActivity {
 
-    private RecyclerView mRecyclerView;
     private ProfileAdapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
     private final int MAX_HEIGHT = 250, MIN_HEIGHT = 30;
     private final int MAX_WEIGHT = 250, MIN_WEIGHT = 30;
     private final int MAX_AGE = 120, MIN_AGE = 20;
@@ -64,9 +64,9 @@ public class PersonalProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_profile);
-        mRecyclerView = (RecyclerView) findViewById(R.id.personal_profile_Recycler_view);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.personal_profile_Recycler_view);
         mRecyclerView.setHasFixedSize(false);
-        mLayoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new ProfileAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
@@ -119,7 +119,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
 
         public ProfileAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             RelativeLayout layout = (RelativeLayout) LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.list_view_entry, parent, false);
+                    .inflate(R.layout.personal_profile_entry, parent, false);
             ViewHolder vh = new ViewHolder(layout);
             return vh;
         }
@@ -288,6 +288,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
                     mAdapter.mDataset = PersonalProfile.getInstance(PersonalProfileActivity.this).getEntriesCopy();
                     mAdapter.notifyItemChanged(index);
                     profile.commitChanges(PersonalProfileActivity.this);
+                    OverallNotificationManager.setUpNotificationTimers(PersonalProfileActivity.this,OverallNotificationManager.NO_ADDITIONAL_ID);
                 }
             }, year, month, day).show();
         }
@@ -439,7 +440,5 @@ public class PersonalProfileActivity extends AppCompatActivity {
             return diff;
         }catch(Exception ignore){return -1;}
     }
-
-
 
 }

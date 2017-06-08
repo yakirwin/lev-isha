@@ -1,0 +1,57 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="12dp">
+
+    <ImageButton
+        android:id="@+id/entry_play"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="@drawable/play_icon"
+        android:backgroundTint="@color/colorAccent" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/entry_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="14sp" />
+
+    </FrameLayout>
+
+    <ImageButton
+        android:id="@+id/entry_share"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:background="@drawable/icon_share"
+        android:backgroundTint="@color/colorAccent" />
+
+    <ImageButton
+        android:id="@+id/entry_delete"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/icon_delete"
+        android:backgroundTint="@color/colorAccent" />
+
+</LinearLayout>

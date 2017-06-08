@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,10 +41,32 @@ public class ChecklistActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(mViewPager);
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.checklist_options, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+        if(item.getItemId() == R.id.checklist_options_clear_both) {
+            customPagerAdapter.clearBefore();
+            customPagerAdapter.clearAfter();
+            return true;
+        }
+        if(item.getItemId() == R.id.checklist_options_clear_after) {
+            customPagerAdapter.clearAfter();
+            return true;
+        }
+        if(item.getItemId() == R.id.checklist_options_clear_before) {
+            customPagerAdapter.clearBefore();
+            return true;
+        }
+        return false;
+    }
 
 
-
-    class customPager extends FragmentPagerAdapter {
+    private class customPager extends FragmentPagerAdapter {
 
         BeforeDoctorFragment beforeFragment = (getSupportFragmentManager().getFragments() != null && getSupportFragmentManager().getFragments().size() >= 1) ? (BeforeDoctorFragment)getSupportFragmentManager().getFragments().get(0) : BeforeDoctorFragment.newInstance();
         AfterDoctorFragment afterFragment = (getSupportFragmentManager().getFragments() != null && getSupportFragmentManager().getFragments().size() >= 2) ? (AfterDoctorFragment)getSupportFragmentManager().getFragments().get(1) : AfterDoctorFragment.newInstance();
@@ -80,6 +103,14 @@ public class ChecklistActivity extends AppCompatActivity {
                 case 1: return getString(R.string.check_list_2nd_part_header);
                 default: return null;
             }
+        }
+
+        public void clearBefore() {
+            beforeFragment.clearForm();
+        }
+
+        public void clearAfter() {
+            afterFragment.clearForm();
         }
     }
 

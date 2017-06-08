@@ -5,11 +5,12 @@
     <string name="nutrition_label">Nutrition</string>
     <string name="community_label">Community</string>
     <string name="personal_profile_label">Personal Profile</string>
-    <string name="blood_test_result_guide_label">Blood Test Result Guide</string>
+    <string name="blood_test_result_guide_label">Blood Test Guide</string>
     <string name="personal_health_recommendation_label">Personal Health Recommendation</string>
     <string name="physical_exercise_label">Physical Exercise</string>
-    <string name="checklist_label">Checklist</string>
+    <string name="checklist_label">Doctor Visit</string>
     <string name="set_reminder_label">Set Reminder</string>
+    <string name="doctor_records_label">Doctor Records</string>
     <!-- MainMenu Labels <END> -->
 
     <!-- Personal Profile Labels <START> -->
@@ -32,16 +33,18 @@
 
     <!-- Checklist Labels <START> -->
     <string name="check_list_1st_part_header">Before The Doctor</string>
-    <string name="doctor_name">Doctor\'s Name:</string>
-    <string name="address">Address:</string>
-    <string name="appointment_date">Appointment Date:</string>
-    <string name="appointment_hour">Appointment Hour:</string>
+    <string name="doctor_name">Doctor\'s Name</string>
+    <string name="address">Address</string>
+    <string name="appointment">Appointment</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="add_appointment_to_calendar">Add Appointment To Calendar</string>
     <string name="remember_to_bring_with_you">Remember To Bring With You:</string>
     <string name="references">References</string>
     <string name="prescription">Prescription</string>
     <string name="Previous_diagnoses">Previous Diagnoses</string>
     <string name="tests_results">Tests Results</string>
-    <string name="subjects_i_want_to_talk_about">Subjects I Want To Talk About (From Most Important Lease):</string>
+    <string name="subjects_i_want_to_talk_about">Subjects I Want To Talk About (From Most Important Least):</string>
     <string name="subjects_i_want_to_talk_about_hint">Subjects I Want To Talk About…</string>
     <string name="new_symptoms">New Symptoms (When It Started, When It Appears, Frequency, Intensity):</string>
     <string name="new_symptoms_hint">New Symptoms…</string>
@@ -57,7 +60,7 @@
     <string name="additional_questions_to_the_doctor">Additional Questions To The Doctor:</string>
     <string name="additional_questions_to_the_doctor_hint">Additional Questions…</string>
     <string name="check_list_2nd_part_header">At The Doctor</string>
-    <string name="summary_of_the_doctors_Remarks">Summary Of The Doctor\'s Remarks:</string>
+    <string name="summary_of_the_doctors_Remarks">Summary Of The Doctor\'s Remarks</string>
     <string name="summary_of_the_doctors_Remarks_text_box_hint">Remarks…</string>
     <string name="determine_your_risk_of_heart_disease">Determine Your Risk Of Heart Disease</string>
     <string name="ask_about_future_treatment">Ask About Future Treatment</string>
@@ -67,6 +70,9 @@
     <string name="what_should_i_do_to_address_my_problem">- What Should I Do To Address My Problem?</string>
     <string name="why_should_i_do_so">- Why Should I Do So?</string>
     <string name="if_not_ask_again">If Not, Ask Again!</string>
+    <string name="clear_both">Clear Both Forms</string>
+    <string name="clear_before">Clear Before Doctor</string>
+    <string name="clear_after">Clear After Doctor</string>
     <!-- Checklist Labels <END> -->
 
     <!-- General Labels <START> -->
@@ -77,7 +83,6 @@
     <string name="add_new_property">Add New Property…</string>
     <string name="plain_text">Text</string>
     <string name="real_numbers">Number</string>
-    <string name="date">Date</string>
     <string name="delete">Delete</string>
     <string name="delete_personal_profile_entry_explain">Are You Sure You Want To Delete</string>
     <string name="add">Add</string>
@@ -105,6 +110,33 @@
         Thank You For Using Our App!\n
         It Is Highly Recommended To Set Up Your Profile As Soon As Possible,\n
         Would You Like To Do So Now?</string>
+    <string name="doctor_record_start">Start Recording</string>
+    <string name="doctor_record_end">Stop Recording</string>
+    <string name="no_recordings">No Recordings Found</string>
+    <string name="delete_record_body">Would You Like To Delete The File</string>
+    <string name="failed_to_start_record">There Was No Microphone Found.</string>
+    <string name="share_chooser_header">Share File Using…</string>
+    <string name="file_successfully_saved">File Successfully Saved.</string>
     <!-- General Labels <END> -->
+
+
+    <!-- Notification Messages <START> -->
+    <string name="notification_message_birthday_header">יום הולדת שמח!</string>
+    <string name="notification_message_happy_birthday">מזל טוב</string>
+    <string name="notification_message_birthday_body">כדי שגם השנה תוכלי לשמור על בריאותך, הכנסי לאפליקציית לבריאותך ובדקי אם ההמלצות שלך השתנו בהתאם לגילך החדש. זוהי גם הזדמנות טובה לקבוע תורים לבדיקות כלליות ושגרתיות. מאחלים שנה של אושר, הצלחה, ובריאות טובה, צוות לבריאותך.</string>
+    <string name="notification_message_half_year_header">כבר דאגת לבריאותך היום?</string>
+    <string name="notification_message_half_year_body">הכנסי לאפליקצייה ובדקי האם הגיע הזמן לעשות בדיקות שגרתיות, והאם את עומדת בהמלצות התזונה והפעילות גופנית המותאמים לך.\n
+    הכנסי לאפליקצייה ובדקי האם הגיע הזמן לעשות בדיקות שגרתיות, והאם את עומדת בהמלצות התזונה והפעילות גופנית המותאמים לך. קבעי תורים כבר היום לבדיקות שגרתיות ובדיקות סקר, והכניסי אותם ליומן ישירות דרך האפליקציה!\n
+        רק בריאות, צוות לבריאותך.
+    </string>
+    <string name="notification_message_day_before_doctor_header">תזכורת: יש לך תור מחר</string>
+    <string name="notification_message_day_before_doctor_body_1">בשעה-</string>
+    <string name="notification_message_day_before_doctor_body_2">ל-</string>
+    <string name="notification_message_day_before_doctor_body_3">לחצי כאן בכדי למלא כעת את טופס ההכנה לרופא על מנת להגיע מוכנה ולהפיק את המירב מביקור הרופא.</string>
+    <string name="notification_message_10_min_before_doctor_header">תזכורת: תורך לרופא נקבע לדקות הקרובות</string>
+    <string name="notification_message_10_min_before_doctor_body">לחצי כאן בכדי לפתוח את טופס ההכנה לרופא, ושתפי את המידע ואת השאלות שהכנת.\n
+סכמי או הקליטי את הוראות הרופא ישר מהאפליקציה בלשונית הייעודית, כך תוכלי לשחזר את הוראות הרופא בצורה מדוייקת. בהצלחה ובריאות טובה!
+    </string>
+    <!-- Notification Messages <END> -->
 
 </resources>

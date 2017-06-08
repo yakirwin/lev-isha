@@ -1,17 +1,27 @@
 package com.hadassah.azrieli.lev_isha.core;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ContentUris;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.provider.CalendarContract;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,8 +37,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hadassah.azrieli.lev_isha.R;
+import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
+import com.hadassah.azrieli.lev_isha.utility.NotificationPublisher;
+import com.hadassah.azrieli.lev_isha.utility.OverallNotificationManager;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry;
+import com.hadassah.azrieli.lev_isha.utility.VoiceRecorder;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -49,6 +63,8 @@ public class MainMenuActivity extends AppCompatActivity {
     private LinearLayout personHealthRecommendationsButton;
     private LinearLayout setReminderButton;
     private LinearLayout checklistButton;
+    private LinearLayout bloodTestButton;
+    private LinearLayout DoctorRecordsButton;
     private Intent personHealthRecommendationsIntent;
 
 
@@ -59,12 +75,16 @@ public class MainMenuActivity extends AppCompatActivity {
         personHealthRecommendationsButton = (LinearLayout)findViewById(R.id.personal_health_recommendation_btn);
         setReminderButton = (LinearLayout)findViewById(R.id.set_reminder_btn);
         checklistButton = (LinearLayout)findViewById(R.id.checklist_btn);
+        bloodTestButton = (LinearLayout)findViewById(R.id.blood_result_btn);
+        DoctorRecordsButton = (LinearLayout)findViewById(R.id.doctor_records_btn);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         if(prefs.getBoolean("show_question_to_setup_profile",true)) {
             prefs.edit().putBoolean("show_question_to_setup_profile", false).apply();
             showMessageToSetupProfile();
         }
         animateButtons();
+        OverallNotificationManager.setUpNotificationTimers(this,OverallNotificationManager.NO_ADDITIONAL_ID);
+        this.startService(new Intent(this,GeneralPurposeService.class));
     }
 
     private void animateButtons() {
@@ -74,6 +94,8 @@ public class MainMenuActivity extends AppCompatActivity {
         personHealthRecommendationsButton.startAnimation(rightToLeft);
         setReminderButton.startAnimation(leftToRight);
         checklistButton.startAnimation(rightToLeft);
+        DoctorRecordsButton.startAnimation(leftToRight);
+        bloodTestButton.startAnimation(rightToLeft);
     }
 
     public void changeActivity(View view) {
@@ -82,6 +104,8 @@ public class MainMenuActivity extends AppCompatActivity {
             transfer = new Intent(this, PersonalProfileActivity.class);
         if(view == checklistButton)
             transfer = new Intent(this, ChecklistActivity.class);
+        if(view == DoctorRecordsButton)
+            transfer = new Intent(this,RecordsActivity.class);
         if(transfer != null)
             startActivity(transfer);
     }
