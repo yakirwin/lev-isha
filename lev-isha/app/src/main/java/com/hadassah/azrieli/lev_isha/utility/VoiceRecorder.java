@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by Avihu Harush on 25/05/2017
@@ -36,7 +37,7 @@ public abstract class VoiceRecorder {
         }
         recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
         String fileLocation = getFolderLocation();
-        fileLocation += DateFormat.getDateTimeInstance(DateFormat.DEFAULT,DateFormat.DEFAULT).format(Calendar.getInstance().getTime()).replaceAll(" |,", "_");
+        fileLocation += DateFormat.getDateTimeInstance(DateFormat.DEFAULT,DateFormat.DEFAULT, PersonalProfile.getCurrentLocale()).format(Calendar.getInstance().getTime()).replaceAll(" |,", "_");
         fileLocation += ".mp4";
         File outputFile = new File(fileLocation);
         boolean folderExist, fileExist;

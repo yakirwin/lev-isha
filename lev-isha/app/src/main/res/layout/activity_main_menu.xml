@@ -21,14 +21,16 @@
         android:layout_margin="10dp"
         android:layout_weight="4"
         android:columnCount="2"
+        android:layoutDirection="ltr"
         android:stretchColumns="*">
 
 
         <TableRow
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center">
+
 
             <LinearLayout
                 android:id="@+id/personal_profile_btn"
@@ -55,64 +57,12 @@
             </LinearLayout>
 
 
-            <LinearLayout
-                android:id="@+id/personal_health_recommendation_btn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:onClick="personHealthRecommendations"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/personal_health_recc_icon" />
-
-                <TextView
-                    style="@style/MainMenuTextButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@color/transparent"
-                    android:gravity="center"
-                    android:text="@string/personal_health_recommendation_label" />
-
-            </LinearLayout>
-
-
         </TableRow>
 
-
         <TableRow
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1">
-
-
-            <LinearLayout
-                android:id="@+id/set_reminder_btn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:onClick="setupReminder"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/icon_set_reminder" />
-
-                <TextView
-                    style="@style/MainMenuTextButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@color/transparent"
-                    android:text="@string/set_reminder_label" />
-
-            </LinearLayout>
 
 
             <LinearLayout
@@ -139,15 +89,6 @@
 
             </LinearLayout>
 
-        </TableRow>
-
-
-        <TableRow
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-
             <LinearLayout
                 android:id="@+id/doctor_records_btn"
                 android:layout_width="0dp"
@@ -172,6 +113,39 @@
 
             </LinearLayout>
 
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <LinearLayout
+                android:id="@+id/personal_health_recommendation_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:onClick="personHealthRecommendations"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/personal_health_recc_icon" />
+
+                <TextView
+                    style="@style/MainMenuTextButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/transparent"
+                    android:gravity="center"
+                    android:text="@string/personal_health_recommendation_label" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/blood_result_btn"

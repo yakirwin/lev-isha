@@ -1,5 +1,6 @@
 package com.hadassah.azrieli.lev_isha.core;
 
+import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -11,6 +12,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
+import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
+
+import java.util.Locale;
 
 /**
  * A {@link android.preference.PreferenceActivity} which implements and proxies the necessary calls
@@ -25,6 +31,11 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
         getDelegate().installViewFactory();
         getDelegate().onCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
+    }
+
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase, PersonalProfile.getCurrentLocale());
+        super.attachBaseContext(context);
     }
 
     @Override

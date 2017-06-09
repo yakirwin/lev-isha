@@ -36,6 +36,7 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
 import com.hadassah.azrieli.lev_isha.utility.OverallNotificationManager;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry;
@@ -44,6 +45,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.MAYBE_VALUE;
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.NO_VALUE;
@@ -79,6 +81,11 @@ public class PersonalProfileActivity extends AppCompatActivity {
                 addNewEntry();
             }
         });
+    }
+
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase,  PersonalProfile.getCurrentLocale());
+        super.attachBaseContext(context);
     }
 
     class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHolder> {
@@ -260,7 +267,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
             Calendar currentTime = Calendar.getInstance();
             int year, month, day;
             Calendar date = null;
-            final DateFormat df = DateFormat.getDateInstance();
+            final DateFormat df = DateFormat.getDateInstance(DateFormat.DEFAULT, PersonalProfile.getCurrentLocale());
             if(toEdit.getValue() != null) {
                 String value = toEdit.getValue();
                 try {
@@ -428,7 +435,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
         if(format == null)
             return -1;
         try {
-            DateFormat df = DateFormat.getDateInstance();
+            DateFormat df = DateFormat.getDateInstance(DateFormat.DEFAULT, PersonalProfile.getCurrentLocale());
             Calendar birthDate = Calendar.getInstance();
             Calendar currentDay = Calendar.getInstance();
             birthDate.setTime(df.parse(format));

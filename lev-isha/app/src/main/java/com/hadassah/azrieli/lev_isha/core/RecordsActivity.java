@@ -31,6 +31,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hadassah.azrieli.lev_isha.R;
+import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry;
 import com.hadassah.azrieli.lev_isha.utility.VoiceRecorder;
@@ -40,6 +41,7 @@ import org.w3c.dom.Text;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class RecordsActivity extends AppCompatActivity {
 
@@ -50,6 +52,7 @@ public class RecordsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_records);
+        try{getSupportActionBar().setTitle(R.string.doctor_records_label);} catch(Exception ignore){}
         File[] fileList = VoiceRecorder.getAllRecordings();
         if(fileList == null || fileList.length == 0) {
             NestedScrollView nScroll = (NestedScrollView)this.findViewById(R.id.recordings_scroll_view);
@@ -66,6 +69,10 @@ public class RecordsActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
     }
 
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase,  PersonalProfile.getCurrentLocale());
+        super.attachBaseContext(context);
+    }
 
     class recordsAdapter extends RecyclerView.Adapter<recordsAdapter.ViewHolder> {
 

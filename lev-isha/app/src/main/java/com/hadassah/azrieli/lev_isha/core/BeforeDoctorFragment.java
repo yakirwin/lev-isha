@@ -26,11 +26,13 @@ import android.widget.ListAdapter;
 import android.widget.TimePicker;
 
 import com.hadassah.azrieli.lev_isha.R;
+import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class BeforeDoctorFragment extends Fragment {
 
@@ -193,8 +195,9 @@ public class BeforeDoctorFragment extends Fragment {
     }
 
     public void addEventToCalendar() {
-        DateFormat dfDate = DateFormat.getDateInstance(DateFormat.DEFAULT);
-        DateFormat dfTime = DateFormat.getTimeInstance(DateFormat.SHORT);
+        DateFormat dfDate = DateFormat.getDateInstance(DateFormat.DEFAULT, PersonalProfile.getCurrentLocale());
+        DateFormat dfTime = new SimpleDateFormat("HH:mm");
+        //DateFormat dfTime = DateFormat.getTimeInstance(DateFormat.SHORT);
         Calendar timeCal = Calendar.getInstance();
         Calendar dateCal = Calendar.getInstance();
         Calendar dueDate = Calendar.getInstance();
@@ -222,7 +225,7 @@ public class BeforeDoctorFragment extends Fragment {
     public void openDateChooser() {
         int year, month, day;
         Calendar currentTime = Calendar.getInstance();
-        final DateFormat df = DateFormat.getDateInstance(DateFormat.DEFAULT);
+        final DateFormat df = DateFormat.getDateInstance(DateFormat.DEFAULT,  PersonalProfile.getCurrentLocale());
         Calendar inMemory = Calendar.getInstance();
         try {inMemory.setTime(df.parse(date.getText().toString()));}catch(Exception ignore){inMemory = null;}
         year = (inMemory == null) ? currentTime.get(Calendar.YEAR) : inMemory.get(Calendar.YEAR);
@@ -243,7 +246,8 @@ public class BeforeDoctorFragment extends Fragment {
     public void openTimeChooser() {
         int hour, min;
         final Calendar currentTime = Calendar.getInstance();
-        final DateFormat df = DateFormat.getTimeInstance(DateFormat.SHORT);
+        //final DateFormat df = DateFormat.getTimeInstance(DateFormat.SHORT);
+        final DateFormat df = new SimpleDateFormat("HH:mm");
         Calendar inMemory = Calendar.getInstance();
         try {inMemory.setTime(df.parse(time.getText().toString()));} catch(Exception ignore){inMemory = null;}
         hour = (inMemory == null) ? currentTime.get(Calendar.HOUR_OF_DAY) : inMemory.get(Calendar.HOUR_OF_DAY);

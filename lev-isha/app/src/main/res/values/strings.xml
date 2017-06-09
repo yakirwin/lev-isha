@@ -96,16 +96,6 @@
     <string name="english_language">English</string>
     <string name="hebrew_language">Hebrew</string>
     <string name="missing_param_for_health_recommendations">To Provide Your Health\nRecommendations You Need To Provide The Following Details:</string>
-    <string name="personal_health_recommendations_disclaimer_header">אני מאשרת שקראתי והבנתי את ההערה הבאה:</string>
-    <string name="personal_health_recommendations_disclaimer_body">
-        התכנים באפליקציה זאת מבוססים על המלצות רשמיות של משרד הבריאות, ההסתדרות הרפואית בישראל ומומחי המרכז לבריאות לב האישה.
-מטרתם לספק מידע בלבד, הם אינם מהווים תחליף להתייעצות עם רופא ואין לראות בהם הצדקה לקבלה או לדחייה של טיפול רפואי מכל סוג שהוא.
-המידע המוצג באתר הוא כללי ומותאם לנשים בריאות.
-לאור זאת, כל אישה שסובלת מבעיה בריאותית או כל מחלה הדורשת טיפול ומעקב, לרבות נשים שעברו אירוע לבבי, סרטן, שבץ מוחי,
-נשים הרות ומיניקות או מי שנוטלת תרופות מרשם - חייבת להיוועץ ברופא על מנת לקבל המלצות המתאימות למצבה.
-בכל מקרה של ספק או של חירום רפואי אין להסתמך על המידע שמספקת האפליקציה ,אלא לפנות לרופא או לבית חולים לקבלת עזרה רפואית.
-במקרים רבים, שיהוי בפניה לטיפול רפואי עלול להיות מסוכן ואף קטלני.
-    </string>
     <string name="setup_profile_initial_question">
         Thank You For Using Our App!\n
         It Is Highly Recommended To Set Up Your Profile As Soon As Possible,\n
@@ -114,29 +104,10 @@
     <string name="doctor_record_end">Stop Recording</string>
     <string name="no_recordings">No Recordings Found</string>
     <string name="delete_record_body">Would You Like To Delete The File</string>
-    <string name="failed_to_start_record">There Was No Microphone Found.</string>
+    <string name="failed_to_start_record">No Microphone Found.</string>
     <string name="share_chooser_header">Share File Using…</string>
     <string name="file_successfully_saved">File Successfully Saved.</string>
     <!-- General Labels <END> -->
 
-
-    <!-- Notification Messages <START> -->
-    <string name="notification_message_birthday_header">יום הולדת שמח!</string>
-    <string name="notification_message_happy_birthday">מזל טוב</string>
-    <string name="notification_message_birthday_body">כדי שגם השנה תוכלי לשמור על בריאותך, הכנסי לאפליקציית לבריאותך ובדקי אם ההמלצות שלך השתנו בהתאם לגילך החדש. זוהי גם הזדמנות טובה לקבוע תורים לבדיקות כלליות ושגרתיות. מאחלים שנה של אושר, הצלחה, ובריאות טובה, צוות לבריאותך.</string>
-    <string name="notification_message_half_year_header">כבר דאגת לבריאותך היום?</string>
-    <string name="notification_message_half_year_body">הכנסי לאפליקצייה ובדקי האם הגיע הזמן לעשות בדיקות שגרתיות, והאם את עומדת בהמלצות התזונה והפעילות גופנית המותאמים לך.\n
-    הכנסי לאפליקצייה ובדקי האם הגיע הזמן לעשות בדיקות שגרתיות, והאם את עומדת בהמלצות התזונה והפעילות גופנית המותאמים לך. קבעי תורים כבר היום לבדיקות שגרתיות ובדיקות סקר, והכניסי אותם ליומן ישירות דרך האפליקציה!\n
-        רק בריאות, צוות לבריאותך.
-    </string>
-    <string name="notification_message_day_before_doctor_header">תזכורת: יש לך תור מחר</string>
-    <string name="notification_message_day_before_doctor_body_1">בשעה-</string>
-    <string name="notification_message_day_before_doctor_body_2">ל-</string>
-    <string name="notification_message_day_before_doctor_body_3">לחצי כאן בכדי למלא כעת את טופס ההכנה לרופא על מנת להגיע מוכנה ולהפיק את המירב מביקור הרופא.</string>
-    <string name="notification_message_10_min_before_doctor_header">תזכורת: תורך לרופא נקבע לדקות הקרובות</string>
-    <string name="notification_message_10_min_before_doctor_body">לחצי כאן בכדי לפתוח את טופס ההכנה לרופא, ושתפי את המידע ואת השאלות שהכנת.\n
-סכמי או הקליטי את הוראות הרופא ישר מהאפליקציה בלשונית הייעודית, כך תוכלי לשחזר את הוראות הרופא בצורה מדוייקת. בהצלחה ובריאות טובה!
-    </string>
-    <!-- Notification Messages <END> -->
 
 </resources>

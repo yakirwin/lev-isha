@@ -1,5 +1,6 @@
 package com.hadassah.azrieli.lev_isha.core;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,6 +19,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hadassah.azrieli.lev_isha.R;
+import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
+import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
+
+import java.util.Locale;
 
 /**
  * Created by Avihu Harush on 06/05/2017
@@ -39,6 +44,12 @@ public class ChecklistActivity extends AppCompatActivity {
         mViewPager.setAdapter(customPagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+        try{getSupportActionBar().setTitle(R.string.title_activity_check_list);} catch(Exception ignore){}
+    }
+
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase,  PersonalProfile.getCurrentLocale());
+        super.attachBaseContext(context);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

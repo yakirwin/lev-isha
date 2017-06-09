@@ -27,7 +27,6 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -46,6 +45,10 @@
         <activity
             android:name=".core.RecordsActivity"
             android:label="@string/doctor_records_label" />
+        <activity
+            android:name=".core.BloodTestActivity"
+            android:label="@string/blood_test_result_guide_label" />
+        <activity android:name=".core.BloodTestWebViewActivity"/>
 
         <service android:name=".utility.GeneralPurposeService">
             <intent-filter>
@@ -62,8 +65,6 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
-        <activity android:name=".core.BloodTestActivity"></activity>
     </application>
 
 </manifest>

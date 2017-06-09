@@ -24,7 +24,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hadassah.azrieli.lev_isha.R;
+import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
 import com.hadassah.azrieli.lev_isha.utility.VoiceRecorder;
+
+import java.util.Locale;
 
 public class AfterDoctorFragment extends Fragment {
 

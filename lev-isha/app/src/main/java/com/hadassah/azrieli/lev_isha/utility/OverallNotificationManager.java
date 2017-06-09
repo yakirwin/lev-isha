@@ -17,6 +17,7 @@ import com.hadassah.azrieli.lev_isha.core.MainMenuActivity;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 /**
  * Created by Avihu Harush on 01/06/2017
@@ -57,7 +58,7 @@ public abstract class OverallNotificationManager {
         String nextTimeToShowInMemory = prefs.getString("next_time_to_show_birthday_notification",null);
         PersonalProfile personalProfile = PersonalProfile.getInstance(context);
         PersonalProfileEntry birthDayEntry = personalProfile.findEntryByName(context.getString(R.string.birth_date));
-        DateFormat df = DateFormat.getDateInstance();
+        DateFormat df = DateFormat.getDateInstance(DateFormat.DEFAULT, PersonalProfile.getCurrentLocale());
         String birthDayString = birthDayEntry.getValue();
         Calendar birthDay = Calendar.getInstance();
         Calendar today = Calendar.getInstance();
@@ -108,7 +109,7 @@ public abstract class OverallNotificationManager {
 
     private static void setupHalfYearNotification(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        DateFormat df = DateFormat.getDateTimeInstance(DateFormat.FULL,DateFormat.FULL);
+        DateFormat df = DateFormat.getDateTimeInstance(DateFormat.FULL,DateFormat.FULL, PersonalProfile.getCurrentLocale());
         Calendar today = Calendar.getInstance();
         Calendar nextTimeToShow = Calendar.getInstance();
         nextTimeToShow.add(Calendar.MONTH,6);

@@ -12,6 +12,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.Locale;
+
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.DATE;
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.FINITE_STATES;
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.PLAIN_TEXT;
@@ -189,6 +191,10 @@ public class PersonalProfile implements Serializable {
 
     public ArrayList<PersonalProfileEntry> getEntriesCopy() {
         return new ArrayList<>(entries);
+    }
+
+    public static Locale getCurrentLocale() {
+        return new Locale("iw");
     }
 
 }

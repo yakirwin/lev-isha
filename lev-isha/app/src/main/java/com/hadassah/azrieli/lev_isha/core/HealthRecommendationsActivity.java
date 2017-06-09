@@ -5,6 +5,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,6 +19,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.hadassah.azrieli.lev_isha.R;
+import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
+import com.hadassah.azrieli.lev_isha.utility.ObservableWebView;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 
 import android.view.DragEvent;
@@ -40,6 +43,7 @@ import android.widget.ProgressBar;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Avihu Harush on 06/05/2017
@@ -57,13 +61,14 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
     private String smoke, history;
     private int height, weight, age;
     private ProgressBar progressBar;
-    private WebView webView;
+    private ObservableWebView webView;
     private ImageView[] arrows = new ImageView[5];
-    ObjectAnimator[] arrowsAnimators = new ObjectAnimator[arrows.length];
+    private ObjectAnimator[] arrowsAnimators = new ObjectAnimator[arrows.length];
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health_recommendations);
+        try{getSupportActionBar().setTitle(R.string.personal_health_recommendation_label);} catch(Exception ignore){}
         Intent data = getIntent();
         profile = PersonalProfile.getInstance(this);
         smoke = data.getStringExtra(EXTRA_SMOKE);
@@ -71,7 +76,7 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
         height = data.getIntExtra(EXTRA_HEIGHT,-1);
         weight = data.getIntExtra(EXTRA_WEIGHT,-1);
         age = data.getIntExtra(EXTRA_AGE,-1);
-        webView = (WebView)findViewById(R.id.personal_health_recommendation_webview);
+        webView = (ObservableWebView)findViewById(R.id.personal_health_recommendation_webview);
         progressBar = (ProgressBar)findViewById(R.id.personal_health_recommendation_progress_bar);
         webView.setWebViewClient(new WebViewController());
         //webView.getSettings().setJavaScriptEnabled(true);
@@ -81,6 +86,11 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
         arrows[3] = (ImageView)findViewById(R.id.personal_health_recommendation_scrolling_indication_icon4);
         arrows[4] = (ImageView)findViewById(R.id.personal_health_recommendation_scrolling_indication_icon5);
         webView.loadUrl("http://www.lev-isha.org/hra_result/?age="+age+"&smoke="+smoke+"&history="+history+"&bmi_weight="+weight+"&bmi_height="+height+"&approve=1");
+    }
+
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase,  PersonalProfile.getCurrentLocale());
+        super.attachBaseContext(context);
     }
 
     public class WebViewController extends WebViewClient {
@@ -119,6 +129,7 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
             } else
                 redirect = false;
+            webView.scrollTo(50000,0);
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
             if(prefs.getBoolean("show_scrolling_indication_inside_health_recommendation_activity", true))
             {
@@ -132,20 +143,13 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
         final ImageView dimBackground = (ImageView)findViewById(R.id.personal_health_recommendation_dim_screen_background);
         dimBackground.setVisibility(View.VISIBLE);
         startAnimation();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-            webView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-                public void onScrollChange(View view, int i, int i1, int i2, int i3) {
-                    dimBackground.setVisibility(View.GONE);
-                    stopAnimation();
-                }
-            });
-        else
-            new Handler().postDelayed(new Runnable() {
-                public void run() {
-                    dimBackground.setVisibility(View.GONE);
-                    stopAnimation();
-                }
-            }, 4000);
+        webView.setOnScrollChangedCallback(new ObservableWebView.OnScrollChangedCallback(){
+            public void onScroll(int l, int t){
+                dimBackground.setVisibility(View.GONE);
+                stopAnimation();
+                webView.setOnScrollChangedCallback(null);
+            }
+        });
     }
 
     private void startAnimation() {

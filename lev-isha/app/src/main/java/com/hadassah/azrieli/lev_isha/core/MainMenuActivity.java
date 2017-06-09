@@ -25,6 +25,7 @@ import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.View;
 import android.view.animation.Animation;
@@ -35,8 +36,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.hadassah.azrieli.lev_isha.R;
+import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
 import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
 import com.hadassah.azrieli.lev_isha.utility.NotificationPublisher;
 import com.hadassah.azrieli.lev_isha.utility.OverallNotificationManager;
@@ -61,7 +62,6 @@ public class MainMenuActivity extends AppCompatActivity {
 
     private LinearLayout personalProfileButton;
     private LinearLayout personHealthRecommendationsButton;
-    private LinearLayout setReminderButton;
     private LinearLayout checklistButton;
     private LinearLayout bloodTestButton;
     private LinearLayout DoctorRecordsButton;
@@ -73,7 +73,6 @@ public class MainMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
         personalProfileButton = (LinearLayout)findViewById(R.id.personal_profile_btn);
         personHealthRecommendationsButton = (LinearLayout)findViewById(R.id.personal_health_recommendation_btn);
-        setReminderButton = (LinearLayout)findViewById(R.id.set_reminder_btn);
         checklistButton = (LinearLayout)findViewById(R.id.checklist_btn);
         bloodTestButton = (LinearLayout)findViewById(R.id.blood_result_btn);
         DoctorRecordsButton = (LinearLayout)findViewById(R.id.doctor_records_btn);
@@ -87,12 +86,16 @@ public class MainMenuActivity extends AppCompatActivity {
         this.startService(new Intent(this,GeneralPurposeService.class));
     }
 
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase,  PersonalProfile.getCurrentLocale());
+        super.attachBaseContext(context);
+    }
+
     private void animateButtons() {
         Animation leftToRight = AnimationUtils.loadAnimation(this, R.anim.main_menu_button_left_to_right);
         Animation rightToLeft = AnimationUtils.loadAnimation(this, R.anim.main_menu_button_right_to_left);
         personalProfileButton.startAnimation(leftToRight);
         personHealthRecommendationsButton.startAnimation(rightToLeft);
-        setReminderButton.startAnimation(leftToRight);
         checklistButton.startAnimation(rightToLeft);
         DoctorRecordsButton.startAnimation(leftToRight);
         bloodTestButton.startAnimation(rightToLeft);
@@ -106,6 +109,8 @@ public class MainMenuActivity extends AppCompatActivity {
             transfer = new Intent(this, ChecklistActivity.class);
         if(view == DoctorRecordsButton)
             transfer = new Intent(this,RecordsActivity.class);
+        if(view == bloodTestButton)
+            transfer = new Intent(this,BloodTestActivity.class);
         if(transfer != null)
             startActivity(transfer);
     }
@@ -116,23 +121,17 @@ public class MainMenuActivity extends AppCompatActivity {
         String missing = "\n\n";
         Resources res = getResources();
         String smoke = profile.findEntryByName(res.getString(R.string.smoking)).getValue();
-        missing += (smoke == null) ? "-"+res.getString(R.string.smoking)+"\n" : "";
+        missing += (smoke == null) ? "- "+res.getString(R.string.smoking)+"\n" : "";
         String history = profile.findEntryByName(res.getString(R.string.family_history_personal_profile)).getValue();
-        missing += (history == null) ? "-"+res.getString(R.string.family_history_personal_profile)+"\n" : "";
+        missing += (history == null) ? "- "+res.getString(R.string.family_history_personal_profile)+"\n" : "";
         int bmi_w = -1, bmi_h = -1;
-        try {
-            bmi_w = Integer.parseInt(profile.findEntryByName(getResources().getString(R.string.weight)).getValue());
-        }catch(Exception ignore){
-            missing += "-"+res.getString(R.string.weight)+"\n";
-        }
-        try {
-            bmi_h = Integer.parseInt(profile.findEntryByName(getResources().getString(R.string.height)).getValue());
-        }catch(Exception ignore){
-            missing += "-"+res.getString(R.string.height)+"\n";
-        }
+        try {bmi_w = Integer.parseInt(profile.findEntryByName(getResources().getString(R.string.weight)).getValue());}
+        catch(Exception ignore){missing += "- "+res.getString(R.string.weight)+"\n";}
+        try {bmi_h = Integer.parseInt(profile.findEntryByName(getResources().getString(R.string.height)).getValue());}
+        catch(Exception ignore){missing += "- "+res.getString(R.string.height)+"\n";}
         String pseudoAge = profile.findEntryByName(getResources().getString(R.string.birth_date)).getValue();
         int age = calculateAge(pseudoAge);
-        missing += (age == -1) ? "-"+res.getString(R.string.birth_date)+"\n" : "";
+        missing += (age == -1) ? "- "+res.getString(R.string.birth_date)+"\n" : "";
         if(missing.length() != 2)
         {
             builder.setMessage(res.getText(R.string.missing_param_for_health_recommendations)+missing);
@@ -162,7 +161,7 @@ public class MainMenuActivity extends AppCompatActivity {
         if(format == null)
             return -1;
         try {
-            DateFormat df = DateFormat.getDateInstance();
+            DateFormat df = DateFormat.getDateInstance(DateFormat.DEFAULT,  PersonalProfile.getCurrentLocale());
             Calendar birthDate = Calendar.getInstance();
             Calendar currentDay = Calendar.getInstance();
             birthDate.setTime(df.parse(format));
@@ -173,29 +172,6 @@ public class MainMenuActivity extends AppCompatActivity {
                 diff--;
             return diff;
         }catch(Exception ignore){return -1;}
-    }
-
-    public void setupReminder(View view) {
-        Calendar now = Calendar.getInstance();
-        int year = now.get(Calendar.YEAR), month = now.get(Calendar.MONTH), day = now.get(Calendar.DAY_OF_MONTH);
-        new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                Calendar dueDate = Calendar.getInstance();
-                dueDate.set(i,i1,i2);
-                dueDate.set(Calendar.HOUR_OF_DAY, dueDate.getActualMinimum(Calendar.HOUR_OF_DAY));
-                dueDate.set(Calendar.MINUTE, dueDate.getActualMinimum(Calendar.MINUTE));
-                dueDate.set(Calendar.SECOND, dueDate.getActualMinimum(Calendar.SECOND));
-                dueDate.set(Calendar.MILLISECOND, dueDate.getActualMinimum(Calendar.MILLISECOND));
-                Intent calendarIntent = new Intent(Intent.ACTION_INSERT);
-                calendarIntent.setData(CalendarContract.Events.CONTENT_URI);
-                calendarIntent.setType("vnd.android.cursor.item/event");
-                calendarIntent.putExtra(CalendarContract.Events.TITLE,getResources().getString(R.string.calendar_reminder_header));
-                calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, false);
-                calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,dueDate.getTimeInMillis());
-                calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, dueDate.getTimeInMillis());
-                startActivity(calendarIntent);
-            }
-        }, year, month, day).show();
     }
 
     private void showMessageToSetupProfile() {

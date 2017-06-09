@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/blood_test_option_collapse_all_sections"
+        android:id="@+id/blood_test_options_collapse_all_sections"/>
+
+    <item android:title="@string/blood_test_option_expand_all_sections"
+        android:id="@+id/blood_test_options_expand_all_sections"/>
+
+</menu>
