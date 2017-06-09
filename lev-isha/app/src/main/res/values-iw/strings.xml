@@ -46,7 +46,7 @@
     <string name="check_list_2nd_part_header">לאחר הרופא</string>
     <string name="summary_of_the_doctors_Remarks">סיכום דבריו של הרופא:</string>
     <string name="determine_your_risk_of_heart_disease">בררי את הסיכון האישי שלך למחלות לב</string>
-    <string name="ask_about_future_treatment">בררי לגבי המשך טיפול//הפנייה לרופא אחר</string>
+    <string name="ask_about_future_treatment">בררי לגבי המשך טיפול/הפנייה לרופא אחר</string>
     <string name="should_you_come_back_for_further_inspections">האם/מתי את צריכה לחזור לביקורת?</string>
     <string name="have_you_got_answers_for_these_questions">האם קיבלת מענה לשלוש השאלות:</string>
     <string name="what_is_my_medical_condition">מה הבעיה הרפואית שלי?</string>
@@ -88,6 +88,55 @@
     <string name="notification_message_10_min_before_doctor_body">לחצי כאן בכדי לפתוח את טופס ההכנה לרופא, ושתפי את המידע ואת השאלות שהכנת.\n
 סכמי או הקליטי את הוראות הרופא ישר מהאפליקציה בלשונית הייעודית, כך תוכלי לשחזר את הוראות הרופא בצורה מדוייקת. בהצלחה ובריאות טובה!
     </string>
+    <string name="accept">אשרי</string>
+    <string name="action_settings">הגדרות</string>
+    <string name="add">הוספי</string>
+    <string name="add_appointment_to_calendar">הוספי פגישה ליומן</string>
+    <string name="add_new_property">הוספי תכונה חדשה...</string>
+    <string name="additional_questions_to_the_doctor_hint">שאלות נוספות...</string>
+    <string name="age">גיל</string>
+    <string name="appointment">פגישות</string>
+    <string name="birth_date">תאריך לידה</string>
+    <string name="calendar_reminder_header">בדיקת רופא</string>
+    <string name="cancel">בטלי</string>
+    <string name="changes_in_life_hint">שינויים באורך חיים</string>
+    <string name="clear_after">לודא אחרי הרופא</string>
+    <string name="clear_before">לודא לפני הרופא</string>
+    <string name="clear_both">ניקוי שני הטפסים</string>
+    <string name="date">תאריך</string>
+    <string name="delete">מחקי</string>
+    <string name="delete_personal_profile_entry_explain">האם את בטוחה שברצונך למחוק</string>
+    <string name="delete_record_body">האם ברצונך למחוק את הקובץ</string>
+    <string name="deviation_body">טווח תקין:</string>
+    <string name="deviation_header">מחוץ לטווח</string>
+    <string name="doctor_record_end">הפסיקי להקליט</string>
+    <string name="doctor_record_start">התחלי להקליט</string>
+    <string name="doctor_records_label">רשומות רופא</string>
+    <string name="drugs_i_take_hint">תרופות שאני לוקחת...</string>
+    <string name="english_language">אנגלית</string>
+    <string name="failed_to_start_record">לא נמצא מיקרופון.</string>
+    <string name="family_health_background_hint">רקע רפואי משפחתי</string>
+    <string name="family_history_personal_profile">היסטורית מחלות לב משפחתית</string>
+    <string name="file_successfully_saved">קובץ נשמר בהצלחה.</string>
+    <string name="hebrew_language">עברית</string>
+    <string name="missing_param_for_health_recommendations">כדי לקבל את ההמלצות הרפואיות שלך את צריכה לספק את הפרטים הבאים:</string>
+    <string name="new_symptoms_hint">סימפטומים חדשים...</string>
+    <string name="no">לא</string>
+    <string name="no_recordings">אין הקלטות</string>
+    <string name="not_sure">לא בטוחה</string>
+    <string name="personal_medical_history_hint">היסטוריה רפואית אישית</string>
+    <string name="personal_profile">פרופיל אישי</string>
+    <string name="plain_text">טקסט</string>
+    <string name="real_numbers">מספר</string>
+    <string name="setup_profile_initial_question">תודה שהשתמשת באפליקציה שלנו! מומלץ בחום להגדיר את הפרופיל האישי שלכם בהקדם האפשרי, האם תרצי לעשות זאת כעת?</string>
+    <string name="share_chooser_header">שתפי קובץ באמעות...</string>
+    <string name="smoking">מעשנת</string>
+    <string name="subjects_i_want_to_talk_about_hint">נושאים שברצוני לדבר עליהם...</string>
+    <string name="summary_of_the_doctors_Remarks_text_box_hint">רשמים...</string>
+    <string name="time">זמן</string>
+    <string name="title_activity_check_list">צ\'ק ליסט</string>
+    <string name="understood">הובן</string>
+    <string name="welcome">ברוכה הבאה</string>
     <!-- Notification Messages <END> -->
 
 </resources>

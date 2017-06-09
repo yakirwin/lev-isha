@@ -137,6 +137,8 @@
     <string name="notification_message_10_min_before_doctor_body">לחצי כאן בכדי לפתוח את טופס ההכנה לרופא, ושתפי את המידע ואת השאלות שהכנת.\n
 סכמי או הקליטי את הוראות הרופא ישר מהאפליקציה בלשונית הייעודית, כך תוכלי לשחזר את הוראות הרופא בצורה מדוייקת. בהצלחה ובריאות טובה!
     </string>
+    <string name="appointment_date">Appointment Date:</string>
+    <string name="appointment_hour">Hour:</string>
     <!-- Notification Messages <END> -->
 
 </resources>
