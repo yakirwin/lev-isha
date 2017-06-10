@@ -1,5 +1,6 @@
 package com.hadassah.azrieli.lev_isha.utility;
 
+import android.app.ActivityManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -24,4 +25,13 @@ public class GeneralPurposeService extends Service {
     }
 
     public IBinder onBind(Intent intent){return null;}
+
+    public static boolean isServiceRunning(Context context) {
+        ActivityManager manager = (ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE))
+            if (GeneralPurposeService.class.getName().equals(service.service.getClassName()))
+                return true;
+        return false;
+    }
+
 }

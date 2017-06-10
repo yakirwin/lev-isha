@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import com.hadassah.azrieli.lev_isha.R;
 import com.hadassah.azrieli.lev_isha.core.MainMenuActivity;
 import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
+import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 
 import java.util.Locale;
@@ -27,6 +28,8 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        if(!GeneralPurposeService.isServiceRunning(this))
+            this.startService(new Intent(this,GeneralPurposeService.class));
     }
 
     protected void attachBaseContext(Context newBase) {

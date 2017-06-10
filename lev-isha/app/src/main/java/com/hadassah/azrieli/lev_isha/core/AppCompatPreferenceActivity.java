@@ -1,6 +1,7 @@
 package com.hadassah.azrieli.lev_isha.core;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
+import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 
 import java.util.Locale;
@@ -31,6 +33,8 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
         getDelegate().installViewFactory();
         getDelegate().onCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
+        if(!GeneralPurposeService.isServiceRunning(this))
+            this.startService(new Intent(this,GeneralPurposeService.class));
     }
 
     protected void attachBaseContext(Context newBase) {

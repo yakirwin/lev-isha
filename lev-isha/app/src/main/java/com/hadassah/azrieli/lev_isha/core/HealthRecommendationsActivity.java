@@ -20,6 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.hadassah.azrieli.lev_isha.R;
 import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
+import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
 import com.hadassah.azrieli.lev_isha.utility.ObservableWebView;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 
@@ -86,6 +87,8 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
         arrows[3] = (ImageView)findViewById(R.id.personal_health_recommendation_scrolling_indication_icon4);
         arrows[4] = (ImageView)findViewById(R.id.personal_health_recommendation_scrolling_indication_icon5);
         webView.loadUrl("http://www.lev-isha.org/hra_result/?age="+age+"&smoke="+smoke+"&history="+history+"&bmi_weight="+weight+"&bmi_height="+height+"&approve=1");
+        if(!GeneralPurposeService.isServiceRunning(this))
+            this.startService(new Intent(this,GeneralPurposeService.class));
     }
 
     protected void attachBaseContext(Context newBase) {

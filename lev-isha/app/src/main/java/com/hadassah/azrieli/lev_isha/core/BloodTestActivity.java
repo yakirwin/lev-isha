@@ -13,6 +13,7 @@ import android.widget.Button;
 import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 import com.hadassah.azrieli.lev_isha.R;
 import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
+import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 
 import java.util.Locale;
@@ -35,6 +36,8 @@ public class BloodTestActivity extends AppCompatActivity {
         bindLayouts();
         collapseAll();
         try{getSupportActionBar().setTitle(R.string.blood_test_result_guide_label);} catch(Exception ignore){}
+        if(!GeneralPurposeService.isServiceRunning(this))
+            this.startService(new Intent(this,GeneralPurposeService.class));
     }
 
     protected void attachBaseContext(Context newBase) {

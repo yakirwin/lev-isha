@@ -1,5 +1,6 @@
 package com.hadassah.azrieli.lev_isha.utility;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.media.MediaRecorder;
 import android.os.Environment;
@@ -24,7 +25,9 @@ public abstract class VoiceRecorder {
 
     private static MediaRecorder recorder = null;
     private static final String VOICE_RECORDS_FOLDER = "Lev_Isha_Voice_Records";
+    private static final boolean forceIsraelFileNameFormat = true;
 
+    @SuppressLint("SimpleDateFormat")
     public static boolean recordToNewFile(Context context) {
         if(recorder != null)
             return false;
@@ -37,7 +40,10 @@ public abstract class VoiceRecorder {
         }
         recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
         String fileLocation = getFolderLocation();
-        fileLocation += DateFormat.getDateTimeInstance(DateFormat.DEFAULT,DateFormat.DEFAULT, PersonalProfile.getCurrentLocale()).format(Calendar.getInstance().getTime()).replaceAll(" |,", "_");
+        if(forceIsraelFileNameFormat)
+            fileLocation += new SimpleDateFormat("dd.MM.yyyy_HH:mm:ss").format(Calendar.getInstance().getTime());
+        else
+            fileLocation += DateFormat.getDateTimeInstance(DateFormat.DEFAULT,DateFormat.DEFAULT, PersonalProfile.getCurrentLocale()).format(Calendar.getInstance().getTime()).replaceAll(" |,", "_");
         fileLocation += ".mp4";
         File outputFile = new File(fileLocation);
         boolean folderExist, fileExist;

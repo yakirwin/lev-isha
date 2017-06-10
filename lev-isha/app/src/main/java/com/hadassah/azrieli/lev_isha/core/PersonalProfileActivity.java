@@ -6,8 +6,10 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Observable;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.IntegerRes;
 import android.support.design.widget.FloatingActionButton;
@@ -37,6 +39,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
+import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
 import com.hadassah.azrieli.lev_isha.utility.OverallNotificationManager;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry;
@@ -81,6 +84,8 @@ public class PersonalProfileActivity extends AppCompatActivity {
                 addNewEntry();
             }
         });
+        if(!GeneralPurposeService.isServiceRunning(this))
+            this.startService(new Intent(this,GeneralPurposeService.class));
     }
 
     protected void attachBaseContext(Context newBase) {
@@ -167,7 +172,6 @@ public class PersonalProfileActivity extends AppCompatActivity {
 
     }
 
-
     private void addNewEntry() {
         if(mAdapter == null)
             return;
@@ -224,7 +228,6 @@ public class PersonalProfileActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
 
     private boolean deleteEntry(View view, final int index) {
         if(mAdapter == null)

@@ -23,6 +23,7 @@ import android.widget.ProgressBar;
 
 import com.hadassah.azrieli.lev_isha.R;
 import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
+import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
 import com.hadassah.azrieli.lev_isha.utility.ObservableWebView;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 
@@ -64,6 +65,8 @@ public class BloodTestWebViewActivity extends AppCompatActivity {
         arrows[3] = (ImageView)findViewById(R.id.blood_test_scrolling_indication_icon4);
         arrows[4] = (ImageView)findViewById(R.id.blood_test_scrolling_indication_icon5);
         webView.loadUrl(siteAddress);
+        if(!GeneralPurposeService.isServiceRunning(this))
+            this.startService(new Intent(this,GeneralPurposeService.class));
     }
 
     protected void attachBaseContext(Context newBase) {

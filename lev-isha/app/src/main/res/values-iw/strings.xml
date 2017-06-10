@@ -15,7 +15,7 @@
     <!-- MainMenu Labels <END> -->
 
     <!-- Personal Profile Labels <START> -->
-    <string name="name">שמך</string>
+    <string name="name">שם פרטי</string>
     <string name="first_name">שם פרטי</string>
     <string name="last_name">שם משפחה</string>
     <string name="weight">משקל</string>
@@ -27,11 +27,11 @@
 
     <!-- Checklist Labels <START> -->
     <string name="check_list_1st_part_header">הכנה לרופא</string>
-    <string name="doctor_name">שם הרופא:</string>
-    <string name="address">כתובת:</string>
+    <string name="doctor_name">שם הרופא</string>
+    <string name="address">כתובת</string>
     <string name="appointment_date">תאריך התור:</string>
     <string name="appointment_hour">שעה:</string>
-    <string name="remember_to_bring_with_you">זכרי להביא איתך</string>
+    <string name="remember_to_bring_with_you">זכרי להביא איתך:</string>
     <string name="references">הפניות</string>
     <string name="prescription">מרשמים</string>
     <string name="Previous_diagnoses">אבחונים קודמים</string>
@@ -45,7 +45,7 @@
     <string name="drugs_i_take">תרופות שאני לוקחת (שמות ומינונים):</string>
     <string name="additional_questions_to_the_doctor">שאלות ספציפיות לרופא:</string>
     <string name="check_list_2nd_part_header">לאחר הרופא</string>
-    <string name="summary_of_the_doctors_Remarks">סיכום דבריו של הרופא:</string>
+    <string name="summary_of_the_doctors_Remarks">סיכום דבריו של הרופא</string>
     <string name="determine_your_risk_of_heart_disease">בררי את הסיכון האישי שלך למחלות לב</string>
     <string name="ask_about_future_treatment">בררי לגבי המשך טיפול/הפנייה לרופא אחר</string>
     <string name="should_you_come_back_for_further_inspections">האם/מתי את צריכה לחזור לביקורת?</string>
@@ -92,11 +92,11 @@
     <string name="accept">אישור</string>
     <string name="action_settings">הגדרות</string>
     <string name="add">הוספי</string>
-    <string name="add_appointment_to_calendar">הוסיפי פגישה ליומן</string>
+    <string name="add_appointment_to_calendar">הוסיפי את התור ליומן</string>
     <string name="add_new_property">הוספי תכונה חדשה…</string>
     <string name="additional_questions_to_the_doctor_hint">שאלות נוספות…</string>
     <string name="age">גיל</string>
-    <string name="appointment">פגישה</string>
+    <string name="appointment">תור</string>
     <string name="birth_date">תאריך לידה</string>
     <string name="calendar_reminder_header">בדיקת רופא</string>
     <string name="cancel">ביטול</string>
@@ -118,9 +118,9 @@
     <string name="failed_to_start_record">לא נמצא מיקרופון.</string>
     <string name="family_health_background_hint">רקע רפואי משפחתי</string>
     <string name="family_history_personal_profile">היסטורית מחלות לב משפחתית</string>
-    <string name="file_successfully_saved">קובץ נשמר בהצלחה.</string>
+    <string name="file_successfully_saved">ההקלטה נשמרה בהצלחה.</string>
     <string name="hebrew_language">עברית</string>
-    <string name="missing_param_for_health_recommendations">כדי לקבל את ההמלצות הרפואיות שלך את צריכה לספק את הפרטים הבאים:</string>
+    <string name="missing_param_for_health_recommendations">כדי לקבל את ההמלצות הרפואיות שלך עליך לספק את הפרטים הבאים:</string>
     <string name="new_symptoms_hint">סימפטומים חדשים…</string>
     <string name="no">לא</string>
     <string name="no_recordings">לא נמצאו הקלטות</string>+
@@ -129,12 +129,12 @@
     <string name="personal_profile">פרופיל אישי</string>
     <string name="plain_text">טקסט</string>
     <string name="real_numbers">מספר</string>
-    <string name="setup_profile_initial_question">תודה שהשתמשת באפליקציה שלנו! מומלץ בחום להגדיר את הפרופיל האישי שלכם בהקדם האפשרי, האם תרצי לעשות זאת כעת?</string>
+    <string name="setup_profile_initial_question">אנו מודים לך על שהחלטת להשתמש באפליקציה שלנו. אנו ממליצים בחום להגדיר את הפרופיל האישי שלך בהקדם האפשרי, האם תרצי לבצע זאת כעת?</string>
     <string name="share_chooser_header">שתפי קובץ באמצעות…</string>
     <string name="smoking">עישון</string>
     <string name="subjects_i_want_to_talk_about_hint">נושאים שברצוני לדבר עליהם…</string>
     <string name="summary_of_the_doctors_Remarks_text_box_hint">רשמים…</string>
-    <string name="time">זמן</string>
+    <string name="time">שעה</string>
     <string name="title_activity_check_list">ביקור רופא</string>
     <string name="understood">הבנתי</string>
     <string name="welcome">ברוכה הבאה</string>

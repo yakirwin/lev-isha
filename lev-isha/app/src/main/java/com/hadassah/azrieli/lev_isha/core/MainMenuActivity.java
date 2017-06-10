@@ -1,5 +1,6 @@
 package com.hadassah.azrieli.lev_isha.core;
 
+import android.app.ActivityManager;
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.Notification;
@@ -83,7 +84,8 @@ public class MainMenuActivity extends AppCompatActivity {
         }
         animateButtons();
         OverallNotificationManager.setUpNotificationTimers(this,OverallNotificationManager.NO_ADDITIONAL_ID);
-        this.startService(new Intent(this,GeneralPurposeService.class));
+        if(!GeneralPurposeService.isServiceRunning(this))
+            this.startService(new Intent(this,GeneralPurposeService.class));
     }
 
     protected void attachBaseContext(Context newBase) {
@@ -94,10 +96,11 @@ public class MainMenuActivity extends AppCompatActivity {
     private void animateButtons() {
         Animation leftToRight = AnimationUtils.loadAnimation(this, R.anim.main_menu_button_left_to_right);
         Animation rightToLeft = AnimationUtils.loadAnimation(this, R.anim.main_menu_button_right_to_left);
-        personalProfileButton.startAnimation(leftToRight);
-        personHealthRecommendationsButton.startAnimation(rightToLeft);
-        checklistButton.startAnimation(rightToLeft);
-        DoctorRecordsButton.startAnimation(leftToRight);
+        Animation zoomIn = AnimationUtils.loadAnimation(this, R.anim.main_menu_button_zoom_in);
+        personalProfileButton.startAnimation(zoomIn);
+        personHealthRecommendationsButton.startAnimation(leftToRight);
+        checklistButton.startAnimation(leftToRight);
+        DoctorRecordsButton.startAnimation(rightToLeft);
         bloodTestButton.startAnimation(rightToLeft);
     }
 
@@ -165,12 +168,12 @@ public class MainMenuActivity extends AppCompatActivity {
             Calendar birthDate = Calendar.getInstance();
             Calendar currentDay = Calendar.getInstance();
             birthDate.setTime(df.parse(format));
-            int diff = currentDay.get(Calendar.YEAR) - birthDate.get(Calendar.YEAR);
+            int age = currentDay.get(Calendar.YEAR) - birthDate.get(Calendar.YEAR);
             if (birthDate.get(Calendar.MONTH) > currentDay.get(Calendar.MONTH)
                     || (birthDate.get(Calendar.MONTH) == currentDay.get(Calendar.MONTH)
                     && birthDate.get(Calendar.DATE) > currentDay.get(Calendar.DATE)))
-                diff--;
-            return diff;
+                age--;
+            return age;
         }catch(Exception ignore){return -1;}
     }
 
@@ -196,12 +199,13 @@ public class MainMenuActivity extends AppCompatActivity {
         builder.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                prefs.edit().putBoolean("personal_health_recommendations_disclaimer_approved", true).commit();
+                prefs.edit().putBoolean("personal_health_recommendations_disclaimer_approved", true).apply();
                 startActivity(personHealthRecommendationsIntent);
             }
         });
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
 
 }

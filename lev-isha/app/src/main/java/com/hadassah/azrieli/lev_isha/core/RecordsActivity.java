@@ -32,6 +32,7 @@ import android.widget.TextView;
 
 import com.hadassah.azrieli.lev_isha.R;
 import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
+import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry;
 import com.hadassah.azrieli.lev_isha.utility.VoiceRecorder;
@@ -67,6 +68,8 @@ public class RecordsActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new recordsAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
+        if(!GeneralPurposeService.isServiceRunning(this))
+            this.startService(new Intent(this,GeneralPurposeService.class));
     }
 
     protected void attachBaseContext(Context newBase) {

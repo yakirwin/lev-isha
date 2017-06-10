@@ -21,12 +21,12 @@ public class NotificationPublisher extends BroadcastReceiver {
     @Override
     public void onReceive(final Context context, Intent intent) {
         if ("android.intent.action.BOOT_COMPLETED".equals(intent.getAction())) {
-            System.out.println("AVIHU: Phone Booted");
+            System.out.println("AVIHU: Phone Booted"); //TODO remove this line
             if(!isServiceRunning(GeneralPurposeService.class,context))
                 context.startService(new Intent(context,GeneralPurposeService.class));
             return;
         }
-        System.out.println("AVIHU: Got a notification");
+        System.out.println("AVIHU: Got a notification"); //TODO remove this line
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notification = intent.getParcelableExtra(NOTIFICATION_BIRTHDAY_OBJECT);
         if(notification == null)
