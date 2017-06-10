@@ -21,12 +21,10 @@ public class NotificationPublisher extends BroadcastReceiver {
     @Override
     public void onReceive(final Context context, Intent intent) {
         if ("android.intent.action.BOOT_COMPLETED".equals(intent.getAction())) {
-            System.out.println("AVIHU: Phone Booted"); //TODO remove this line
-            if(!isServiceRunning(GeneralPurposeService.class,context))
+            if(!GeneralPurposeService.isServiceRunning())
                 context.startService(new Intent(context,GeneralPurposeService.class));
             return;
         }
-        System.out.println("AVIHU: Got a notification"); //TODO remove this line
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notification = intent.getParcelableExtra(NOTIFICATION_BIRTHDAY_OBJECT);
         if(notification == null)
@@ -44,14 +42,6 @@ public class NotificationPublisher extends BroadcastReceiver {
             code = intent.getIntExtra(NOTIFICATION_10_MIN_BEFORE_DOCTOR_EXTRA_ID, -1);
         notificationManager.notify(code, notification);
         OverallNotificationManager.setUpNotificationTimers(context,code);
-    }
-
-    private boolean isServiceRunning(Class<?> serviceClass, Context context) {
-        ActivityManager manager = (ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);
-        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE))
-            if (serviceClass.getName().equals(service.service.getClassName()))
-                return true;
-        return false;
     }
 
 }

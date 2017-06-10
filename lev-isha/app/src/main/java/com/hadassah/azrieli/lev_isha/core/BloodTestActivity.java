@@ -2,6 +2,7 @@ package com.hadassah.azrieli.lev_isha.core;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -35,8 +36,10 @@ public class BloodTestActivity extends AppCompatActivity {
         bindButtons();
         bindLayouts();
         collapseAll();
-        try{getSupportActionBar().setTitle(R.string.blood_test_result_guide_label);} catch(Exception ignore){}
-        if(!GeneralPurposeService.isServiceRunning(this))
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null)
+            actionBar.setTitle(R.string.blood_test_result_guide_label);
+        if(!GeneralPurposeService.isServiceRunning())
             this.startService(new Intent(this,GeneralPurposeService.class));
     }
 

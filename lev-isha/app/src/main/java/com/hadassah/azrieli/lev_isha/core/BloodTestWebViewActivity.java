@@ -65,7 +65,7 @@ public class BloodTestWebViewActivity extends AppCompatActivity {
         arrows[3] = (ImageView)findViewById(R.id.blood_test_scrolling_indication_icon4);
         arrows[4] = (ImageView)findViewById(R.id.blood_test_scrolling_indication_icon5);
         webView.loadUrl(siteAddress);
-        if(!GeneralPurposeService.isServiceRunning(this))
+        if(!GeneralPurposeService.isServiceRunning())
             this.startService(new Intent(this,GeneralPurposeService.class));
     }
 
@@ -74,7 +74,7 @@ public class BloodTestWebViewActivity extends AppCompatActivity {
         super.attachBaseContext(context);
     }
 
-    public class WebViewController extends WebViewClient {
+    private class WebViewController extends WebViewClient {
 
         boolean loadingFinished = true;
         boolean redirect = false;
@@ -155,23 +155,10 @@ public class BloodTestWebViewActivity extends AppCompatActivity {
     }
 
     private boolean checkSitesIntegrity() {
-        if(siteAddress.equals(BMI_ADDRESS))
-            return true;
-        if(siteAddress.equals(BLOOD_PRESSURE_ADDRESS))
-            return true;
-        if(siteAddress.equals(CHOLESTEROL_GENERAL_ADDRESS))
-            return true;
-        if(siteAddress.equals(CHOLESTEROL_LDL_ADDRESS))
-            return true;
-        if(siteAddress.equals(CHOLESTEROL_HDL_ADDRESS))
-            return true;
-        if(siteAddress.equals(TRIGLYCERIDE_ADDRESS))
-            return true;
-        if(siteAddress.equals(GLUCOSE_FASTING_ADDRESS))
-            return true;
-        if(siteAddress.equals(HBA1C_ADDRESS))
-            return true;
-        return false;
+        return siteAddress.equals(BMI_ADDRESS) || siteAddress.equals(BLOOD_PRESSURE_ADDRESS) ||
+                siteAddress.equals(CHOLESTEROL_GENERAL_ADDRESS) || siteAddress.equals(CHOLESTEROL_LDL_ADDRESS) ||
+                siteAddress.equals(CHOLESTEROL_HDL_ADDRESS) || siteAddress.equals(TRIGLYCERIDE_ADDRESS) ||
+                siteAddress.equals(GLUCOSE_FASTING_ADDRESS) || siteAddress.equals(HBA1C_ADDRESS);
     }
 
     private void setupActionBarName() {

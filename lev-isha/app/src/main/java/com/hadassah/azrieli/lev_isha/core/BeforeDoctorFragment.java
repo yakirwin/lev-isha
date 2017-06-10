@@ -1,5 +1,6 @@
 package com.hadassah.azrieli.lev_isha.core;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -26,6 +27,7 @@ import android.widget.ListAdapter;
 import android.widget.TimePicker;
 
 import com.hadassah.azrieli.lev_isha.R;
+import com.hadassah.azrieli.lev_isha.utility.OverallNotificationManager;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 
 import java.text.DateFormat;
@@ -195,22 +197,9 @@ public class BeforeDoctorFragment extends Fragment {
     }
 
     public void addEventToCalendar() {
-        DateFormat dfDate = DateFormat.getDateInstance(DateFormat.DEFAULT, PersonalProfile.getCurrentLocale());
-        DateFormat dfTime = new SimpleDateFormat("HH:mm");
-        //DateFormat dfTime = DateFormat.getTimeInstance(DateFormat.SHORT);
-        Calendar timeCal = Calendar.getInstance();
-        Calendar dateCal = Calendar.getInstance();
-        Calendar dueDate = Calendar.getInstance();
-        try{timeCal.setTime(dfTime.parse(time.getText().toString()));} catch(Exception ignore){return;}
-        try{dateCal.setTime(dfDate.parse(date.getText().toString()));} catch(Exception ignore){return;}
-        int year = dateCal.get(Calendar.YEAR);
-        int month = dateCal.get(Calendar.MONTH);
-        int day = dateCal.get(Calendar.DAY_OF_MONTH);
-        int hour = timeCal.get(Calendar.HOUR_OF_DAY);
-        int min = timeCal.get(Calendar.MINUTE);
-        dueDate.set(year, month, day, hour, min);
-        dueDate.set(Calendar.SECOND, dueDate.getActualMinimum(Calendar.SECOND));
-        dueDate.set(Calendar.MILLISECOND, dueDate.getActualMinimum(Calendar.MILLISECOND));
+        Calendar dueDate = getCalendarObjectFromFields();
+        if(dueDate == null)
+            return;
         Intent calendarIntent = new Intent(Intent.ACTION_INSERT);
         calendarIntent.setData(CalendarContract.Events.CONTENT_URI);
         calendarIntent.setType("vnd.android.cursor.item/event");
@@ -243,6 +232,7 @@ public class BeforeDoctorFragment extends Fragment {
         }, year, month, day).show();
     }
 
+    @SuppressLint("SimpleDateFormat")
     public void openTimeChooser() {
         int hour, min;
         final Calendar currentTime = Calendar.getInstance();
@@ -290,11 +280,52 @@ public class BeforeDoctorFragment extends Fragment {
         shouldEnableAppointmentButton();
     }
 
+
+    @SuppressLint("ApplySharedPref")
     public void shouldEnableAppointmentButton() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         if(date.getText().length() != 0 && time.getText().length() != 0)
+        {
+            Calendar dueDate = getCalendarObjectFromFields();
+            if(dueDate == null)
+                return;
             saveAppointment.setEnabled(true);
+            if(prefs.getLong("next_doctor_appointment_date_in_ms",-1) != -1)
+                OverallNotificationManager.cancelDoctorAppointment(getActivity());
+            prefs.edit().putLong("next_doctor_appointment_date_in_ms",dueDate.getTimeInMillis()).commit();
+            OverallNotificationManager.setUpNotificationTimers(getActivity(),OverallNotificationManager.NOTIFICATION_10_MIN_BEFORE_DOCTOR_ID);
+            OverallNotificationManager.setUpNotificationTimers(getActivity(),OverallNotificationManager.NOTIFICATION_DAY_BEFORE_DOCTOR_ID);
+        }
         else
+        {
             saveAppointment.setEnabled(false);
+            if(prefs.getLong("next_doctor_appointment_date_in_ms",-1) != -1)
+            {
+                OverallNotificationManager.cancelDoctorAppointment(getActivity());
+                prefs.edit().putLong("next_doctor_appointment_date_in_ms",-1).commit();
+            }
+        }
+    }
+
+    public Calendar getCalendarObjectFromFields() {
+        DateFormat dfDate = DateFormat.getDateInstance(DateFormat.DEFAULT, PersonalProfile.getCurrentLocale());
+        @SuppressLint("SimpleDateFormat")
+        DateFormat dfTime = new SimpleDateFormat("HH:mm");
+        //DateFormat dfTime = DateFormat.getTimeInstance(DateFormat.SHORT);
+        Calendar timeCal = Calendar.getInstance();
+        Calendar dateCal = Calendar.getInstance();
+        Calendar dueDate = Calendar.getInstance();
+        try{timeCal.setTime(dfTime.parse(time.getText().toString()));} catch(Exception ignore){return null;}
+        try{dateCal.setTime(dfDate.parse(date.getText().toString()));} catch(Exception ignore){return null;}
+        int year = dateCal.get(Calendar.YEAR);
+        int month = dateCal.get(Calendar.MONTH);
+        int day = dateCal.get(Calendar.DAY_OF_MONTH);
+        int hour = timeCal.get(Calendar.HOUR_OF_DAY);
+        int min = timeCal.get(Calendar.MINUTE);
+        dueDate.set(year, month, day, hour, min);
+        dueDate.set(Calendar.SECOND, dueDate.getActualMinimum(Calendar.SECOND));
+        dueDate.set(Calendar.MILLISECOND, dueDate.getActualMinimum(Calendar.MILLISECOND));
+        return dueDate;
     }
 
     public void clearForm() {
@@ -331,5 +362,6 @@ public class BeforeDoctorFragment extends Fragment {
         alreadyUpdated = false;
         reloadSavedFields();
     }
+
 
 }

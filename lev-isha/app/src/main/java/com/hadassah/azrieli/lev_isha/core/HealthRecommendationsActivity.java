@@ -15,6 +15,7 @@ import android.media.Image;
 import android.os.Build;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -53,7 +54,6 @@ import java.util.Locale;
 
 public class HealthRecommendationsActivity extends AppCompatActivity {
 
-    private PersonalProfile profile;
     public static final String EXTRA_SMOKE = "health_recommendations_extra_smoking";
     public static final String EXTRA_HISTORY = "health_recommendations_extra_history";
     public static final String EXTRA_HEIGHT = "health_recommendations_extra_height";
@@ -69,9 +69,10 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health_recommendations);
-        try{getSupportActionBar().setTitle(R.string.personal_health_recommendation_label);} catch(Exception ignore){}
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null)
+            actionBar.setTitle(R.string.personal_health_recommendation_label);
         Intent data = getIntent();
-        profile = PersonalProfile.getInstance(this);
         smoke = data.getStringExtra(EXTRA_SMOKE);
         history = data.getStringExtra(EXTRA_HISTORY);
         height = data.getIntExtra(EXTRA_HEIGHT,-1);
@@ -87,7 +88,7 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
         arrows[3] = (ImageView)findViewById(R.id.personal_health_recommendation_scrolling_indication_icon4);
         arrows[4] = (ImageView)findViewById(R.id.personal_health_recommendation_scrolling_indication_icon5);
         webView.loadUrl("http://www.lev-isha.org/hra_result/?age="+age+"&smoke="+smoke+"&history="+history+"&bmi_weight="+weight+"&bmi_height="+height+"&approve=1");
-        if(!GeneralPurposeService.isServiceRunning(this))
+        if(!GeneralPurposeService.isServiceRunning())
             this.startService(new Intent(this,GeneralPurposeService.class));
     }
 
@@ -96,7 +97,7 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
         super.attachBaseContext(context);
     }
 
-    public class WebViewController extends WebViewClient {
+    private class WebViewController extends WebViewClient {
 
         boolean loadingFinished = true;
         boolean redirect = false;
@@ -110,7 +111,6 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
             view.loadUrl(urlNewString);
             return true;
         }
-
 
         @SuppressWarnings("deprecation")
         public boolean shouldOverrideUrlLoading(WebView view, String urlNewString) {

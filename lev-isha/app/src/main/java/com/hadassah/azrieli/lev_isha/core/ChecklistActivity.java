@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -46,8 +47,10 @@ public class ChecklistActivity extends AppCompatActivity {
         mViewPager.setAdapter(customPagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-        try{getSupportActionBar().setTitle(R.string.title_activity_check_list);} catch(Exception ignore){}
-        if(!GeneralPurposeService.isServiceRunning(this))
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null)
+            actionBar.setTitle(R.string.title_activity_check_list);
+        if(!GeneralPurposeService.isServiceRunning())
             this.startService(new Intent(this,GeneralPurposeService.class));
     }
 
@@ -86,7 +89,7 @@ public class ChecklistActivity extends AppCompatActivity {
         BeforeDoctorFragment beforeFragment = (getSupportFragmentManager().getFragments() != null && getSupportFragmentManager().getFragments().size() >= 1) ? (BeforeDoctorFragment)getSupportFragmentManager().getFragments().get(0) : BeforeDoctorFragment.newInstance();
         AfterDoctorFragment afterFragment = (getSupportFragmentManager().getFragments() != null && getSupportFragmentManager().getFragments().size() >= 2) ? (AfterDoctorFragment)getSupportFragmentManager().getFragments().get(1) : AfterDoctorFragment.newInstance();
 
-        public customPager(FragmentManager fm) {
+        customPager(FragmentManager fm) {
             super(fm);
         }
 
@@ -120,11 +123,11 @@ public class ChecklistActivity extends AppCompatActivity {
             }
         }
 
-        public void clearBefore() {
+        void clearBefore() {
             beforeFragment.clearForm();
         }
 
-        public void clearAfter() {
+        void clearAfter() {
             afterFragment.clearForm();
         }
     }

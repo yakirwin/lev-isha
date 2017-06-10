@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.IntegerRes;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutCompat;
@@ -77,14 +78,16 @@ public class PersonalProfileActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
         Toolbar mActionBarToolbar = (Toolbar) findViewById(R.id.profile_toolbar);
         setSupportActionBar(mActionBarToolbar);
-        getSupportActionBar().setTitle(this.getResources().getString(R.string.personal_profile));
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null)
+            actionBar.setTitle(this.getResources().getString(R.string.personal_profile));
         FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.profile_fab);
         fab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 addNewEntry();
             }
         });
-        if(!GeneralPurposeService.isServiceRunning(this))
+        if(!GeneralPurposeService.isServiceRunning())
             this.startService(new Intent(this,GeneralPurposeService.class));
     }
 
@@ -118,7 +121,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
                 });
                 delete.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
-                        deleteEntry(view,(int)view.getTag());
+                        deleteEntry((int)view.getTag());
                     }
                 });
             }
@@ -132,11 +135,10 @@ public class PersonalProfileActivity extends AppCompatActivity {
         public ProfileAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             RelativeLayout layout = (RelativeLayout) LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.personal_profile_entry, parent, false);
-            ViewHolder vh = new ViewHolder(layout);
-            return vh;
+            return new ViewHolder(layout);
         }
 
-        public PersonalProfileEntry getItem(int position) {
+        private PersonalProfileEntry getItem(int position) {
             return mDataset.get(position);
         }
 
@@ -179,7 +181,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(res.getText(R.string.add_new_property));
         builder.setNegativeButton(R.string.cancel,null);
-        final View dialogView = this.getLayoutInflater().inflate(R.layout.text_input, null);
+        final View dialogView = this.getLayoutInflater().inflate(R.layout.text_input,null);
         builder.setView(dialogView);
         final EditText editText = (EditText)dialogView.findViewById(R.id.text_input_text_box);
         final RadioGroup radioGroup = (RadioGroup)dialogView.findViewById(R.id.text_input_radio_group);
@@ -229,7 +231,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private boolean deleteEntry(View view, final int index) {
+    private boolean deleteEntry(final int index) {
         if(mAdapter == null)
             return false;
         final PersonalProfileEntry toDelete;
@@ -276,7 +278,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
                 try {
                     date = Calendar.getInstance();
                     date.setTime(df.parse(value));
-                } catch(Exception exp){}
+                } catch(Exception ignore){}
             }
             year = (date == null) ? currentTime.get(Calendar.YEAR) : date.get(Calendar.YEAR);
             month = (date == null) ? currentTime.get(Calendar.MONTH) : date.get(Calendar.MONTH);
@@ -298,7 +300,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
                     mAdapter.mDataset = PersonalProfile.getInstance(PersonalProfileActivity.this).getEntriesCopy();
                     mAdapter.notifyItemChanged(index);
                     profile.commitChanges(PersonalProfileActivity.this);
-                    OverallNotificationManager.setUpNotificationTimers(PersonalProfileActivity.this,OverallNotificationManager.NO_ADDITIONAL_ID);
+                    OverallNotificationManager.setUpNotificationTimers(PersonalProfileActivity.this,OverallNotificationManager.NOTIFICATION_BIRTHDAY_ID);
                 }
             }, year, month, day).show();
         }

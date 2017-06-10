@@ -84,7 +84,7 @@ public class MainMenuActivity extends AppCompatActivity {
         }
         animateButtons();
         OverallNotificationManager.setUpNotificationTimers(this,OverallNotificationManager.NO_ADDITIONAL_ID);
-        if(!GeneralPurposeService.isServiceRunning(this))
+        if(!GeneralPurposeService.isServiceRunning())
             this.startService(new Intent(this,GeneralPurposeService.class));
     }
 
@@ -135,7 +135,7 @@ public class MainMenuActivity extends AppCompatActivity {
         String pseudoAge = profile.findEntryByName(getResources().getString(R.string.birth_date)).getValue();
         int age = calculateAge(pseudoAge);
         missing += (age == -1) ? "- "+res.getString(R.string.birth_date)+"\n" : "";
-        if(missing.length() != 2)
+        if(missing.length() != 2 || smoke == null || history == null || bmi_w == -1 || bmi_h == -1 || age == -1)
         {
             builder.setMessage(res.getText(R.string.missing_param_for_health_recommendations)+missing);
             builder.setNeutralButton(res.getText(R.string.understood),null).create().show();
@@ -143,12 +143,17 @@ public class MainMenuActivity extends AppCompatActivity {
         else {
             personHealthRecommendationsIntent = new Intent(this, HealthRecommendationsActivity.class);
             personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_SMOKE,(smoke.equals(YES_VALUE)) ? "yes" : "no");
-            if(smoke.equals(YES_VALUE))
-                personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_HISTORY,"yes");
-            else if(smoke.equals(NO_VALUE))
-                personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_HISTORY,"no");
-            else
-                personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_HISTORY,"dont");
+            switch (history) {
+                case YES_VALUE:
+                    personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_HISTORY, "yes");
+                    break;
+                case NO_VALUE:
+                    personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_HISTORY, "no");
+                    break;
+                default:
+                    personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_HISTORY, "dont");
+                    break;
+            }
             personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_HEIGHT, bmi_h);
             personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_WEIGHT, bmi_w);
             personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_AGE,age);

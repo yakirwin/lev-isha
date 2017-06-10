@@ -15,6 +15,7 @@ import android.speech.tts.Voice;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.NestedScrollingChild;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -53,7 +54,9 @@ public class RecordsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_records);
-        try{getSupportActionBar().setTitle(R.string.doctor_records_label);} catch(Exception ignore){}
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null)
+            actionBar.setTitle(R.string.doctor_records_label);
         File[] fileList = VoiceRecorder.getAllRecordings();
         if(fileList == null || fileList.length == 0) {
             NestedScrollView nScroll = (NestedScrollView)this.findViewById(R.id.recordings_scroll_view);
@@ -68,7 +71,7 @@ public class RecordsActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new recordsAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
-        if(!GeneralPurposeService.isServiceRunning(this))
+        if(!GeneralPurposeService.isServiceRunning())
             this.startService(new Intent(this,GeneralPurposeService.class));
     }
 
@@ -90,11 +93,10 @@ public class RecordsActivity extends AppCompatActivity {
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LinearLayout layout = (LinearLayout) LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.records_list_entry, parent, false);
-            ViewHolder vh = new ViewHolder(layout);
-            return vh;
+            return new ViewHolder(layout);
         }
 
-        public File getItem(int position) {
+        File getItem(int position) {
             return mDataset[position];
         }
 
@@ -120,7 +122,7 @@ public class RecordsActivity extends AppCompatActivity {
             MediaPlayer mediaPlayer;
             Context context;
 
-            public ViewHolder(LinearLayout layout) {
+            ViewHolder(LinearLayout layout) {
                 super(layout);
                 this.layout = layout;
                 title = (TextView)layout.findViewById(R.id.entry_title);
