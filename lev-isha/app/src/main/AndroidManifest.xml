@@ -17,6 +17,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".core.MainMenuActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +25,7 @@
         </activity>
         <activity
             android:name=".core.SplashScreen"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,25 +34,34 @@
         </activity>
         <activity
             android:name=".core.PersonalProfileActivity"
+            android:screenOrientation="portrait"
             android:label="@string/personal_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".core.ChecklistActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_check_list"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".core.HealthRecommendationsActivity"
+            android:screenOrientation="portrait"
             android:label="@string/personal_health_recommendation_label" />
         <activity
             android:name=".core.RecordsActivity"
+            android:screenOrientation="portrait"
             android:label="@string/doctor_records_label" />
         <activity
             android:name=".core.BloodTestActivity"
+            android:screenOrientation="portrait"
             android:label="@string/blood_test_result_guide_label" />
-        <activity android:name=".core.BloodTestWebViewActivity"/>
+        <activity
+            android:name=".core.BloodTestWebViewActivity"
+            android:screenOrientation="portrait"/>
 
-        <service android:name=".utility.GeneralPurposeService">
+        <service
+            android:name=".utility.GeneralPurposeService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService" />
             </intent-filter>
