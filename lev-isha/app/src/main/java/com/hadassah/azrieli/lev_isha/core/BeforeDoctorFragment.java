@@ -13,6 +13,7 @@ import android.provider.CalendarContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -133,23 +134,23 @@ public class BeforeDoctorFragment extends Fragment {
     }
 
     private void bindViews(View parent) {
-        doctorName = (EditText)parent.findViewById(R.id.edit_text_doctor_name);
-        address = (EditText)parent.findViewById(R.id.edit_text_address);
-        date = (EditText)parent.findViewById(R.id.appointment_date);
-        time = (EditText)parent.findViewById(R.id.appointment_time);
-        saveAppointment = (Button)parent.findViewById(R.id.add_appointment_to_calendar);
+        doctorName = parent.findViewById(R.id.edit_text_doctor_name);
+        address = parent.findViewById(R.id.edit_text_address);
+        date = parent.findViewById(R.id.appointment_date);
+        time = parent.findViewById(R.id.appointment_time);
+        saveAppointment = parent.findViewById(R.id.add_appointment_to_calendar);
         saveAppointment.setEnabled(false);
-        references = (CheckBox)parent.findViewById(R.id.check_box_references);
-        prescription = (CheckBox)parent.findViewById(R.id.check_box_prescription);
-        previousDiagnoses = (CheckBox)parent.findViewById(R.id.check_box_Previous_diagnoses);
-        testsResults = (CheckBox)parent.findViewById(R.id.check_box_tests_results);
-        subjectsIWantToTalkAbout = (EditText)parent.findViewById(R.id.text_box_subjects_i_want_to_talk_about);
-        newSymptoms = (EditText)parent.findViewById(R.id.text_box_new_symptoms);
-        changesInLife = (EditText)parent.findViewById(R.id.text_box_changes_in_life);
-        personalMedicalHistory = (EditText)parent.findViewById(R.id.text_box_personal_medical_history);
-        familyHealthBackground = (EditText)parent.findViewById(R.id.text_box_family_health_background);
-        drugsITake = (EditText)parent.findViewById(R.id.text_box_drugs_i_take);
-        additionalQuestionsToTheDoctor = (EditText)parent.findViewById(R.id.text_box_additional_questions_to_the_doctor);
+        references = parent.findViewById(R.id.check_box_references);
+        prescription = parent.findViewById(R.id.check_box_prescription);
+        previousDiagnoses = parent.findViewById(R.id.check_box_Previous_diagnoses);
+        testsResults = parent.findViewById(R.id.check_box_tests_results);
+        subjectsIWantToTalkAbout = parent.findViewById(R.id.text_box_subjects_i_want_to_talk_about);
+        newSymptoms = parent.findViewById(R.id.text_box_new_symptoms);
+        changesInLife = parent.findViewById(R.id.text_box_changes_in_life);
+        personalMedicalHistory = parent.findViewById(R.id.text_box_personal_medical_history);
+        familyHealthBackground = parent.findViewById(R.id.text_box_family_health_background);
+        drugsITake = parent.findViewById(R.id.text_box_drugs_i_take);
+        additionalQuestionsToTheDoctor = parent.findViewById(R.id.text_box_additional_questions_to_the_doctor);
     }
 
     private void setTags() {
@@ -290,7 +291,10 @@ public class BeforeDoctorFragment extends Fragment {
             if(dueDate == null)
                 return;
             saveAppointment.setEnabled(true);
-            if(prefs.getLong("next_doctor_appointment_date_in_ms",-1) != -1)
+            long inMemory = prefs.getLong("next_doctor_appointment_date_in_ms",-1);
+            if(inMemory == getCalendarObjectFromFields().getTimeInMillis())
+                return;
+            if(inMemory != -1)
                 OverallNotificationManager.cancelDoctorAppointment(getActivity());
             prefs.edit().putLong("next_doctor_appointment_date_in_ms",dueDate.getTimeInMillis()).commit();
             OverallNotificationManager.setUpNotificationTimers(getActivity(),OverallNotificationManager.NOTIFICATION_10_MIN_BEFORE_DOCTOR_ID);
