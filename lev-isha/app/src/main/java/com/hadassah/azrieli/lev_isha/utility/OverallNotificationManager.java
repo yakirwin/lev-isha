@@ -24,6 +24,7 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 
 import static android.content.Context.ALARM_SERVICE;
+import static android.support.v4.app.NotificationManagerCompat.IMPORTANCE_HIGH;
 
 /**
  * Created by Avihu Harush on 01/06/2017
@@ -245,7 +246,8 @@ public abstract class OverallNotificationManager {
                 .setAutoCancel(true)
                 .setSmallIcon(R.drawable.icon_notification)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                .setPriority(Notification.PRIORITY_MAX)
+                .setShowWhen(false)
+                .setPriority(IMPORTANCE_HIGH)
                 .setContentIntent(activity);
         return builder.build();
     }
@@ -261,7 +263,8 @@ public abstract class OverallNotificationManager {
                 .setAutoCancel(true)
                 .setSmallIcon(R.drawable.icon_notification)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                .setPriority(Notification.PRIORITY_MAX)
+                .setShowWhen(false)
+                .setPriority(IMPORTANCE_HIGH)
                 .setContentIntent(activity);
         return builder.build();
     }
@@ -277,7 +280,8 @@ public abstract class OverallNotificationManager {
                 .setAutoCancel(true)
                 .setSmallIcon(R.drawable.icon_notification)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                .setPriority(Notification.PRIORITY_MAX)
+                .setShowWhen(false)
+                .setPriority(IMPORTANCE_HIGH)
                 .setContentIntent(activity);
         return builder.build();
     }
@@ -293,7 +297,8 @@ public abstract class OverallNotificationManager {
                 .setAutoCancel(true)
                 .setSmallIcon(R.drawable.icon_notification)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                .setPriority(Notification.PRIORITY_MAX)
+                .setShowWhen(false)
+                .setPriority(IMPORTANCE_HIGH)
                 .setContentIntent(activity);
         return builder.build();
     }
