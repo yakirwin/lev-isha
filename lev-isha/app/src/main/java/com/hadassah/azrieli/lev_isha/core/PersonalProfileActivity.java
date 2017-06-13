@@ -337,7 +337,8 @@ public class PersonalProfileActivity extends AppCompatActivity {
         PersonalProfile profile = PersonalProfile.getInstance(this);
         PersonalProfileEntry heightEntry = profile.findEntryByName(this.getResources().getText(R.string.height).toString());
         PersonalProfileEntry weightEntry = profile.findEntryByName(this.getResources().getText(R.string.weight).toString());
-        int weight,height;
+        int weight;
+        int height;
         try {
             weight = (int)Double.parseDouble(weightEntry.getValue());
             height = (int)Double.parseDouble(heightEntry.getValue());

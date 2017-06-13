@@ -48,9 +48,8 @@ public class PersonalProfileEntry implements Serializable, Comparable<PersonalPr
     }
 
     public void setValue(String val) {
-        if(inputType == FINITE_STATES)
-            if(!val.equals(YES_VALUE) && !val.equals(NO_VALUE) && !val.equals(MAYBE_VALUE))
-                return;
+        if(inputType == FINITE_STATES && (!val.equals(YES_VALUE) && !val.equals(NO_VALUE) && !val.equals(MAYBE_VALUE)))
+            return;
         this.val = val;
         this.modified = Calendar.getInstance();
     }

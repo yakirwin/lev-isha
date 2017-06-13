@@ -216,14 +216,23 @@ public abstract class OverallNotificationManager {
     }
 
     @SuppressLint("SimpleDateFormat")
-    private static String getDeyBeforeDoctorContentText(Context context, Calendar appointment) {
-        String docName = PreferenceManager.getDefaultSharedPreferences(context).getString("edit_text_doctor_name",null);
+    private static String getDeyBeforeDoctorContentText(Context context, boolean shorter) {
         String toReturn = "";
-        toReturn += (context.getString(R.string.notification_message_day_before_doctor_header) + " ");
-        toReturn += (context.getString(R.string.notification_message_day_before_doctor_body_1) + " " + new SimpleDateFormat("HH:mm").format(appointment.getTime())+", ");
+        toReturn += context.getString(R.string.notification_message_day_before_doctor_body_1);
+        if(shorter)
+            toReturn += ".";
+        else
+            toReturn += " " + context.getString(R.string.notification_message_day_before_doctor_body_2);
+        return toReturn;
+    }
+
+    private static String getDeyBeforeDoctorTitleText(Context context, Calendar appointment) {
+        String docName = PreferenceManager.getDefaultSharedPreferences(context).getString("edit_text_doctor_name",null);
+        String toReturn = context.getString(R.string.notification_message_day_before_doctor_header_1) + " ";
+        toReturn += (context.getString(R.string.notification_message_day_before_doctor_header_2) + " " + new SimpleDateFormat("HH:mm").format(appointment.getTime()));
         if(docName != null && docName.length() != 0)
-            toReturn += (context.getString(R.string.notification_message_day_before_doctor_body_2) + " " + docName + ", ");
-        toReturn += context.getString(R.string.notification_message_day_before_doctor_body_3);
+            toReturn += " " + (context.getString(R.string.notification_message_day_before_doctor_header_3) + docName);
+        toReturn += ".";
         return toReturn;
     }
 
@@ -232,9 +241,9 @@ public abstract class OverallNotificationManager {
         PendingIntent activity = PendingIntent.getActivity(context, NOTIFICATION_DAY_BEFORE_DOCTOR_ID, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setDefaults(Notification.DEFAULT_ALL)
-                .setContentTitle(context.getString(R.string.notification_message_day_before_doctor_header))
-                .setContentText(getDeyBeforeDoctorContentText(context,appointment))
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(getDeyBeforeDoctorContentText(context,appointment)))
+                .setContentTitle(getDeyBeforeDoctorTitleText(context,appointment))
+                .setContentText(getDeyBeforeDoctorContentText(context,true))
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(getDeyBeforeDoctorContentText(context,false)))
                 .setAutoCancel(true)
                 .setSmallIcon(R.drawable.icon_notification)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
@@ -250,8 +259,8 @@ public abstract class OverallNotificationManager {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setContentTitle(context.getString(R.string.notification_message_half_year_header))
-                .setContentText(context.getString(R.string.notification_message_half_year_body))
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(getBirthdayContentText(context)))
+                .setContentText(context.getString(R.string.notification_message_half_year_body_short))
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(context.getString(R.string.notification_message_half_year_body)))
                 .setAutoCancel(true)
                 .setSmallIcon(R.drawable.icon_notification)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
@@ -265,15 +274,14 @@ public abstract class OverallNotificationManager {
         Intent intent = new Intent(context, ChecklistActivity.class);
         PendingIntent activity = PendingIntent.getActivity(context, NOTIFICATION_10_MIN_BEFORE_DOCTOR_ID, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
-                .setDefaults(Notification.DEFAULT_VIBRATE)
+                .setDefaults(Notification.DEFAULT_ALL)
                 .setContentTitle(context.getString(R.string.notification_message_10_min_before_doctor_header))
-                .setContentText(context.getString(R.string.notification_message_10_min_before_doctor_body))
+                .setContentText(context.getString(R.string.notification_message_10_min_before_doctor_body_short))
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(context.getString(R.string.notification_message_10_min_before_doctor_body)))
                 .setAutoCancel(true)
-                .setShowWhen(false)
-                .addAction(0,context.getString(R.string.open_up_the_app),activity)
                 .setSmallIcon(R.drawable.icon_notification)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                .setShowWhen(false)
                 .setPriority(IMPORTANCE_MAX)
                 .setContentIntent(activity);
         return builder.build();
@@ -285,7 +293,7 @@ public abstract class OverallNotificationManager {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setContentTitle(context.getString(R.string.notification_message_birthday_header))
-                .setContentText(getBirthdayContentText(context))
+                .setContentText(context.getString(R.string.notification_message_birthday_body_short))
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(getBirthdayContentText(context)))
                 .setAutoCancel(true)
                 .setSmallIcon(R.drawable.icon_notification)
