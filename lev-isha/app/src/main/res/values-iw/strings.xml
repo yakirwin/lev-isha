@@ -3,25 +3,17 @@
     <string name="app_name">לבריאותך</string>
 
     <!-- MainMenu Labels <START> -->
-    <string name="nutrition_label">תזונה</string>
-    <string name="community_label">קהילה</string>
     <string name="personal_profile_label">פרופיל אישי</string>
     <string name="blood_test_result_guide_label">תוצאות בדיקת דם</string>
     <string name="personal_health_recommendation_label">המלצות הבריאות שלך</string>
-    <string name="physical_exercise_label">פעילות גופנית</string>
-    <string name="locating_services_label">איתור שירותים</string>
-    <string name="set_reminder_label">הוסף תזכורת</string>
     <string name="checklist_label">ביקור רופא</string>
     <!-- MainMenu Labels <END> -->
 
     <!-- Personal Profile Labels <START> -->
     <string name="name">שם</string>
-    <string name="first_name">שם פרטי</string>
-    <string name="last_name">שם משפחה</string>
     <string name="weight">משקל בק\"ג</string>
     <string name="height">גובה בס\"מ</string>
     <string name="bmi">BMI</string>
-    <string name="latest_checkup">ביקורת אחרונה</string>
     <string name="family_history_explanation">האם במשפחתך הקרובה (הורים ואחים) קיים רקע של מחלות לב, שבץ מוחי וכלי דם?</string>
     <!-- Personal Profile Labels <END> -->
 
@@ -29,8 +21,6 @@
     <string name="check_list_1st_part_header">הכנה לרופא</string>
     <string name="doctor_name">שם הרופא</string>
     <string name="address">כתובת</string>
-    <string name="appointment_date">תאריך התור:</string>
-    <string name="appointment_hour">שעה:</string>
     <string name="remember_to_bring_with_you">זכרי להביא איתך:</string>
     <string name="references">הפניות</string>
     <string name="prescription">מרשמים</string>
@@ -39,9 +29,6 @@
     <string name="subjects_i_want_to_talk_about">נושאים אותם אני רוצה להעלות (מהחשוב יותר לחשוב פחות):</string>
     <string name="new_symptoms">סימפטומים חדשים (מתי התחיל, מתי מופיע, תדירות, עצמה):</string>
     <string name="additional_information">מידע נוסף:</string>
-    <string name="changes_in_life">שינויים בחיים:</string>
-    <string name="personal_medical_history">היסטוריה רפואית אישית:</string>
-    <string name="family_health_background">רקע בריאותי משפחתי:</string>
     <string name="drugs_i_take">תרופות שאני לוקחת (שמות ומינונים):</string>
     <string name="additional_questions_to_the_doctor">שאלות ספציפיות לרופא:</string>
     <string name="check_list_2nd_part_header">אצל הרופא</string>
@@ -73,8 +60,6 @@
     <string name="press_here_to_copy_this_text">לחצי כאן בכדי להעתיק את הודעת השגיאה</string>
     <string name="error">שגיאה</string>
     <string name="text_copied_successfully">הטקסט הועתק בהצלחה</string>
-    <string name="please_wait">אנא המתיני</string>
-    <string name="generating_pdf_file">מייצר קובץ PDF…</string>
     <!-- General Labels <END> -->
 
 
@@ -95,10 +80,7 @@
     <string name="notification_message_10_min_before_doctor_body">לחצי כאן בכדי לפתוח את טופס ההכנה לרופא, ושתפי את המידע ואת השאלות שהכנת.\nסכמי או הקליטי את הוראות הרופא ישר מהאפליקציה בלשונית הייעודית, כך תוכלי לשחזר את הוראות הרופא בצורה מדוייקת. בהצלחה ובריאות טובה!</string>
     <string name="notification_message_10_min_before_doctor_body_short">לחצי כאן בכדי לפתוח את טופס ההכנה לרופא.</string>
     <string name="accept">אישור</string>
-    <string name="action_settings">הגדרות</string>
-    <string name="add">הוספי</string>
     <string name="add_appointment_to_calendar">הוסיפי את התור ליומן</string>
-    <string name="add_new_property">הוספי תכונה חדשה…</string>
     <string name="additional_questions_to_the_doctor_hint">שאלות נוספות…</string>
     <string name="age">גיל</string>
     <string name="appointment">תור</string>
@@ -112,21 +94,15 @@
     <string name="clear_both">ניקוי שני הטפסים</string>
     <string name="date">תאריך</string>
     <string name="delete">מחיקה</string>
-    <string name="delete_personal_profile_entry_explain">האם את בטוחה שברצונך למחוק</string>
     <string name="delete_record_body">האם ברצונך למחוק את הקובץ</string>
-    <string name="deviation_body">טווח תקין:</string>
-    <string name="deviation_header">חורג מהטווח המותר</string>
     <string name="doctor_record_end">הפסיקי להקליט</string>
     <string name="doctor_record_start">התחילי להקליט</string>
     <string name="doctor_records_label">הקלטות שמורות</string>
     <string name="drugs_i_take_hint">תרופות שאני לוקחת…</string>
-    <string name="english_language">אנגלית</string>
     <string name="failed_to_start_record">לא ניתן להקליט.</string>
-    <string name="failed_to_create_pdf">לא ניתן ליצור קובץ PDF.</string>
     <string name="family_health_background_hint">רקע רפואי משפחתי</string>
     <string name="family_history_personal_profile">היסטורית מחלות לב משפחתית</string>
     <string name="file_successfully_saved">ההקלטה נשמרה בהצלחה.</string>
-    <string name="hebrew_language">עברית</string>
     <string name="missing_param_for_health_recommendations">כדי לקבל את ההמלצות הרפואיות שלך עליך לספק את הפרטים הבאים:</string>
     <string name="new_symptoms_hint">סימפטומים חדשים…</string>
     <string name="no">לא</string>
@@ -134,13 +110,10 @@
     <string name="not_sure">לא בטוחה</string>
     <string name="personal_medical_history_hint">היסטוריה רפואית אישית</string>
     <string name="personal_profile">פרופיל אישי</string>
-    <string name="plain_text">טקסט</string>
-    <string name="real_numbers">מספר</string>
     <string name="setup_profile_initial_question">אנו מודים לך על שהחלטת להשתמש באפליקציה שלנו. אנו ממליצים בחום להגדיר את הפרופיל האישי שלך בהקדם האפשרי, האם תרצי לבצע זאת כעת?</string>
     <string name="share_chooser_header">שתפי קובץ באמצעות…</string>
     <string name="smoking">האם את מעשנת?</string>
     <string name="subjects_i_want_to_talk_about_hint">נושאים שברצוני לדבר עליהם…</string>
-    <string name="summary_of_the_doctors_Remarks_text_box_hint">רשמים…</string>
     <string name="time">שעה</string>
     <string name="title_activity_check_list">ביקור רופא</string>
     <string name="understood">הבנתי</string>
@@ -148,9 +121,7 @@
     <string name="height_given_is_out_of_bound">אנא הכניסי את גובהך בס\"מ, לדוגמא 165</string>
     <string name="weight_given_is_out_of_bound">אנא הכניסי את משקלך בק\"ג, לדוגמא 75</string>
     <string name="age_given_is_out_of_bound">אפליקציה זו מותאמת לנשים מגיל 20 ומעלה</string>
-    <string name="open_up_the_app">פתח את האפליקציה</string>
     <string name="enter_name_popup_header">הכניסי שם</string>
-    <string name="output_to_pdf">שלח את הטופס כקובץ PDF</string>
     <!-- Notification Messages <END> -->
 
 

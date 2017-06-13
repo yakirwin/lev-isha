@@ -25,7 +25,6 @@ public class ChecklistActivity extends AppCompatActivity {
 
     private static customPager customPagerAdapter = null;
 
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checklist);

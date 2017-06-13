@@ -1,14 +1,10 @@
 <resources>
-    <dimen name="app_bar_height">180dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="text_margin">16dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="checklist_font_size_normal">18sp</dimen>
     <dimen name="checklist_margin_between_sections">40dp</dimen>
     <dimen name="checklist_margin_between_components">12dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
-    <dimen name="edit_text_single_line_height">27dp</dimen>
     <dimen name="read_here_space">5dp</dimen>
     <dimen name="blood_test_space_between_lines">6dp</dimen>
     <dimen name="blood_test_text_size">15sp</dimen>

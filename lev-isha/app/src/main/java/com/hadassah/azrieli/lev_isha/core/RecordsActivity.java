@@ -177,6 +177,8 @@ public class RecordsActivity extends AppCompatActivity {
         }catch(Exception ignore){return;}
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             public void onCompletion(MediaPlayer mediaPlayer) {
+                if(currentlyPlaying == null)
+                    return;
                 currentlyPlaying.play.setBackgroundResource(R.drawable.play_icon);
                 currentlyPlaying.title.setTextColor(Color.BLACK);
                 currentlyPlaying = null;

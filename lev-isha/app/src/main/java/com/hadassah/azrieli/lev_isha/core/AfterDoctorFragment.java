@@ -122,18 +122,18 @@ public class AfterDoctorFragment extends Fragment {
             builder.setView(dialogView);
             builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    Toast.makeText(getActivity(),getActivity().getText(R.string.file_successfully_saved), Toast.LENGTH_SHORT).show();
-                    InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                    killFileNameAlertDialog(textBox,false);
                 }
             });
             builder.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    Toast.makeText(getActivity(),getActivity().getText(R.string.file_successfully_saved), Toast.LENGTH_SHORT).show();
-                    if(textBox.getText() != null && textBox.getText().length() > 0)
-                        VoiceRecorder.changeName(textBox.getText().toString());
-                    InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                    killFileNameAlertDialog(textBox,true);
+                }
+            });
+            builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                @Override
+                public void onCancel(DialogInterface dialogInterface) {
+                    killFileNameAlertDialog(textBox,false);
                 }
             });
             AlertDialog dialog = builder.create();
@@ -150,6 +150,14 @@ public class AfterDoctorFragment extends Fragment {
             updateTimer = new UpdateTimer(getActivity());
             updateTimer.start();
         }
+    }
+
+    private void killFileNameAlertDialog(TextView textBox, boolean canEdit) {
+        Toast.makeText(getActivity(),getActivity().getText(R.string.file_successfully_saved), Toast.LENGTH_SHORT).show();
+        if(canEdit && textBox.getText() != null && textBox.getText().toString().length() > 0)
+            VoiceRecorder.changeName(textBox.getText().toString());
+        InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(textBox.getWindowToken(), 0);
     }
 
 

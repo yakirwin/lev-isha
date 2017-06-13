@@ -71,7 +71,7 @@ public class BloodTestActivity extends AppCompatActivity {
         if(view.equals(btnLBMI))
             pressed = explBMI;
         else if(view.equals(btnBloodPressure))
-            pressed.equals(explBloodPressure);
+            pressed = explBloodPressure;
         else if(view.equals(btnCholesterolGeneral))
             pressed = explCholesterolGeneral;
         else if(view.equals(btnCholesterolLdl))

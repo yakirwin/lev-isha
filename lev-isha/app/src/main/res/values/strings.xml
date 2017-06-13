@@ -2,32 +2,23 @@
     <string name="app_name">לבריאותך</string>
 
     <!-- MainMenu Labels <START> -->
-    <string name="nutrition_label">Nutrition</string>
-    <string name="community_label">Community</string>
     <string name="personal_profile_label">Personal Profile</string>
     <string name="blood_test_result_guide_label">Blood Test Guide</string>
     <string name="personal_health_recommendation_label">Personal Health Recommendation</string>
-    <string name="physical_exercise_label">Physical Exercise</string>
     <string name="checklist_label">Doctor Visit</string>
-    <string name="set_reminder_label">Set Reminder</string>
     <string name="doctor_records_label">Doctor Records</string>
     <!-- MainMenu Labels <END> -->
 
     <!-- Personal Profile Labels <START> -->
     <string name="personal_profile">Personal Profile</string>
     <string name="name">Name</string>
-    <string name="first_name">First Name</string>
-    <string name="last_name">Last Name</string>
     <string name="weight">Weight (KG)</string>
     <string name="height">Height (CM)</string>
     <string name="bmi">BMI</string>
-    <string name="latest_checkup">Latest Checkup</string>
     <string name="birth_date">Birth Date</string>
     <string name="smoking">Smoking</string>
     <string name="family_history_personal_profile">Family Heart Disease History</string>
     <string name="family_history_explanation">Is There Anyone In You Family (Parents And Sibling) With History Of Heart Disease, Stroke Or Hypertension?</string>
-    <string name="deviation_header">Out Of Bound</string>
-    <string name="deviation_body">Valid Range:</string>
     <string name="age">Age</string>
     <!-- Personal Profile Labels <END> -->
 
@@ -49,11 +40,8 @@
     <string name="new_symptoms">New Symptoms (When It Started, When It Appears, Frequency, Intensity):</string>
     <string name="new_symptoms_hint">New Symptoms…</string>
     <string name="additional_information">Additional Information:</string>
-    <string name="changes_in_life">Changes In Life:</string>
     <string name="changes_in_life_hint">Changes In Life</string>
-    <string name="personal_medical_history">Personal Medical History:</string>
     <string name="personal_medical_history_hint">Personal Medical History</string>
-    <string name="family_health_background">Family Health Background:</string>
     <string name="family_health_background_hint">Family Health Background</string>
     <string name="drugs_i_take">Drugs I Take (Names And Doses):</string>
     <string name="drugs_i_take_hint">Drugs I Take…</string>
@@ -61,7 +49,6 @@
     <string name="additional_questions_to_the_doctor_hint">Additional Questions…</string>
     <string name="check_list_2nd_part_header">At The Doctor</string>
     <string name="summary_of_the_doctors_Remarks">Summary Of The Doctor\'s Remarks</string>
-    <string name="summary_of_the_doctors_Remarks_text_box_hint">Remarks…</string>
     <string name="determine_your_risk_of_heart_disease">Determine Your Risk Of Heart Disease</string>
     <string name="ask_about_future_treatment">Ask About Future Treatment</string>
     <string name="should_you_come_back_for_further_inspections">Should You Come Back For Further Inspections?</string>
@@ -80,21 +67,13 @@
     <string name="accept">Accept</string>
     <string name="cancel">Cancel</string>
     <string name="understood">Understood</string>
-    <string name="add_new_property">Add New Property…</string>
-    <string name="plain_text">Text</string>
-    <string name="real_numbers">Number</string>
     <string name="delete">Delete</string>
-    <string name="delete_personal_profile_entry_explain">Are You Sure You Want To Delete</string>
-    <string name="add">Add</string>
     <string name="title_activity_check_list">CheckList</string>
-    <string name="action_settings">Settings</string>
     <string name="welcome">Welcome</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="not_sure">Not Sure</string>
     <string name="calendar_reminder_header">Doctor Examination</string>
-    <string name="english_language">English</string>
-    <string name="hebrew_language">Hebrew</string>
     <string name="missing_param_for_health_recommendations">To Provide Your Health\nRecommendations You Need To Provide The Following Details:</string>
     <string name="setup_profile_initial_question">
         Thank You For Using Our App!\n

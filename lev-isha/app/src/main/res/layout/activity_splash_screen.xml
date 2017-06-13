@@ -9,7 +9,6 @@
     tools:context="com.hadassah.azrieli.lev_isha.core.SplashScreen">
 
     <ImageView
-        android:id="@+id/splash_screen_chani"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
