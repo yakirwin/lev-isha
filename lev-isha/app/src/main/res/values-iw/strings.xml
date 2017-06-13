@@ -73,6 +73,8 @@
     <string name="press_here_to_copy_this_text">לחצי כאן בכדי להעתיק את הודעת השגיאה</string>
     <string name="error">שגיאה</string>
     <string name="text_copied_successfully">הטקסט הועתק בהצלחה</string>
+    <string name="please_wait">אנא המתיני</string>
+    <string name="generating_pdf_file">מייצר קובץ PDF…</string>
     <!-- General Labels <END> -->
 
 
@@ -189,10 +191,5 @@
     <string name="blood_test_option_expand_all_sections">פתיחת כל הקטגוריות</string>
     <!-- BloodTest Messages <END> -->
 
-    <!-- PDF Messages <START> -->
-    <string name="creator_and_author">אפליקציית לבריאותך</string>
-    <string name="pdf_title">הכנה לביקור אצל הרופא</string>
-
-    <!-- PDF Messages <END> -->
 
 </resources>
