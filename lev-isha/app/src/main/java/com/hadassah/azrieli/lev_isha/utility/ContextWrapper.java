@@ -15,24 +15,25 @@ public class ContextWrapper extends android.content.ContextWrapper {
     }
 
     public static ContextWrapper wrap(Context context, Locale newLocale) {
-        Resources res = context.getResources();
+        Context toReturn = context;
+        Resources res = toReturn.getResources();
         Configuration configuration = res.getConfiguration();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             configuration.setLocale(newLocale);
             LocaleList localeList = new LocaleList(newLocale);
             LocaleList.setDefault(localeList);
             configuration.setLocales(localeList);
-            context = context.createConfigurationContext(configuration);
+            toReturn = toReturn.createConfigurationContext(configuration);
             Locale.setDefault(newLocale);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             configuration.setLocale(newLocale);
-            context = context.createConfigurationContext(configuration);
+            toReturn = toReturn.createConfigurationContext(configuration);
             Locale.setDefault(newLocale);
         }/* else {
             configuration.locale = newLocale;
             res.updateConfiguration(configuration, res.getDisplayMetrics());
         }*/
-        return new ContextWrapper(context);
+        return new ContextWrapper(toReturn);
     }
 }
 

@@ -9,7 +9,6 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -193,7 +192,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
                             int age = calculateAge(format);
                             if(age < MIN_AGE || age > MAX_AGE)
                             {
-                                showDeviationMessage(getResources().getString(R.string.age),MIN_AGE,MAX_AGE);
+                                showDeviationMessage(getResources().getString(R.string.age));
                                 return;
                             }
                             toEdit.setValue(format);
@@ -258,7 +257,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
                     type = radioGroup.getCheckedRadioButtonId();
                     String rawType = ((RadioButton)dialogView.findViewById(type)).getText().toString();
                     if(rawType.equals(res.getText(R.string.not_sure)))
-                        toEdit.setValue(PersonalProfileEntry.MAYBE_VALUE);
+                        toEdit.setValue(MAYBE_VALUE);
                     else if(rawType.equals(res.getText(R.string.yes)))
                         toEdit.setValue(YES_VALUE);
                     else
@@ -293,12 +292,12 @@ public class PersonalProfileActivity extends AppCompatActivity {
                     }catch(Exception ignore){}
                     if(toEdit.getName().equals(getResources().getString(R.string.height)) && (value > MAX_HEIGHT || value < MIN_HEIGHT))
                         {
-                            showDeviationMessage(getResources().getString(R.string.height),MIN_HEIGHT,MAX_HEIGHT);
+                            showDeviationMessage(getResources().getString(R.string.height));
                             return;
                         }
                     if(toEdit.getName().equals(getResources().getString(R.string.weight)) && (value > MAX_WEIGHT || value < MIN_WEIGHT))
                         {
-                            showDeviationMessage(getResources().getString(R.string.weight),MIN_WEIGHT,MAX_WEIGHT);
+                            showDeviationMessage(getResources().getString(R.string.weight));
                             return;
                         }
                     toEdit.setValue(text);
@@ -320,7 +319,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
         }
     }
 
-    private void showDeviationMessage(String field, int min, int max) {
+    private void showDeviationMessage(String field) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.error));
         if(field.equals(getString(R.string.weight)))
