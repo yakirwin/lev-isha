@@ -4,12 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.webkit.WebView;
 
-/**
- * Created by Avihu Harush on 10/06/2017
- * E-Mail: tchvu3@gmail.com
- */
-
-
 public class ObservableWebView extends WebView
 {
 

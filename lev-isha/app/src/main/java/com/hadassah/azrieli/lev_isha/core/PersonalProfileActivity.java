@@ -47,10 +47,6 @@ import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.MAYBE_V
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.NO_VALUE;
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.YES_VALUE;
 
-/**
- * Created by Avihu Harush on 06/05/2017
- * E-Mail: tchvu3@gmail.com
- */
 
 public class PersonalProfileActivity extends AppCompatActivity {
 
@@ -97,11 +93,11 @@ public class PersonalProfileActivity extends AppCompatActivity {
         private Context context;
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            TextView title;
-            TextView summary;
-            ImageButton delete;
-            ImageView icon;
-            RelativeLayout layout;
+            private TextView title;
+            private TextView summary;
+            private ImageButton delete;
+            private ImageView icon;
+            private RelativeLayout layout;
             ViewHolder(RelativeLayout layout) {
                 super(layout);
                 this.layout = layout;

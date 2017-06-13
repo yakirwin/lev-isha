@@ -14,10 +14,6 @@ import java.io.StringWriter;
 
 import static android.content.Context.CLIPBOARD_SERVICE;
 
-/**
- * Created by Avihu Harush on 12/06/2017
- * E-Mail: tchvu3@gmail.com
- */
 
 public abstract class DebugBaseClass {
 

@@ -205,7 +205,7 @@ public class AfterDoctorFragment extends Fragment {
 
     private class UpdateTimer extends Thread {
 
-        Activity parent;
+        private Activity parent;
 
         private UpdateTimer(Activity parent) {
             this.parent = parent;
@@ -232,7 +232,6 @@ public class AfterDoctorFragment extends Fragment {
     }
 
     private void raiseByOneSecond() {
-        //timeStampToUpdate.setTextColor((sec % 2 == 0) ? Color.RED : Color.BLACK);
         String hrsStr, minStr, secStr;
         sec++;
         if(sec == 60) {

@@ -22,10 +22,6 @@ import java.util.Calendar;
 import static android.content.Context.ALARM_SERVICE;
 import static android.support.v4.app.NotificationManagerCompat.IMPORTANCE_MAX;
 
-/**
- * Created by Avihu Harush on 01/06/2017
- * E-Mail: tchvu3@gmail.com
- */
 public abstract class OverallNotificationManager {
 
     static final String NOTIFICATION_BIRTHDAY_EXTRA_ID = "notification_birthday_id";

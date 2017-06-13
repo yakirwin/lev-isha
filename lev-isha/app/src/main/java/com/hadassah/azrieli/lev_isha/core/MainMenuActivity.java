@@ -26,11 +26,6 @@ import java.util.Calendar;
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.NO_VALUE;
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.YES_VALUE;
 
-/**
- * Created by Avihu Harush on 06/05/2017
- * E-Mail: tchvu3@gmail.com
- */
-
 public class MainMenuActivity extends AppCompatActivity {
 
     private LinearLayout personalProfileButton;
@@ -80,13 +75,13 @@ public class MainMenuActivity extends AppCompatActivity {
 
     public void changeActivity(View view) {
         Intent transfer = null;
-        if(view == personalProfileButton)
+        if(view.equals(personalProfileButton))
             transfer = new Intent(this, PersonalProfileActivity.class);
-        if(view == checklistButton)
+        if(view.equals(checklistButton))
             transfer = new Intent(this, ChecklistActivity.class);
-        if(view == DoctorRecordsButton)
+        if(view.equals(DoctorRecordsButton))
             transfer = new Intent(this,RecordsActivity.class);
-        if(view == bloodTestButton)
+        if(view.equals(bloodTestButton))
             transfer = new Intent(this,BloodTestActivity.class);
         if(transfer != null)
             startActivity(transfer);
@@ -101,7 +96,8 @@ public class MainMenuActivity extends AppCompatActivity {
         missing += (smoke == null) ? "- "+res.getString(R.string.smoking)+"\n" : "";
         String history = profile.findEntryByName(res.getString(R.string.family_history_personal_profile)).getValue();
         missing += (history == null) ? "- "+res.getString(R.string.family_history_personal_profile)+"\n" : "";
-        int bmi_w = -1, bmi_h = -1;
+        int bmi_w = -1;
+        int bmi_h = -1;
         try {bmi_w = Integer.parseInt(profile.findEntryByName(getResources().getString(R.string.weight)).getValue());}
         catch(Exception ignore){missing += "- "+res.getString(R.string.weight)+"\n";}
         try {bmi_h = Integer.parseInt(profile.findEntryByName(getResources().getString(R.string.height)).getValue());}

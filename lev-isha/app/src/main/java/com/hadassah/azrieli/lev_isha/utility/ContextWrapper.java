@@ -8,11 +8,6 @@ import android.os.LocaleList;
 
 import java.util.Locale;
 
-/**
- * Created by Avihu Harush on 09/06/2017
- * E-Mail: tchvu3@gmail.com
- */
-
 public class ContextWrapper extends android.content.ContextWrapper {
 
     public ContextWrapper(Context base) {

@@ -13,11 +13,6 @@ import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
 import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 
-/**
- * Created by Avihu Harush on 05/05/2017
- * E-Mail: tchvu3@gmail.com
- */
-
 public class SplashScreen extends AppCompatActivity {
 
     @Override

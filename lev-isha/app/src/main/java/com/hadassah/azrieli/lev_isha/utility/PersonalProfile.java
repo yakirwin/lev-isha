@@ -21,11 +21,6 @@ import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.FINITE_
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.PLAIN_TEXT;
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.REAL_NUMBERS;
 
-/**
- * Created by Avihu Harush on 05/05/2017
- * E-Mail: tchvu3@gmail.com
- */
-
 public class PersonalProfile implements Serializable {
 
     private static final long serialVersionUID = 1L;

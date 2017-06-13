@@ -74,7 +74,7 @@ public class RecordsActivity extends AppCompatActivity {
         private File[] mDataset;
         private Context adapterContext;
 
-        recordsAdapter(Context context) {
+        private recordsAdapter(Context context) {
             mDataset = VoiceRecorder.getAllRecordings();
             adapterContext = context;
         }
@@ -85,7 +85,7 @@ public class RecordsActivity extends AppCompatActivity {
             return new ViewHolder(layout);
         }
 
-        File getItem(int position) {
+        private File getItem(int position) {
             return mDataset[position];
         }
 
@@ -95,25 +95,21 @@ public class RecordsActivity extends AppCompatActivity {
             holder.title.setText(entry.getName());
         }
 
-
         public int getItemCount() {
             return mDataset.length;
         }
 
-
         class ViewHolder extends RecyclerView.ViewHolder {
 
-            TextView title;
-            ImageButton delete;
-            ImageButton share;
-            ImageButton play;
-            LinearLayout layout;
-            MediaPlayer mediaPlayer;
-            Context context;
+            private TextView title;
+            private ImageButton delete;
+            private ImageButton share;
+            private ImageButton play;
+            private MediaPlayer mediaPlayer;
+            private Context context;
 
             ViewHolder(LinearLayout layout) {
                 super(layout);
-                this.layout = layout;
                 title = layout.findViewById(R.id.entry_title);
                 play = layout.findViewById(R.id.entry_play);
                 share = layout.findViewById(R.id.entry_share);

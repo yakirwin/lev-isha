@@ -21,11 +21,6 @@ import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
 import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 
-/**
- * Created by Avihu Harush on 06/05/2017
- * E-Mail: tchvu3@gmail.com
- */
-
 public class ChecklistActivity extends AppCompatActivity {
 
     private static customPager customPagerAdapter = null;
@@ -119,11 +114,11 @@ public class ChecklistActivity extends AppCompatActivity {
             }
         }
 
-        void clearBefore() {
+        private void clearBefore() {
             beforeFragment.clearForm();
         }
 
-        void clearAfter() {
+        private void clearAfter() {
             afterFragment.clearForm();
         }
     }

@@ -25,8 +25,6 @@ public class BloodTestActivity extends AppCompatActivity {
     Button btnLBMI, btnBloodPressure, btnCholesterolGeneral, btnCholesterolLdl,
             btnCholesterolHdl, btnTriglyceride, btnGlucoseFasting, btnHbA1C;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,21 +68,21 @@ public class BloodTestActivity extends AppCompatActivity {
 
     public void pressedExpandableButton(View view) {
         ExpandableRelativeLayout pressed = null;
-        if(view == btnLBMI)
+        if(view.equals(btnLBMI))
             pressed = explBMI;
-        else if(view == btnBloodPressure)
-            pressed = explBloodPressure;
-        else if(view == btnCholesterolGeneral)
+        else if(view.equals(btnBloodPressure))
+            pressed.equals(explBloodPressure);
+        else if(view.equals(btnCholesterolGeneral))
             pressed = explCholesterolGeneral;
-        else if(view == btnCholesterolLdl)
+        else if(view.equals(btnCholesterolLdl))
             pressed = explCholesterolLdl;
-        else if(view == btnCholesterolHdl)
+        else if(view.equals(btnCholesterolHdl))
             pressed = explCholesterolHdl;
-        else if(view == btnTriglyceride)
+        else if(view.equals(btnTriglyceride))
             pressed = explTriglyceride;
-        else if(view == btnGlucoseFasting)
+        else if(view.equals(btnGlucoseFasting))
             pressed = explGlucoseFasting;
-        else if(view == btnHbA1C)
+        else if(view.equals(btnHbA1C))
             pressed = explHbA1C;
         if(pressed == null)
             return;

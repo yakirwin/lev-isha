@@ -13,10 +13,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-/**
- * Created by Avihu Harush on 25/05/2017
- * E-Mail: tchvu3@gmail.com
- */
 
 public abstract class VoiceRecorder {
 

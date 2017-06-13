@@ -25,11 +25,6 @@ import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
 import com.hadassah.azrieli.lev_isha.utility.ObservableWebView;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 
-/**
- * Created by Avihu Harush on 06/05/2017
- * E-Mail: tchvu3@gmail.com
- */
-
 public class HealthRecommendationsActivity extends AppCompatActivity {
 
     public static final String EXTRA_SMOKE = "health_recommendations_extra_smoking";
@@ -37,8 +32,6 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
     public static final String EXTRA_HEIGHT = "health_recommendations_extra_height";
     public static final String EXTRA_WEIGHT = "health_recommendations_extra_weight";
     public static final String EXTRA_AGE = "health_recommendations_extra_age";
-    private String smoke, history;
-    private int height, weight, age;
     private ProgressBar progressBar;
     private ObservableWebView webView;
     private ImageView[] arrows = new ImageView[5];
@@ -54,11 +47,11 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         Intent data = getIntent();
-        smoke = data.getStringExtra(EXTRA_SMOKE);
-        history = data.getStringExtra(EXTRA_HISTORY);
-        height = data.getIntExtra(EXTRA_HEIGHT,-1);
-        weight = data.getIntExtra(EXTRA_WEIGHT,-1);
-        age = data.getIntExtra(EXTRA_AGE,-1);
+        String smoke = data.getStringExtra(EXTRA_SMOKE);
+        String history = data.getStringExtra(EXTRA_HISTORY);
+        int height = data.getIntExtra(EXTRA_HEIGHT, -1);
+        int weight = data.getIntExtra(EXTRA_WEIGHT, -1);
+        int age = data.getIntExtra(EXTRA_AGE, -1);
         webView = (ObservableWebView)findViewById(R.id.personal_health_recommendation_webview);
         progressBar = (ProgressBar)findViewById(R.id.personal_health_recommendation_progress_bar);
         webView.setWebViewClient(new WebViewController());
@@ -68,7 +61,7 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
         arrows[2] = (ImageView)findViewById(R.id.personal_health_recommendation_scrolling_indication_icon3);
         arrows[3] = (ImageView)findViewById(R.id.personal_health_recommendation_scrolling_indication_icon4);
         arrows[4] = (ImageView)findViewById(R.id.personal_health_recommendation_scrolling_indication_icon5);
-        webView.loadUrl("http://www.lev-isha.org/hra_result/?age="+age+"&smoke="+smoke+"&history="+history+"&bmi_weight="+weight+"&bmi_height="+height+"&approve=1");
+        webView.loadUrl("http://www.lev-isha.org/hra_result/?age="+ age +"&smoke="+ smoke +"&history="+ history +"&bmi_weight="+ weight +"&bmi_height="+ height +"&approve=1");
         if(!GeneralPurposeService.isServiceRunning())
             this.startService(new Intent(this,GeneralPurposeService.class));
     }

@@ -6,10 +6,6 @@ import android.text.InputType;
 import java.io.Serializable;
 import java.util.Calendar;
 
-/**
- * Created by Avihu Harush on 05/05/2017
- * E-Mail: tchvu3@gmail.com
- */
 
 public class PersonalProfileEntry implements Serializable, Comparable<PersonalProfileEntry> {
 
