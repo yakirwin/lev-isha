@@ -45,7 +45,7 @@ public abstract class OverallNotificationManager {
             case NOTIFICATION_HALF_YEAR_ID : setupHalfYearNotification(context); return;
             case NOTIFICATION_DAY_BEFORE_DOCTOR_ID : setupDayBeforeDoctorNotification(context); return;
             case NOTIFICATION_10_MIN_BEFORE_DOCTOR_ID : setupTenMinsBeforeDoctorNotification(context); return;
-            case NO_ADDITIONAL_ID : break;
+            default : break;
         }
         setupBirthdayNotification(context);
         setupHalfYearNotification(context);

@@ -72,12 +72,6 @@ public class PersonalProfileActivity extends AppCompatActivity {
             actionBar.setTitle(this.getResources().getString(R.string.personal_profile));
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.profile_fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                addNewEntry();
-            }
-        });
         if(!GeneralPurposeService.isServiceRunning())
             this.startService(new Intent(this,GeneralPurposeService.class));
     }
@@ -108,11 +102,6 @@ public class PersonalProfileActivity extends AppCompatActivity {
                 layout.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         editEntry(view,(int)view.getTag());
-                    }
-                });
-                delete.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View view) {
-                        deleteEntry((int)view.getTag());
                     }
                 });
             }
@@ -167,91 +156,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
 
     }
 
-    private void addNewEntry() {
-        if(mAdapter == null)
-            return;
-        final Resources res = this.getResources();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(res.getText(R.string.add_new_property));
-        builder.setNegativeButton(R.string.cancel,null);
-        final View dialogView = this.getLayoutInflater().inflate(R.layout.text_input,null);
-        builder.setView(dialogView);
-        final EditText editText = dialogView.findViewById(R.id.text_input_text_box);
-        final RadioGroup radioGroup = dialogView.findViewById(R.id.text_input_radio_group);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        params.weight = 1.0f;
-        params.gravity = Gravity.START;
-        params.leftMargin = 40;
-        RadioButton rb1 = new RadioButton(this);
-        rb1.setText(res.getText(R.string.plain_text));
-        radioGroup.addView(rb1);
-        rb1.setPadding(10,0,10,0);
-        rb1.setChecked(true);
-        rb1.setLayoutParams(params);
-        RadioButton rb2 = new RadioButton(this);
-        rb2.setText(res.getText(R.string.real_numbers));
-        radioGroup.addView(rb2);
-        rb2.setPadding(10,0,10,0);
-        rb2.setLayoutParams(params);
-        RadioButton rb3 = new RadioButton(this);
-        rb3.setText(res.getText(R.string.date));
-        radioGroup.addView(rb3);
-        rb3.setPadding(10,0,10,0);
-        rb3.setLayoutParams(params);
-        builder.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                if(editText.getText().length() == 0)
-                    return;
-                int type;
-                type = radioGroup.getCheckedRadioButtonId();
-                String rawType = ((RadioButton)dialogView.findViewById(type)).getText().toString();
-                if(rawType.equals(res.getText(R.string.real_numbers)))
-                    type = PersonalProfileEntry.REAL_NUMBERS;
-                else if(rawType.equals(res.getText(R.string.date)))
-                    type = PersonalProfileEntry.DATE;
-                else
-                    type = PersonalProfileEntry.PLAIN_TEXT;
-                PersonalProfile profile = PersonalProfile.getInstance(PersonalProfileActivity.this);
-                PersonalProfileEntry entry = profile.addNewField(editText.getText().toString(),null,type);
-                if(entry != null) {
-                    mAdapter.mDataset = PersonalProfile.getInstance(PersonalProfileActivity.this).getEntriesCopy();
-                    mAdapter.notifyItemInserted(mAdapter.mDataset.size());
-                    profile.commitChanges(PersonalProfileActivity.this);
-                }
-            }
-        });
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
 
-    private boolean deleteEntry(final int index) {
-        if(mAdapter == null)
-            return false;
-        final PersonalProfileEntry toDelete;
-        try {
-            toDelete = mAdapter.getItem(index);
-        }catch(Exception ignore){return false;}
-        if(toDelete == null || toDelete.isEssential())
-            return false;
-        AlertDialog.Builder builder = new AlertDialog.Builder(PersonalProfileActivity.this);
-        builder.setTitle(toDelete.getName());
-        builder.setMessage(PersonalProfileActivity.this.getResources().getText(R.string.delete_personal_profile_entry_explain)+" "+toDelete.getName()+"?");
-        builder.setNegativeButton(R.string.cancel,null);
-        builder.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogInterface, int i) {
-                PersonalProfile profile = PersonalProfile.getInstance(PersonalProfileActivity.this);
-                if(profile.deleteFieldByEntry(toDelete) != null) {
-                    mAdapter.mDataset = PersonalProfile.getInstance(PersonalProfileActivity.this).getEntriesCopy();
-                    mAdapter.notifyItemRemoved(index);
-                    mAdapter.notifyItemRangeChanged(index,mAdapter.getItemCount());
-                    profile.commitChanges(PersonalProfileActivity.this);
-                }
-            }
-        });
-        AlertDialog dialog = builder.create();
-        dialog.show();
-        return true;
-    }
 
     private void editEntry(final View view, final int index) {
         if(mAdapter == null)
@@ -386,13 +291,13 @@ public class PersonalProfileActivity extends AppCompatActivity {
                         value = (int)Double.parseDouble(text);
                         text = ""+value;
                     }catch(Exception ignore){}
-                    if(toEdit.getName().equals(getResources().getString(R.string.height)))
-                        if(value > MAX_HEIGHT || value < MIN_HEIGHT) {
+                    if(toEdit.getName().equals(getResources().getString(R.string.height)) && (value > MAX_HEIGHT || value < MIN_HEIGHT))
+                        {
                             showDeviationMessage(getResources().getString(R.string.height),MIN_HEIGHT,MAX_HEIGHT);
                             return;
                         }
-                    if(toEdit.getName().equals(getResources().getString(R.string.weight)))
-                        if(value > MAX_WEIGHT || value < MIN_WEIGHT) {
+                    if(toEdit.getName().equals(getResources().getString(R.string.weight)) && (value > MAX_WEIGHT || value < MIN_WEIGHT))
+                        {
                             showDeviationMessage(getResources().getString(R.string.weight),MIN_WEIGHT,MAX_WEIGHT);
                             return;
                         }
