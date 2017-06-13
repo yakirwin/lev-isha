@@ -19,10 +19,10 @@ import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 
 public class BloodTestActivity extends AppCompatActivity {
 
-    ExpandableRelativeLayout explBMI, explBloodPressure, explCholesterolGeneral,
+    private ExpandableRelativeLayout explBMI, explBloodPressure, explCholesterolGeneral,
             explCholesterolLdl, explCholesterolHdl, explTriglyceride,
             explGlucoseFasting, explHbA1C;
-    Button btnLBMI, btnBloodPressure, btnCholesterolGeneral, btnCholesterolLdl,
+    private Button btnLBMI, btnBloodPressure, btnCholesterolGeneral, btnCholesterolLdl,
             btnCholesterolHdl, btnTriglyceride, btnGlucoseFasting, btnHbA1C;
 
     @Override

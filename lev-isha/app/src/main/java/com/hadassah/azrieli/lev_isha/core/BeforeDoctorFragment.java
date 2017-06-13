@@ -85,7 +85,7 @@ public class BeforeDoctorFragment extends Fragment {
 
     private class TextChangedListener extends AbsListView {
 
-        EditText textField;
+        private EditText textField;
 
         public void afterTextChanged(Editable s) {
             super.afterTextChanged(s);
@@ -215,7 +215,9 @@ public class BeforeDoctorFragment extends Fragment {
     }
 
     public void openDateChooser() {
-        int year, month, day;
+        int year;
+        int month;
+        int day;
         Calendar currentTime = Calendar.getInstance();
         final DateFormat df = DateFormat.getDateInstance(DateFormat.DEFAULT,  PersonalProfile.getCurrentLocale());
         Calendar inMemory = Calendar.getInstance();
@@ -245,7 +247,8 @@ public class BeforeDoctorFragment extends Fragment {
 
     @SuppressLint("SimpleDateFormat")
     public void openTimeChooser() {
-        int hour, min;
+        int hour;
+        int min;
         final Calendar currentTime = Calendar.getInstance();
         //final DateFormat df = DateFormat.getTimeInstance(DateFormat.SHORT);
         final DateFormat df = new SimpleDateFormat("HH:mm");

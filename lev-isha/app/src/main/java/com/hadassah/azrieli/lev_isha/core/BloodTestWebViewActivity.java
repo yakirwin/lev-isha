@@ -76,8 +76,8 @@ public class BloodTestWebViewActivity extends AppCompatActivity {
 
     private class WebViewController extends WebViewClient {
 
-        boolean loadingFinished = true;
-        boolean redirect = false;
+        private boolean loadingFinished = true;
+        private boolean redirect = false;
 
         @TargetApi(Build.VERSION_CODES.N)
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {

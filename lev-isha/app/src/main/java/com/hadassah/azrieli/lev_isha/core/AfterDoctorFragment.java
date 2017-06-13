@@ -45,9 +45,7 @@ public class AfterDoctorFragment extends Fragment {
     private int hrs = 0, min = 0, sec = 0;
     private TextView timeStampToUpdate;
     private UpdateTimer updateTimer;
-    int RECORD_PERMISSIONS_ASKING_CODE = 550;
-
-    public AfterDoctorFragment() {}
+    private int RECORD_PERMISSIONS_ASKING_CODE = 550;
 
     public static AfterDoctorFragment newInstance() {
         return new AfterDoctorFragment();
@@ -97,7 +95,7 @@ public class AfterDoctorFragment extends Fragment {
             pressedRecordButton();
     }
 
-    String[] getMissingPermissions() {
+    private String[] getMissingPermissions() {
         ArrayList<String> missing = new ArrayList<>();
         if(ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED)
             missing.add(Manifest.permission.RECORD_AUDIO);
@@ -178,7 +176,7 @@ public class AfterDoctorFragment extends Fragment {
 
     private class TextChangedListener extends AbsListView {
 
-        EditText textField;
+        private EditText textField;
 
         public void afterTextChanged(Editable s) {
             super.afterTextChanged(s);
@@ -232,7 +230,9 @@ public class AfterDoctorFragment extends Fragment {
     }
 
     private void raiseByOneSecond() {
-        String hrsStr, minStr, secStr;
+        String hrsStr;
+        String minStr;
+        String secStr;
         sec++;
         if(sec == 60) {
             sec = 0;

@@ -34,7 +34,8 @@ public abstract class VoiceRecorder {
         recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
         String fileLocation = getFolderLocation() + getNameFormat() + ".mp4";
         File outputFile = new File(fileLocation);
-        boolean folderExist, fileExist;
+        boolean folderExist;
+        boolean fileExist;
         if(!(folderExist = outputFile.getParentFile().exists()))
             folderExist = outputFile.getParentFile().mkdirs();
         if(!(fileExist = outputFile.exists()))

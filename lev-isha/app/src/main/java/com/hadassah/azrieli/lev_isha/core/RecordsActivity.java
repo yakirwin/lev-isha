@@ -215,7 +215,7 @@ public class RecordsActivity extends AppCompatActivity {
         builder.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialogInterface, int i) {
                 if(toDelete.delete()) {
-                    if(currentlyPlaying != null && currentlyPlaying == deleting) {
+                    if(currentlyPlaying != null && currentlyPlaying.equals(deleting)) {
                         currentlyPlaying.title.setTextColor(Color.BLACK);
                         currentlyPlaying = null;
                     }

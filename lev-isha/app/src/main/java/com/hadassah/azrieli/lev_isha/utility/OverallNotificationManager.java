@@ -24,14 +24,14 @@ import static android.support.v4.app.NotificationManagerCompat.IMPORTANCE_MAX;
 
 public abstract class OverallNotificationManager {
 
-    static final String NOTIFICATION_BIRTHDAY_EXTRA_ID = "notification_birthday_id";
-    static final String NOTIFICATION_HALF_YEAR_EXTRA_ID = "notification_half_year_id";
-    static final String NOTIFICATION_DAY_BEFORE_DOCTOR_EXTRA_ID = "notification_day_before_doctor_id";
-    static final String NOTIFICATION_10_MIN_BEFORE_DOCTOR_EXTRA_ID = "notification_10_min_before_doctor_id";
-    static final String NOTIFICATION_BIRTHDAY_OBJECT = "notification_birthday_object";
-    static final String NOTIFICATION_HALF_YEAR_OBJECT = "notification_half_year_object";
-    static final String NOTIFICATION_DAY_BEFORE_DOCTOR_OBJECT = "notification_day_before_doctor_object";
-    static final String NOTIFICATION_10_MIN_BEFORE_DOCTOR_OBJECT = "notification_10_min_before_doctor_object";
+    public static final String NOTIFICATION_BIRTHDAY_EXTRA_ID = "notification_birthday_id";
+    public static final String NOTIFICATION_HALF_YEAR_EXTRA_ID = "notification_half_year_id";
+    public static final String NOTIFICATION_DAY_BEFORE_DOCTOR_EXTRA_ID = "notification_day_before_doctor_id";
+    public static final String NOTIFICATION_10_MIN_BEFORE_DOCTOR_EXTRA_ID = "notification_10_min_before_doctor_id";
+    public static final String NOTIFICATION_BIRTHDAY_OBJECT = "notification_birthday_object";
+    public static final String NOTIFICATION_HALF_YEAR_OBJECT = "notification_half_year_object";
+    public static final String NOTIFICATION_DAY_BEFORE_DOCTOR_OBJECT = "notification_day_before_doctor_object";
+    public static final String NOTIFICATION_10_MIN_BEFORE_DOCTOR_OBJECT = "notification_10_min_before_doctor_object";
     public static final int NOTIFICATION_BIRTHDAY_ID = 18000;
     private static final int NOTIFICATION_HALF_YEAR_ID = 18001;
     public static final int NOTIFICATION_DAY_BEFORE_DOCTOR_ID = 18002;

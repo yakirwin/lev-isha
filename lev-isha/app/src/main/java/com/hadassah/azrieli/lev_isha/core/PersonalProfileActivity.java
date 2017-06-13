@@ -263,7 +263,9 @@ public class PersonalProfileActivity extends AppCompatActivity {
         final Resources res = this.getResources();
         if(toEdit.getInputType() == PersonalProfileEntry.DATE) {
             Calendar currentTime = Calendar.getInstance();
-            int year, month, day;
+            int year;
+            int month;
+            int day;
             Calendar date = null;
             final DateFormat df = DateFormat.getDateInstance(DateFormat.DEFAULT, PersonalProfile.getCurrentLocale());
             if(toEdit.getValue() != null) {
