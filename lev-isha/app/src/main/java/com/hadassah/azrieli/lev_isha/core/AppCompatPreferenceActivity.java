@@ -19,8 +19,6 @@ import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
 import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 
-import java.util.Locale;
-
 /**
  * A {@link android.preference.PreferenceActivity} which implements and proxies the necessary calls
  * to be used with AppCompat.

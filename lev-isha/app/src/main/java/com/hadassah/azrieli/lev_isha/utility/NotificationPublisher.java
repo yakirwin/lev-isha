@@ -1,6 +1,5 @@
 package com.hadassah.azrieli.lev_isha.utility;
 
-import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;

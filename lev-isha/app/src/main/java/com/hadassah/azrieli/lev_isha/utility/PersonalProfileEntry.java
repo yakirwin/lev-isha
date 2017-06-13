@@ -2,9 +2,9 @@ package com.hadassah.azrieli.lev_isha.utility;
 
 import android.support.annotation.NonNull;
 import android.text.InputType;
+
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Date;
 
 /**
  * Created by Avihu Harush on 05/05/2017

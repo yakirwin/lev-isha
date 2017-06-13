@@ -1,20 +1,23 @@
 package com.hadassah.azrieli.lev_isha.core;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.graphics.Color;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.StrictMode;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.Button;
@@ -26,10 +29,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hadassah.azrieli.lev_isha.R;
-import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
 import com.hadassah.azrieli.lev_isha.utility.VoiceRecorder;
 
-import java.util.Locale;
+import java.util.ArrayList;
 
 public class AfterDoctorFragment extends Fragment {
 
@@ -43,6 +45,7 @@ public class AfterDoctorFragment extends Fragment {
     private int hrs = 0, min = 0, sec = 0;
     private TextView timeStampToUpdate;
     private UpdateTimer updateTimer;
+    int RECORD_PERMISSIONS_ASKING_CODE = 550;
 
     public AfterDoctorFragment() {}
 
@@ -63,11 +66,11 @@ public class AfterDoctorFragment extends Fragment {
         final View parent = getView();
         CheckBoxChanged cbcLis = new CheckBoxChanged();
         prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        summaryOfDoctorsRemarks = (EditText)parent.findViewById(R.id.text_box_summary_of_the_doctors_Remarks);
-        determineYourRiskOfHeartDisease = (CheckBox)parent.findViewById(R.id.check_box_determine_your_risk_of_heart_disease);
-        askAboutFutureTreatment = (CheckBox)parent.findViewById(R.id.check_box_ask_about_future_treatment);
-        shouldYouComeBack = (CheckBox)parent.findViewById(R.id.check_box_should_you_come_back_for_further_inspections);
-        timeStampToUpdate = (TextView) parent.findViewById(R.id.doctor_record_timer);
+        summaryOfDoctorsRemarks = parent.findViewById(R.id.text_box_summary_of_the_doctors_Remarks);
+        determineYourRiskOfHeartDisease = parent.findViewById(R.id.check_box_determine_your_risk_of_heart_disease);
+        askAboutFutureTreatment = parent.findViewById(R.id.check_box_ask_about_future_treatment);
+        shouldYouComeBack = parent.findViewById(R.id.check_box_should_you_come_back_for_further_inspections);
+        timeStampToUpdate = parent.findViewById(R.id.doctor_record_timer);
         summaryOfDoctorsRemarks.setTag("summary_of_the_doctors_Remarks");
         determineYourRiskOfHeartDisease.setTag("determine_your_risk_of_heart_disease");
         askAboutFutureTreatment.setTag("ask_about_future_treatment");
@@ -76,31 +79,79 @@ public class AfterDoctorFragment extends Fragment {
         determineYourRiskOfHeartDisease.setOnCheckedChangeListener(cbcLis);
         askAboutFutureTreatment.setOnCheckedChangeListener(cbcLis);
         shouldYouComeBack.setOnCheckedChangeListener(cbcLis);
-        final Button record = (Button)parent.findViewById(R.id.record_button);
+        final Button record = parent.findViewById(R.id.record_button);
         record.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if(!VoiceRecorder.toggleRecord(parent.getContext()))
-                    return;
-                if(record.getText().equals(parent.getResources().getString(R.string.doctor_record_end))) {
-                    isRecording = false;
-                    updateTimer.interrupt();
-                    record.setText(parent.getResources().getString(R.string.doctor_record_start));
-                    Toast.makeText(getActivity(),getActivity().getText(R.string.file_successfully_saved), Toast.LENGTH_SHORT).show();
-                    record.setEnabled(false);
-                    (new Handler()).postDelayed(new Runnable() {
-                        public void run() {record.setEnabled(true);}},500);
-                }
-                else {
-                    record.setEnabled(false);
-                    (new Handler()).postDelayed(new Runnable() {
-                        public void run() {record.setEnabled(true);}},500);
-                    record.setText(parent.getResources().getString(R.string.doctor_record_end));
-                    isRecording = true;
-                    updateTimer = new UpdateTimer(getActivity());
-                    updateTimer.start();
-                }
+                String[] missingPrem = getMissingPermissions();
+                if(missingPrem.length > 0)
+                    requestPermissions(missingPrem,RECORD_PERMISSIONS_ASKING_CODE);
+                else
+                    pressedRecordButton();
             }
         });
+    }
+
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == RECORD_PERMISSIONS_ASKING_CODE && permissions.length == grantResults.length)
+            pressedRecordButton();
+    }
+
+    String[] getMissingPermissions() {
+        ArrayList<String> missing = new ArrayList<>();
+        if(ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED)
+            missing.add(Manifest.permission.RECORD_AUDIO);
+        if(ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+            missing.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        return missing.toArray(new String[missing.size()]);
+    }
+
+    private void pressedRecordButton() {
+        final View parent = getView();
+        final Button record = (parent != null) ? (Button)parent.findViewById(R.id.record_button) : null;
+        if(!VoiceRecorder.toggleRecord(parent.getContext()) || record == null)
+            return;
+        if(record.getText().equals(parent.getResources().getString(R.string.doctor_record_end))) {
+            isRecording = false;
+            updateTimer.interrupt();
+            record.setText(parent.getResources().getString(R.string.doctor_record_start));
+            record.setEnabled(false);
+            final View dialogView = getActivity().getLayoutInflater().inflate(R.layout.text_input, null);
+            final EditText textBox = dialogView.findViewById(R.id.text_input_text_box);
+            textBox.setHint(VoiceRecorder.getLastFileName());
+            AlertDialog.Builder builder = new AlertDialog.Builder(parent.getContext());
+            builder.setTitle(parent.getContext().getString(R.string.enter_name_popup_header));
+            builder.setView(dialogView);
+            builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Toast.makeText(getActivity(),getActivity().getText(R.string.file_successfully_saved), Toast.LENGTH_SHORT).show();
+                    InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                }
+            });
+            builder.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Toast.makeText(getActivity(),getActivity().getText(R.string.file_successfully_saved), Toast.LENGTH_SHORT).show();
+                    if(textBox.getText() != null && textBox.getText().length() > 0)
+                        VoiceRecorder.changeName(textBox.getText().toString());
+                    InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+            (new Handler()).postDelayed(new Runnable() {
+                public void run() {record.setEnabled(true);}},500);
+        }
+        else {
+            record.setEnabled(false);
+            (new Handler()).postDelayed(new Runnable() {
+                public void run() {record.setEnabled(true);}},500);
+            record.setText(parent.getResources().getString(R.string.doctor_record_end));
+            isRecording = true;
+            updateTimer = new UpdateTimer(getActivity());
+            updateTimer.start();
+        }
     }
 
 

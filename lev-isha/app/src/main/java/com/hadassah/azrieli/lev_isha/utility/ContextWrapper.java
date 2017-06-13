@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.LocaleList;
+
 import java.util.Locale;
 
 /**
@@ -19,7 +20,6 @@ public class ContextWrapper extends android.content.ContextWrapper {
     }
 
     public static ContextWrapper wrap(Context context, Locale newLocale) {
-
         Resources res = context.getResources();
         Configuration configuration = res.getConfiguration();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -28,9 +28,11 @@ public class ContextWrapper extends android.content.ContextWrapper {
             LocaleList.setDefault(localeList);
             configuration.setLocales(localeList);
             context = context.createConfigurationContext(configuration);
+            Locale.setDefault(newLocale);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             configuration.setLocale(newLocale);
             context = context.createConfigurationContext(configuration);
+            Locale.setDefault(newLocale);
         }/* else {
             configuration.locale = newLocale;
             res.updateConfiguration(configuration, res.getDisplayMetrics());

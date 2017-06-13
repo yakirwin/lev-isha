@@ -3,47 +3,33 @@ package com.hadassah.azrieli.lev_isha.core;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.speech.tts.Voice;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.NestedScrollingChild;
+import android.os.Bundle;
+import android.support.v4.content.FileProvider;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.DrawableUtils;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hadassah.azrieli.lev_isha.R;
 import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
 import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
-import com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry;
 import com.hadassah.azrieli.lev_isha.utility.VoiceRecorder;
-
-import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.Locale;
 
 public class RecordsActivity extends AppCompatActivity {
 
@@ -56,7 +42,10 @@ public class RecordsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_records);
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null)
+        {
             actionBar.setTitle(R.string.doctor_records_label);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
         File[] fileList = VoiceRecorder.getAllRecordings();
         if(fileList == null || fileList.length == 0) {
             NestedScrollView nScroll = (NestedScrollView)this.findViewById(R.id.recordings_scroll_view);
@@ -125,10 +114,10 @@ public class RecordsActivity extends AppCompatActivity {
             ViewHolder(LinearLayout layout) {
                 super(layout);
                 this.layout = layout;
-                title = (TextView)layout.findViewById(R.id.entry_title);
-                play = (ImageButton)layout.findViewById(R.id.entry_play);
-                share = (ImageButton)layout.findViewById(R.id.entry_share);
-                delete = (ImageButton)layout.findViewById(R.id.entry_delete);
+                title = layout.findViewById(R.id.entry_title);
+                play = layout.findViewById(R.id.entry_play);
+                share = layout.findViewById(R.id.entry_share);
+                delete = layout.findViewById(R.id.entry_delete);
                 context = adapterContext;
                 play.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
@@ -156,7 +145,8 @@ public class RecordsActivity extends AppCompatActivity {
                         intent .setType("vnd.android.cursor.dir/email");
                         intent.putExtra(Intent.EXTRA_SUBJECT,title.getText());
                         intent.putExtra(Intent.EXTRA_TEXT,title.getText());
-                        Uri attach = Uri.fromFile(new File(VoiceRecorder.getFolderLocation()+title.getText()));
+                        //Uri attach = Uri.fromFile(new File(VoiceRecorder.getFolderLocation()+title.getText()));
+                        Uri attach = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider",new File(VoiceRecorder.getFolderLocation()+title.getText()));
                         intent .putExtra(Intent.EXTRA_STREAM,attach);
                         startActivity(Intent.createChooser(intent,getString(R.string.share_chooser_header)));
                     }

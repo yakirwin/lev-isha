@@ -2,20 +2,16 @@ package com.hadassah.azrieli.lev_isha.core;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.hadassah.azrieli.lev_isha.R;
-import com.hadassah.azrieli.lev_isha.core.MainMenuActivity;
 import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
 import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
-
-import java.util.Locale;
 
 /**
  * Created by Avihu Harush on 05/05/2017
@@ -50,6 +46,7 @@ public class SplashScreen extends AppCompatActivity {
                     public void onAnimationStart(Animation animation) {}
                     public void onAnimationEnd(Animation animation) {
                         Intent intent = new Intent(getApplicationContext(),MainMenuActivity.class);
+                        MainMenuActivity.animateButtons = true;
                         startActivity(intent);
                         finish();
                     }

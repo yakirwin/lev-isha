@@ -9,4 +9,7 @@
     <dimen name="checklist_margin_between_components">12dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="edit_text_single_line_height">27dp</dimen>
+    <dimen name="read_here_space">5dp</dimen>
+    <dimen name="blood_test_space_between_lines">6dp</dimen>
+    <dimen name="blood_test_text_size">15sp</dimen>
 </resources>

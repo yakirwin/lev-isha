@@ -7,11 +7,9 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.BitmapDrawable;
 import android.media.RingtoneManager;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 import com.hadassah.azrieli.lev_isha.R;
 import com.hadassah.azrieli.lev_isha.core.ChecklistActivity;
@@ -20,11 +18,9 @@ import com.hadassah.azrieli.lev_isha.core.MainMenuActivity;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Locale;
 
 import static android.content.Context.ALARM_SERVICE;
-import static android.support.v4.app.NotificationManagerCompat.IMPORTANCE_HIGH;
+import static android.support.v4.app.NotificationManagerCompat.IMPORTANCE_MAX;
 
 /**
  * Created by Avihu Harush on 01/06/2017
@@ -218,7 +214,7 @@ public abstract class OverallNotificationManager {
         PersonalProfileEntry nameEntry = personalProfile.findEntryByName(context.getString(R.string.name));
         String name = nameEntry.getValue();
         toReturn += context.getString(R.string.notification_message_happy_birthday);
-        toReturn += (name != null) ? name+", " : ", ";
+        toReturn += (name != null) ? " "+name+", " : ", ";
         toReturn += context.getString(R.string.notification_message_birthday_body);
         return toReturn;
     }
@@ -247,7 +243,7 @@ public abstract class OverallNotificationManager {
                 .setSmallIcon(R.drawable.icon_notification)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                 .setShowWhen(false)
-                .setPriority(IMPORTANCE_HIGH)
+                .setPriority(IMPORTANCE_MAX)
                 .setContentIntent(activity);
         return builder.build();
     }
@@ -264,7 +260,7 @@ public abstract class OverallNotificationManager {
                 .setSmallIcon(R.drawable.icon_notification)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                 .setShowWhen(false)
-                .setPriority(IMPORTANCE_HIGH)
+                .setPriority(IMPORTANCE_MAX)
                 .setContentIntent(activity);
         return builder.build();
     }
@@ -273,15 +269,16 @@ public abstract class OverallNotificationManager {
         Intent intent = new Intent(context, ChecklistActivity.class);
         PendingIntent activity = PendingIntent.getActivity(context, NOTIFICATION_10_MIN_BEFORE_DOCTOR_ID, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
-                .setDefaults(Notification.DEFAULT_ALL)
+                .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setContentTitle(context.getString(R.string.notification_message_10_min_before_doctor_header))
                 .setContentText(context.getString(R.string.notification_message_10_min_before_doctor_body))
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(context.getString(R.string.notification_message_10_min_before_doctor_body)))
                 .setAutoCancel(true)
+                .setShowWhen(false)
+                .addAction(0,context.getString(R.string.open_up_the_app),activity)
                 .setSmallIcon(R.drawable.icon_notification)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                .setShowWhen(false)
-                .setPriority(IMPORTANCE_HIGH)
+                .setPriority(IMPORTANCE_MAX)
                 .setContentIntent(activity);
         return builder.build();
     }
@@ -298,7 +295,7 @@ public abstract class OverallNotificationManager {
                 .setSmallIcon(R.drawable.icon_notification)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                 .setShowWhen(false)
-                .setPriority(IMPORTANCE_HIGH)
+                .setPriority(IMPORTANCE_MAX)
                 .setContentIntent(activity);
         return builder.build();
     }

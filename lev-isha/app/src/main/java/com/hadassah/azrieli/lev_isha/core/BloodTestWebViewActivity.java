@@ -7,12 +7,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Build;
-import android.os.Handler;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.webkit.WebResourceRequest;
@@ -27,10 +25,9 @@ import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
 import com.hadassah.azrieli.lev_isha.utility.ObservableWebView;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 
-import java.util.Locale;
-
 public class BloodTestWebViewActivity extends AppCompatActivity {
 
+    public static final String ACTION_BAR_NAME_EXTRA = "blood_test_extra_string_for_action_bar_title";
     public static final String WEB_SITE_EXTRA = "blood_test_extra_string_for_website_address";
     public static final String BMI_ADDRESS = "http://www.lev-isha.org/portfolio/%D7%94%D7%A9%D7%9E%D7%A0%D7%94-%D7%9C%D7%90-%D7%92%D7%96%D7%99%D7%A8%D7%94-%D7%9E%D7%A9%D7%9E%D7%99%D7%99%D7%9D/";
     public static final String BLOOD_PRESSURE_ADDRESS = "http://www.lev-isha.org/portfolio/%D7%9C%D7%97%D7%A5-%D7%93%D7%9D/";
@@ -40,6 +37,7 @@ public class BloodTestWebViewActivity extends AppCompatActivity {
     public static final String TRIGLYCERIDE_ADDRESS = "http://www.lev-isha.org/%D7%98%D7%A8%D7%99%D7%92%D7%9C%D7%99%D7%A6%D7%A8%D7%99%D7%93%D7%99%D7%9D/";
     public static final String GLUCOSE_FASTING_ADDRESS = "http://www.lev-isha.org/portfolio/%D7%A8%D7%9E%D7%AA-%D7%94%D7%A1%D7%95%D7%9B%D7%A8-%D7%91%D7%93%D7%9D/";
     public static final String HBA1C_ADDRESS = "http://www.lev-isha.org/portfolio/%D7%A8%D7%9E%D7%AA-%D7%94%D7%A1%D7%95%D7%9B%D7%A8-%D7%91%D7%93%D7%9D/";
+
 
     private ImageView[] arrows = new ImageView[5];
     private ObjectAnimator[] arrowsAnimators = new ObjectAnimator[arrows.length];
@@ -54,7 +52,9 @@ public class BloodTestWebViewActivity extends AppCompatActivity {
         siteAddress = getIntent().getStringExtra(WEB_SITE_EXTRA);
         if(!checkSitesIntegrity())
             finish();
-        setupActionBarName();
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null)
+            actionBar.setTitle(getIntent().getStringExtra(ACTION_BAR_NAME_EXTRA));
         webView = (ObservableWebView)findViewById(R.id.blood_test_webview);
         progressBar = (ProgressBar)findViewById(R.id.blood_test_progress_bar);
         webView.setWebViewClient(new WebViewController());
@@ -159,28 +159,6 @@ public class BloodTestWebViewActivity extends AppCompatActivity {
                 siteAddress.equals(CHOLESTEROL_GENERAL_ADDRESS) || siteAddress.equals(CHOLESTEROL_LDL_ADDRESS) ||
                 siteAddress.equals(CHOLESTEROL_HDL_ADDRESS) || siteAddress.equals(TRIGLYCERIDE_ADDRESS) ||
                 siteAddress.equals(GLUCOSE_FASTING_ADDRESS) || siteAddress.equals(HBA1C_ADDRESS);
-    }
-
-    private void setupActionBarName() {
-        ActionBar actionBar = getSupportActionBar();
-        if(actionBar == null)
-            return;
-        if(siteAddress.equals(BMI_ADDRESS))
-            actionBar.setTitle(getResources().getString(R.string.blood_test_bmi_header));
-        if(siteAddress.equals(BLOOD_PRESSURE_ADDRESS))
-            actionBar.setTitle(getResources().getString(R.string.blood_test_blood_pressure_header));
-        if(siteAddress.equals(CHOLESTEROL_GENERAL_ADDRESS))
-            actionBar.setTitle(getResources().getString(R.string.blood_test_cholesterol_general_header));
-        if(siteAddress.equals(CHOLESTEROL_LDL_ADDRESS))
-            actionBar.setTitle(getResources().getString(R.string.blood_test_cholesterol_ldl_header));
-        if(siteAddress.equals(CHOLESTEROL_HDL_ADDRESS))
-            actionBar.setTitle(getResources().getString(R.string.blood_test_cholesterol_hdl_header));
-        if(siteAddress.equals(TRIGLYCERIDE_ADDRESS))
-            actionBar.setTitle(getResources().getString(R.string.blood_test_triglyceride_header));
-        if(siteAddress.equals(GLUCOSE_FASTING_ADDRESS))
-            actionBar.setTitle(getResources().getString(R.string.blood_test_glucose_fasting_header));
-        if(siteAddress.equals(HBA1C_ADDRESS))
-            actionBar.setTitle(getResources().getString(R.string.blood_test_HbA1C_header));
     }
 
 }

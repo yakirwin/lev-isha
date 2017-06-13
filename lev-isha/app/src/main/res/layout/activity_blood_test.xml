@@ -25,7 +25,8 @@
             android:onClick="pressedExpandableButton"
             android:paddingRight="10dp"
             android:text="@string/blood_test_bmi_header"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:textSize="@dimen/blood_test_text_size" />
 
         <com.github.aakira.expandablelayout.ExpandableRelativeLayout
             android:id="@+id/blood_test_expl_bmi"
@@ -41,30 +42,45 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="3"
-                    android:text="@string/blood_test_bmi" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_bmi_1"
+                        android:textSize="@dimen/blood_test_text_size" />
 
-                <TextView
-                    android:id="@+id/blood_test_read_here_bmi"
-                    android:layout_width="0dp"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="pressedToRead"
-                    android:text="@string/read_here"
-                    android:textColor="@color/colorAccent" />
+                    android:layout_marginTop="@dimen/blood_test_space_between_lines"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_bmi_2"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                    <TextView
+                        android:id="@+id/blood_test_read_here_bmi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/read_here_space"
+                        android:onClick="pressedToRead"
+                        android:text="@string/read_here"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -81,13 +97,14 @@
             android:onClick="pressedExpandableButton"
             android:paddingRight="10dp"
             android:text="@string/blood_test_blood_pressure_header"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:textSize="@dimen/blood_test_text_size"/>
 
         <com.github.aakira.expandablelayout.ExpandableRelativeLayout
             android:id="@+id/blood_test_expl_blood_pressure"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/blood_test_button_blood_pressure"
+            android:layout_below="@+id/blood_test_button_blood_pressure"
             android:background="@color/colorBackground"
             android:padding="16dp"
             app:ael_duration="300"
@@ -97,30 +114,45 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="3"
-                    android:text="@string/blood_test_blood_pressure" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_blood_pressure_1"
+                        android:textSize="@dimen/blood_test_text_size" />
 
-                <TextView
-                    android:id="@+id/blood_test_read_here_blood_pressure"
-                    android:layout_width="0dp"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="pressedToRead"
-                    android:text="@string/read_here"
-                    android:textColor="@color/colorAccent" />
+                    android:layout_marginTop="@dimen/blood_test_space_between_lines"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_blood_pressure_2"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                    <TextView
+                        android:id="@+id/blood_test_read_here_blood_pressure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/read_here_space"
+                        android:onClick="pressedToRead"
+                        android:text="@string/read_here"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -137,13 +169,14 @@
             android:onClick="pressedExpandableButton"
             android:paddingRight="10dp"
             android:text="@string/blood_test_cholesterol_general_header"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:textSize="@dimen/blood_test_text_size"/>
 
         <com.github.aakira.expandablelayout.ExpandableRelativeLayout
             android:id="@+id/blood_test_expl_cholesterol_general"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/blood_test_button_cholesterol_general"
+            android:layout_below="@+id/blood_test_button_cholesterol_general"
             android:background="@color/colorBackground"
             android:padding="16dp"
             app:ael_duration="300"
@@ -153,30 +186,60 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="3"
-                    android:text="@string/blood_test_cholesterol_general" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_cholesterol_general_1"
+                        android:textSize="@dimen/blood_test_text_size" />
 
-                <TextView
-                    android:id="@+id/blood_test_read_here_cholesterol_general"
-                    android:layout_width="0dp"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="pressedToRead"
-                    android:text="@string/read_here"
-                    android:textColor="@color/colorAccent" />
+                    android:layout_marginTop="@dimen/blood_test_space_between_lines"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_cholesterol_general_2"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/blood_test_space_between_lines"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/blood_test_cholesterol_general_3"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                    <TextView
+                        android:id="@+id/blood_test_read_here_cholesterol_general"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/read_here_space"
+                        android:onClick="pressedToRead"
+                        android:text="@string/read_here"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -193,13 +256,14 @@
             android:onClick="pressedExpandableButton"
             android:paddingRight="10dp"
             android:text="@string/blood_test_cholesterol_ldl_header"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:textSize="@dimen/blood_test_text_size"/>
 
         <com.github.aakira.expandablelayout.ExpandableRelativeLayout
             android:id="@+id/blood_test_expl_cholesterol_ldl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/blood_test_button_cholesterol_ldl"
+            android:layout_below="@+id/blood_test_button_cholesterol_ldl"
             android:background="@color/colorBackground"
             android:padding="16dp"
             app:ael_duration="300"
@@ -209,30 +273,73 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="3"
-                    android:text="@string/blood_test_cholesterol_ldl" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_cholesterol_ldl_1"
+                        android:textSize="@dimen/blood_test_text_size" />
 
-                <TextView
-                    android:id="@+id/blood_test_read_here_cholesterol_ldl"
-                    android:layout_width="0dp"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="pressedToRead"
-                    android:text="@string/read_here"
-                    android:textColor="@color/colorAccent" />
+                    android:layout_marginTop="@dimen/blood_test_space_between_lines"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_cholesterol_ldl_2"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/blood_test_space_between_lines"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_cholesterol_ldl_3"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/blood_test_space_between_lines"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_cholesterol_ldl_4"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                    <TextView
+                        android:id="@+id/blood_test_read_here_cholesterol_ldl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/read_here_space"
+                        android:onClick="pressedToRead"
+                        android:text="@string/read_here"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -249,13 +356,14 @@
             android:onClick="pressedExpandableButton"
             android:paddingRight="10dp"
             android:text="@string/blood_test_cholesterol_hdl_header"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:textSize="@dimen/blood_test_text_size"/>
 
         <com.github.aakira.expandablelayout.ExpandableRelativeLayout
             android:id="@+id/blood_test_expl_cholesterol_hdl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/blood_test_button_cholesterol_hdl"
+            android:layout_below="@+id/blood_test_button_cholesterol_hdl"
             android:background="@color/colorBackground"
             android:padding="16dp"
             app:ael_duration="300"
@@ -265,30 +373,59 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="3"
-                    android:text="@string/blood_test_cholesterol_hdl" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_cholesterol_hdl_1"
+                        android:textSize="@dimen/blood_test_text_size" />
 
-                <TextView
-                    android:id="@+id/blood_test_read_here_cholesterol_hdl"
-                    android:layout_width="0dp"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="pressedToRead"
-                    android:text="@string/read_here"
-                    android:textColor="@color/colorAccent" />
+                    android:layout_marginTop="@dimen/blood_test_space_between_lines"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_cholesterol_hdl_2"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/blood_test_space_between_lines"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_cholesterol_hdl_3"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                    <TextView
+                        android:id="@+id/blood_test_read_here_cholesterol_hdl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/read_here_space"
+                        android:onClick="pressedToRead"
+                        android:text="@string/read_here"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -305,13 +442,14 @@
             android:onClick="pressedExpandableButton"
             android:paddingRight="10dp"
             android:text="@string/blood_test_triglyceride_header"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:textSize="@dimen/blood_test_text_size"/>
 
         <com.github.aakira.expandablelayout.ExpandableRelativeLayout
             android:id="@+id/blood_test_expl_triglyceride"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/blood_test_button_triglyceride"
+            android:layout_below="@+id/blood_test_button_triglyceride"
             android:background="@color/colorBackground"
             android:padding="16dp"
             app:ael_duration="300"
@@ -321,30 +459,58 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="3"
-                    android:text="@string/blood_test_triglyceride" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_triglyceride_1"
+                        android:textSize="@dimen/blood_test_text_size" />
 
-                <TextView
-                    android:id="@+id/blood_test_read_here_triglyceride"
-                    android:layout_width="0dp"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="pressedToRead"
-                    android:text="@string/read_here"
-                    android:textColor="@color/colorAccent" />
+                    android:layout_marginTop="@dimen/blood_test_space_between_lines"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_triglyceride_2"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/blood_test_space_between_lines"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_triglyceride_3"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                    <TextView
+                        android:id="@+id/blood_test_read_here_triglyceride"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/read_here_space"
+                        android:onClick="pressedToRead"
+                        android:text="@string/read_here"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -361,13 +527,14 @@
             android:onClick="pressedExpandableButton"
             android:paddingRight="10dp"
             android:text="@string/blood_test_glucose_fasting_header"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:textSize="@dimen/blood_test_text_size"/>
 
         <com.github.aakira.expandablelayout.ExpandableRelativeLayout
             android:id="@+id/blood_test_expl_glucose_fasting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/blood_test_button_glucose_fasting"
+            android:layout_below="@+id/blood_test_button_glucose_fasting"
             android:background="@color/colorBackground"
             android:padding="16dp"
             app:ael_duration="300"
@@ -377,30 +544,59 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="3"
-                    android:text="@string/blood_test_glucose_fasting" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_glucose_fasting_1"
+                        android:textSize="@dimen/blood_test_text_size" />
 
-                <TextView
-                    android:id="@+id/blood_test_read_here_glucose_fasting"
-                    android:layout_width="0dp"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="pressedToRead"
-                    android:text="@string/read_here"
-                    android:textColor="@color/colorAccent" />
+                    android:layout_marginTop="@dimen/blood_test_space_between_lines"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_glucose_fasting_2"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/blood_test_space_between_lines"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_glucose_fasting_3"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                    <TextView
+                        android:id="@+id/blood_test_read_here_glucose_fasting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/read_here_space"
+                        android:onClick="pressedToRead"
+                        android:text="@string/read_here"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -410,20 +606,21 @@
             android:id="@+id/blood_test_button_HbA1C"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/blood_test_expl_triglyceride"
+            android:layout_below="@id/blood_test_expl_glucose_fasting"
             android:layout_marginTop="5dp"
             android:background="@color/colorPrimaryDark"
             android:drawableRight="@android:drawable/arrow_down_float"
             android:onClick="pressedExpandableButton"
             android:paddingRight="10dp"
             android:text="@string/blood_test_HbA1C_header"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:textSize="@dimen/blood_test_text_size"/>
 
         <com.github.aakira.expandablelayout.ExpandableRelativeLayout
             android:id="@+id/blood_test_expl_HbA1C"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/blood_test_button_HbA1C"
+            android:layout_below="@+id/blood_test_button_HbA1C"
             android:background="@color/colorBackground"
             android:padding="16dp"
             app:ael_duration="300"
@@ -433,39 +630,66 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="3"
-                    android:text="@string/blood_test_HbA1C" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_HbA1C_1"
+                        android:textSize="@dimen/blood_test_text_size" />
 
-                <TextView
-                    android:id="@+id/blood_test_read_here_HbA1C"
-                    android:layout_width="0dp"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="pressedToRead"
-                    android:text="@string/read_here"
-                    android:textColor="@color/colorAccent" />
+                    android:layout_marginTop="@dimen/blood_test_space_between_lines"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_HbA1C_2"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/blood_test_space_between_lines"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_test_HbA1C_3"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                    <TextView
+                        android:id="@+id/blood_test_read_here_HbA1C"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/read_here_space"
+                        android:onClick="pressedToRead"
+                        android:text="@string/read_here"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/blood_test_text_size" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
+
     </RelativeLayout>
 
 
     </android.support.v4.widget.NestedScrollView>
-
-
 

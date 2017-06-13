@@ -1,51 +1,29 @@
 package com.hadassah.azrieli.lev_isha.core;
 
-import android.animation.Animator;
-import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.animation.TimeInterpolator;
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.os.Build;
-import android.os.Handler;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import com.hadassah.azrieli.lev_isha.R;
-import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
-import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
-import com.hadassah.azrieli.lev_isha.utility.ObservableWebView;
-import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
-
-import android.view.DragEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.webkit.WebResourceRequest;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
+import com.hadassah.azrieli.lev_isha.R;
+import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
+import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
+import com.hadassah.azrieli.lev_isha.utility.ObservableWebView;
+import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 
 /**
  * Created by Avihu Harush on 06/05/2017
@@ -71,7 +49,10 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_health_recommendations);
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null)
+        {
             actionBar.setTitle(R.string.personal_health_recommendation_label);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
         Intent data = getIntent();
         smoke = data.getStringExtra(EXTRA_SMOKE);
         history = data.getStringExtra(EXTRA_HISTORY);

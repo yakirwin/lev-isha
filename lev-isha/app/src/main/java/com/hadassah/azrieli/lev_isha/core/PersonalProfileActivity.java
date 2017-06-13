@@ -1,55 +1,47 @@
 package com.hadassah.azrieli.lev_isha.core;
 
 
-import com.hadassah.azrieli.lev_isha.R;
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.database.Observable;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.annotation.IntegerRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.view.Window;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hadassah.azrieli.lev_isha.R;
 import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
 import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
 import com.hadassah.azrieli.lev_isha.utility.OverallNotificationManager;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry;
+
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
-import java.util.Locale;
 
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.MAYBE_VALUE;
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.NO_VALUE;
@@ -80,7 +72,10 @@ public class PersonalProfileActivity extends AppCompatActivity {
         setSupportActionBar(mActionBarToolbar);
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null)
+        {
             actionBar.setTitle(this.getResources().getString(R.string.personal_profile));
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
         FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.profile_fab);
         fab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -110,10 +105,10 @@ public class PersonalProfileActivity extends AppCompatActivity {
             ViewHolder(RelativeLayout layout) {
                 super(layout);
                 this.layout = layout;
-                title = (TextView)layout.findViewById(R.id.entry_title);
-                summary = (TextView)layout.findViewById(R.id.entry_summary);
-                delete = (ImageButton)layout.findViewById(R.id.entry_delete);
-                icon = (ImageView)layout.findViewById(R.id.entry_icon);
+                title = layout.findViewById(R.id.entry_title);
+                summary = layout.findViewById(R.id.entry_summary);
+                delete = layout.findViewById(R.id.entry_delete);
+                icon = layout.findViewById(R.id.entry_icon);
                 layout.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         editEntry(view,(int)view.getTag());
@@ -146,6 +141,8 @@ public class PersonalProfileActivity extends AppCompatActivity {
             PersonalProfileEntry entry = mDataset.get(position);
             holder.title.setText(entry.getName());
             holder.summary.setText((entry.getValue() == null) ? context.getResources().getText(R.string.undefined) : entry.getValue());
+            if(entry.getValue() == null && entry.getName().equals(getString(R.string.bmi)))
+                holder.summary.setText(getString(R.string.this_field_will_be_auto_filled));
             if(holder.summary.getText().toString().equals(YES_VALUE))
                 holder.summary.setText(getResources().getString(R.string.yes));
             else if(holder.summary.getText().toString().equals(NO_VALUE))
@@ -183,8 +180,8 @@ public class PersonalProfileActivity extends AppCompatActivity {
         builder.setNegativeButton(R.string.cancel,null);
         final View dialogView = this.getLayoutInflater().inflate(R.layout.text_input,null);
         builder.setView(dialogView);
-        final EditText editText = (EditText)dialogView.findViewById(R.id.text_input_text_box);
-        final RadioGroup radioGroup = (RadioGroup)dialogView.findViewById(R.id.text_input_radio_group);
+        final EditText editText = dialogView.findViewById(R.id.text_input_text_box);
+        final RadioGroup radioGroup = dialogView.findViewById(R.id.text_input_radio_group);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         params.weight = 1.0f;
         params.gravity = Gravity.START;
@@ -283,26 +280,35 @@ public class PersonalProfileActivity extends AppCompatActivity {
             year = (date == null) ? currentTime.get(Calendar.YEAR) : date.get(Calendar.YEAR);
             month = (date == null) ? currentTime.get(Calendar.MONTH) : date.get(Calendar.MONTH);
             day = (date == null) ? currentTime.get(Calendar.DAY_OF_MONTH) : date.get(Calendar.DAY_OF_MONTH);
-            new DatePickerDialog(PersonalProfileActivity.this, new DatePickerDialog.OnDateSetListener() {
-                public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                    Calendar calendar = Calendar.getInstance();
-                    calendar.set(i,i1,i2);
-                    String format = df.format(calendar.getTime());
-                    int age = calculateAge(format);
-                    if(age < MIN_AGE || age > MAX_AGE)
-                    {
-                        showDeviationMessage(getResources().getString(R.string.age),MIN_AGE,MAX_AGE);
-                        return;
-                    }
-                    toEdit.setValue(format);
-                    TextView summary = (TextView)view.findViewById(R.id.entry_summary);
-                    summary.setText(format);
-                    mAdapter.mDataset = PersonalProfile.getInstance(PersonalProfileActivity.this).getEntriesCopy();
-                    mAdapter.notifyItemChanged(index);
-                    profile.commitChanges(PersonalProfileActivity.this);
-                    OverallNotificationManager.setUpNotificationTimers(PersonalProfileActivity.this,OverallNotificationManager.NOTIFICATION_BIRTHDAY_ID);
-                }
-            }, year, month, day).show();
+            DatePickerDialog dateDialog = new DatePickerDialog(this,
+                    android.R.style.Theme_Holo_Light_Dialog,
+                    new DatePickerDialog.OnDateSetListener() {
+                        public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                            Calendar calendar = Calendar.getInstance();
+                            calendar.set(i,i1,i2);
+                            String format = df.format(calendar.getTime());
+                            int age = calculateAge(format);
+                            if(age < MIN_AGE || age > MAX_AGE)
+                            {
+                                showDeviationMessage(getResources().getString(R.string.age),MIN_AGE,MAX_AGE);
+                                return;
+                            }
+                            toEdit.setValue(format);
+                            TextView summary = view.findViewById(R.id.entry_summary);
+                            summary.setText(format);
+                            mAdapter.mDataset = PersonalProfile.getInstance(PersonalProfileActivity.this).getEntriesCopy();
+                            mAdapter.notifyItemChanged(index);
+                            profile.commitChanges(PersonalProfileActivity.this);
+                            OverallNotificationManager.setUpNotificationTimers(PersonalProfileActivity.this,OverallNotificationManager.NOTIFICATION_BIRTHDAY_ID);
+                        }
+                    }, year, month, day);
+            dateDialog.setButton(DatePickerDialog.BUTTON_POSITIVE,getString(R.string.accept),dateDialog);
+            dateDialog.setButton(DatePickerDialog.BUTTON_NEGATIVE,getString(R.string.cancel),dateDialog);
+            dateDialog.setMessage(getString(R.string.birth_date));
+            dateDialog.show();
+            Window window = dateDialog.getWindow();
+            if(window != null)
+                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
         else if(toEdit.getInputType() == PersonalProfileEntry.FINITE_STATES) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -310,9 +316,9 @@ public class PersonalProfileActivity extends AppCompatActivity {
             builder.setNegativeButton(R.string.cancel,null);
             final View dialogView = this.getLayoutInflater().inflate(R.layout.text_input, null);
             builder.setView(dialogView);
-            final EditText editText = (EditText)dialogView.findViewById(R.id.text_input_text_box);
+            final EditText editText = dialogView.findViewById(R.id.text_input_text_box);
             editText.setVisibility(View.GONE);
-            final RadioGroup radioGroup = (RadioGroup)dialogView.findViewById(R.id.text_input_radio_group);
+            final RadioGroup radioGroup = dialogView.findViewById(R.id.text_input_radio_group);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             params.weight = 1.0f;
             params.gravity = Gravity.START;
@@ -368,7 +374,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
             builder.setNegativeButton(R.string.cancel,null);
             View dialogView = this.getLayoutInflater().inflate(R.layout.text_input, null);
             builder.setView(dialogView);
-            final EditText editText = (EditText)dialogView.findViewById(R.id.text_input_text_box);
+            final EditText editText = dialogView.findViewById(R.id.text_input_text_box);
             if(toEdit.getValue() != null)
                 editText.setText(toEdit.getValue());
             editText.setInputType(toEdit.getInputType());
@@ -393,7 +399,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
                             return;
                         }
                     toEdit.setValue(text);
-                    TextView summary = (TextView)view.findViewById(R.id.entry_summary);
+                    TextView summary = view.findViewById(R.id.entry_summary);
                     summary.setText(text);
                     if(calculateBMI())
                     {
@@ -413,8 +419,13 @@ public class PersonalProfileActivity extends AppCompatActivity {
 
     private void showDeviationMessage(String field, int min, int max) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(field+" "+getResources().getString(R.string.deviation_header));
-        builder.setMessage(getResources().getString(R.string.deviation_body)+" "+min+"-"+max);
+        builder.setTitle(getString(R.string.error));
+        if(field.equals(getString(R.string.weight)))
+            builder.setMessage(getString(R.string.weight_given_is_out_of_bound));
+        else if(field.equals(getString(R.string.height)))
+            builder.setMessage(getString(R.string.height_given_is_out_of_bound));
+        else if(field.equals(getString(R.string.age)))
+            builder.setMessage(getString(R.string.age_given_is_out_of_bound));
         builder.setPositiveButton(R.string.understood,null);
         AlertDialog dialog = builder.create();
         dialog.show();

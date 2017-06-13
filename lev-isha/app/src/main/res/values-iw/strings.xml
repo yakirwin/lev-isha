@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">לב אישה</string>
+    <string name="app_name">לבריאותך</string>
 
     <!-- MainMenu Labels <START> -->
     <string name="nutrition_label">תזונה</string>
@@ -15,11 +15,11 @@
     <!-- MainMenu Labels <END> -->
 
     <!-- Personal Profile Labels <START> -->
-    <string name="name">שם פרטי</string>
+    <string name="name">שם</string>
     <string name="first_name">שם פרטי</string>
     <string name="last_name">שם משפחה</string>
-    <string name="weight">משקל</string>
-    <string name="height">גובה</string>
+    <string name="weight">משקל בק\"ג</string>
+    <string name="height">גובה בס\"מ</string>
     <string name="bmi">BMI</string>
     <string name="latest_checkup">ביקורת אחרונה</string>
     <string name="family_history_explanation">האם במשפחתך הקרובה (הורים ואחים) קיים רקע של מחלות לב, שבץ מוחי וכלי דם?</string>
@@ -44,7 +44,7 @@
     <string name="family_health_background">רקע בריאותי משפחתי:</string>
     <string name="drugs_i_take">תרופות שאני לוקחת (שמות ומינונים):</string>
     <string name="additional_questions_to_the_doctor">שאלות ספציפיות לרופא:</string>
-    <string name="check_list_2nd_part_header">לאחר הרופא</string>
+    <string name="check_list_2nd_part_header">אצל הרופא</string>
     <string name="summary_of_the_doctors_Remarks">סיכום דבריו של הרופא</string>
     <string name="determine_your_risk_of_heart_disease">בררי את הסיכון האישי שלך למחלות לב</string>
     <string name="ask_about_future_treatment">בררי לגבי המשך טיפול/הפנייה לרופא אחר</string>
@@ -57,7 +57,8 @@
     <!-- Checklist Labels <END> -->
 
     <!-- General Labels <START> -->
-    <string name="undefined">לא הוגדר</string>
+    <string name="undefined">לחצי כאן בכדי לעדכן ערך זה</string>
+    <string name="this_field_will_be_auto_filled">ערך זה מחושב אוטומטית</string>
     <string name="yes">כן</string>
     <string name="personal_health_recommendations_disclaimer_header">אני מאשרת שקראתי והבנתי את ההערה הבאה:</string>
     <string name ="personal_health_recommendations_disclaimer_body">
@@ -69,6 +70,9 @@
 בכל מקרה של ספק או של חירום רפואי אין להסתמך על המידע שמספקת האפליקציה ,אלא לפנות לרופא או לבית חולים לקבלת עזרה רפואית.
 במקרים רבים, שיהוי בפניה לטיפול רפואי עלול להיות מסוכן ואף קטלני.
     </string>
+    <string name="press_here_to_copy_this_text">לחצי כאן בכדי להעתיק את הודעת השגיאה</string>
+    <string name="error">שגיאה</string>
+    <string name="text_copied_successfully">הטקסט הועתק בהצלחה</string>
     <!-- General Labels <END> -->
 
 
@@ -98,7 +102,8 @@
     <string name="age">גיל</string>
     <string name="appointment">תור</string>
     <string name="birth_date">תאריך לידה</string>
-    <string name="calendar_reminder_header">בדיקת רופא</string>
+    <string name="calendar_reminder_header">תור לרופא</string>
+    <string name="calendar_reminder_header_doc">תור ל</string>
     <string name="cancel">ביטול</string>
     <string name="changes_in_life_hint">שינויים באורך חיים</string>
     <string name="clear_after">ניקוי הטופס \"לאחר הרופא\"</string>
@@ -115,7 +120,8 @@
     <string name="doctor_records_label">הקלטות שמורות</string>
     <string name="drugs_i_take_hint">תרופות שאני לוקחת…</string>
     <string name="english_language">אנגלית</string>
-    <string name="failed_to_start_record">לא נמצא מיקרופון.</string>
+    <string name="failed_to_start_record">לא ניתן להקליט.</string>
+    <string name="failed_to_create_pdf">לא ניתן ליצור קובץ PDF.</string>
     <string name="family_health_background_hint">רקע רפואי משפחתי</string>
     <string name="family_history_personal_profile">היסטורית מחלות לב משפחתית</string>
     <string name="file_successfully_saved">ההקלטה נשמרה בהצלחה.</string>
@@ -131,61 +137,63 @@
     <string name="real_numbers">מספר</string>
     <string name="setup_profile_initial_question">אנו מודים לך על שהחלטת להשתמש באפליקציה שלנו. אנו ממליצים בחום להגדיר את הפרופיל האישי שלך בהקדם האפשרי, האם תרצי לבצע זאת כעת?</string>
     <string name="share_chooser_header">שתפי קובץ באמצעות…</string>
-    <string name="smoking">עישון</string>
+    <string name="smoking">האם את מעשנת?</string>
     <string name="subjects_i_want_to_talk_about_hint">נושאים שברצוני לדבר עליהם…</string>
     <string name="summary_of_the_doctors_Remarks_text_box_hint">רשמים…</string>
     <string name="time">שעה</string>
     <string name="title_activity_check_list">ביקור רופא</string>
     <string name="understood">הבנתי</string>
     <string name="welcome">ברוכה הבאה</string>
+    <string name="height_given_is_out_of_bound">אנא הכניסי את גובהך בס\"מ, לדוגמא 165</string>
+    <string name="weight_given_is_out_of_bound">אנא הכניסי את משקלך בק\"ג, לדוגמא 75</string>
+    <string name="age_given_is_out_of_bound">אפליקציה זו מותאמת לנשים מגיל 20 ומעלה</string>
+    <string name="open_up_the_app">פתח את האפליקציה</string>
+    <string name="enter_name_popup_header">הכניסי שם</string>
+    <string name="output_to_pdf">שלח את הטופס כקובץ PDF</string>
     <!-- Notification Messages <END> -->
 
 
     <!-- BloodTest Messages <START> -->
     <string name="read_here">קראי כאן</string>
     <string name="blood_test_bmi_header">מדד מסת גוף - BMI</string>
-    <string name="blood_test_bmi">
-מדד מסת גוף - BMI - בין 18.5 עד 25.
-מה זה BMI ?
-    </string>
+    <string name="blood_test_bmi_1"><b>ערך מומלץ: בין 18.5 עד 25.</b></string>
+    <string name="blood_test_bmi_2">מה זה BMI?</string>
     <string name="blood_test_blood_pressure_header">לחץ דם</string>
-    <string name="blood_test_blood_pressure">
-        לחץ דם - נמוך מ-140/90
-מה זה לחץ דם?
-    </string>
+    <string name="blood_test_blood_pressure_1"><b>ערך מומלץ: נמוך מ-140/90.</b></string>
+    <string name="blood_test_blood_pressure_2">מה זה לחץ דם?</string>
     <string name="blood_test_cholesterol_general_header">כולסטרול כללי</string>
-    <string name="blood_test_cholesterol_general">
-        כולסטרול כללי - נמוך מ-200 מ"ג/ד"ל
-מה זה כולסטרול וכיצד זה נראה בבדיקות הדם שלך?
-    </string>
+    <string name="blood_test_cholesterol_general_1"><b>ערך מומלץ: נמוך מ-200 מ\"ג/ד\"ל.</b></string>
+    <string name="blood_test_cholesterol_general_2">מה זה כולסטרול וכיצד זה נראה</string>
+    <string name="blood_test_cholesterol_general_3">בבדיקות הדם שלך?</string>
     <string name="blood_test_cholesterol_ldl_header">כולסטרול LDL</string>
-    <string name="blood_test_cholesterol_ldl">
-כולסטרול- LDL - נמוך מ-100 מ"ג/ד"ל, אם עברת אירוע לבבי- נמוך מ-70 מ"ג/ד"ל
-מה זה LDL וכיצד זה נראה בבדיקות הדם שלך?
-    </string>
+    <string name="blood_test_cholesterol_ldl_1"><b>ערך מומלץ: נמוך מ-100 מ\"ג/ד\"ל,</b></string>
+    <string name="blood_test_cholesterol_ldl_2"><b>אם עברת אירוע לבבי- נמוך מ-70 מ\"ג/ד\"ל.</b></string>
+    <string name="blood_test_cholesterol_ldl_3">מה זה LDL וכיצד זה נראה</string>
+    <string name="blood_test_cholesterol_ldl_4">בבדיקות הדם שלך?</string>
     <string name="blood_test_cholesterol_hdl_header">כולסטרול HDL</string>
-    <string name="blood_test_cholesterol_hdl">
-כולסטרול HDL- גבוה מ-50 מ"ג/ד"ל
-מה זה HDL וכיצד זה נראה בבדיקות הדם שלך?
-    </string>
+    <string name="blood_test_cholesterol_hdl_1"><b>ערך מומלץ: גבוה מ-50 מ\"ג/ד\"ל.</b></string>
+    <string name="blood_test_cholesterol_hdl_2">מה זה HDL וכיצד זה נראה</string>
+    <string name="blood_test_cholesterol_hdl_3">בבדיקות הדם שלך?</string>
     <string name="blood_test_triglyceride_header">טריגליצרידים</string>
-    <string name="blood_test_triglyceride">
-        טריגליצרידים- נמוך מ-150 מ"ג/ד"ל
-מה זה טריגליצרידים וכיצד זה נראה בבדיקות הדם שלך?
-    </string>
+    <string name="blood_test_triglyceride_1"><b>ערך מומלץ: נמוך מ-150 מ\"ג/ד\"ל.</b></string>
+    <string name="blood_test_triglyceride_2">מה זה טריגליצרידים וכיצד זה</string>
+    <string name="blood_test_triglyceride_3">נראה בבדיקות הדם שלך?</string>
     <string name="blood_test_glucose_fasting_header">גלוקוז בצום</string>
-    <string name="blood_test_glucose_fasting">
-        גלוקוז בצום- עד 100 מ"ג/ד"ל
-מה זה גלוקוז וכיצד זה נראה בבדיקות הדם שלך?
-    </string>
+    <string name="blood_test_glucose_fasting_1"><b>ערך מומלץ: עד 100 מ\"ג/ד\"ל.</b></string>
+    <string name="blood_test_glucose_fasting_2">מה זה גלוקוז וכיצד זה נראה</string>
+    <string name="blood_test_glucose_fasting_3">בבדיקות הדם שלך?</string>
     <string name="blood_test_HbA1C_header">HbA1C</string>
-    <string name="blood_test_HbA1C">
-        HbA1C- נמוך מ-6.5%
-מה זה HbA1C וכיצד זה נראה בבדיקות הדם שלך?
-    </string>
+    <string name="blood_test_HbA1C_1"><b>ערך מומלץ: נמוך מ-6.5%.</b></string>
+    <string name="blood_test_HbA1C_2">מה זה HbA1C וכיצד זה נראה</string>
+    <string name="blood_test_HbA1C_3">בבדיקות הדם שלך?</string>
     <string name="blood_test_option_collapse_all_sections">כיווץ כל הקטגוריות</string>
     <string name="blood_test_option_expand_all_sections">פתיחת כל הקטגוריות</string>
     <!-- BloodTest Messages <END> -->
 
+    <!-- PDF Messages <START> -->
+    <string name="creator_and_author">אפליקציית לבריאותך</string>
+    <string name="pdf_title">הכנה לביקור אצל הרופא</string>
+
+    <!-- PDF Messages <END> -->
 
 </resources>

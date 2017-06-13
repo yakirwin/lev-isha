@@ -1,55 +1,27 @@
 package com.hadassah.azrieli.lev_isha.core;
 
-import android.app.ActivityManager;
-import android.app.AlarmManager;
-import android.app.DatePickerDialog;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.media.RingtoneManager;
-import android.net.Uri;
-import android.os.SystemClock;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.provider.CalendarContract;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.Menu;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
+
 import com.hadassah.azrieli.lev_isha.R;
 import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
 import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
-import com.hadassah.azrieli.lev_isha.utility.NotificationPublisher;
 import com.hadassah.azrieli.lev_isha.utility.OverallNotificationManager;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
-import com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry;
-import com.hadassah.azrieli.lev_isha.utility.VoiceRecorder;
 
 import java.text.DateFormat;
 import java.util.Calendar;
-import java.util.Locale;
-
 
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.NO_VALUE;
 import static com.hadassah.azrieli.lev_isha.utility.PersonalProfileEntry.YES_VALUE;
@@ -67,7 +39,7 @@ public class MainMenuActivity extends AppCompatActivity {
     private LinearLayout bloodTestButton;
     private LinearLayout DoctorRecordsButton;
     private Intent personHealthRecommendationsIntent;
-
+    public static boolean animateButtons = false;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,10 +54,12 @@ public class MainMenuActivity extends AppCompatActivity {
             prefs.edit().putBoolean("show_question_to_setup_profile", false).apply();
             showMessageToSetupProfile();
         }
-        animateButtons();
+        if(animateButtons)
+            animateButtons();
         OverallNotificationManager.setUpNotificationTimers(this,OverallNotificationManager.NO_ADDITIONAL_ID);
         if(!GeneralPurposeService.isServiceRunning())
             this.startService(new Intent(this,GeneralPurposeService.class));
+        animateButtons = false;
     }
 
     protected void attachBaseContext(Context newBase) {
@@ -98,10 +72,10 @@ public class MainMenuActivity extends AppCompatActivity {
         Animation rightToLeft = AnimationUtils.loadAnimation(this, R.anim.main_menu_button_right_to_left);
         Animation zoomIn = AnimationUtils.loadAnimation(this, R.anim.main_menu_button_zoom_in);
         personalProfileButton.startAnimation(zoomIn);
-        personHealthRecommendationsButton.startAnimation(leftToRight);
-        checklistButton.startAnimation(leftToRight);
-        DoctorRecordsButton.startAnimation(rightToLeft);
-        bloodTestButton.startAnimation(rightToLeft);
+        personHealthRecommendationsButton.startAnimation(rightToLeft);
+        checklistButton.startAnimation(rightToLeft);
+        DoctorRecordsButton.startAnimation(leftToRight);
+        bloodTestButton.startAnimation(leftToRight);
     }
 
     public void changeActivity(View view) {

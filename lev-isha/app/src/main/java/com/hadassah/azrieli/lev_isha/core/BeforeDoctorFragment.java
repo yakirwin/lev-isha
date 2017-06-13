@@ -7,17 +7,18 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.CalendarContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -34,8 +35,6 @@ import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 public class BeforeDoctorFragment extends Fragment {
 
@@ -204,7 +203,10 @@ public class BeforeDoctorFragment extends Fragment {
         Intent calendarIntent = new Intent(Intent.ACTION_INSERT);
         calendarIntent.setData(CalendarContract.Events.CONTENT_URI);
         calendarIntent.setType("vnd.android.cursor.item/event");
-        calendarIntent.putExtra(CalendarContract.Events.TITLE,getResources().getString(R.string.calendar_reminder_header));
+        if(doctorName.getText() != null && doctorName.getText().length() > 0)
+            calendarIntent.putExtra(CalendarContract.Events.TITLE,getResources().getString(R.string.calendar_reminder_header_doc)+doctorName.getText());
+        else
+            calendarIntent.putExtra(CalendarContract.Events.TITLE,getResources().getString(R.string.calendar_reminder_header));
         calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, false);
         calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,dueDate.getTimeInMillis());
         dueDate.add(Calendar.HOUR,1);
@@ -221,16 +223,24 @@ public class BeforeDoctorFragment extends Fragment {
         year = (inMemory == null) ? currentTime.get(Calendar.YEAR) : inMemory.get(Calendar.YEAR);
         month = (inMemory == null) ? currentTime.get(Calendar.MONTH) : inMemory.get(Calendar.MONTH);
         day = (inMemory == null) ? currentTime.get(Calendar.DAY_OF_MONTH) : inMemory.get(Calendar.DAY_OF_MONTH);
-        new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                Calendar calendar = Calendar.getInstance();
-                calendar.set(i,i1,i2);
-                String display = df.format(calendar.getTime());
-                date.setText(display);
-                prefs.edit().putString((String)date.getTag(),display).apply();
-                shouldEnableAppointmentButton();
-            }
-        }, year, month, day).show();
+        DatePickerDialog dateDialog = new DatePickerDialog(getActivity(),
+                android.R.style.Theme_Holo_Light_Dialog,
+                new DatePickerDialog.OnDateSetListener() {
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.set(i,i1,i2);
+                        String display = df.format(calendar.getTime());
+                        date.setText(display);
+                        prefs.edit().putString((String)date.getTag(),display).apply();
+                        shouldEnableAppointmentButton();
+                    }
+                }, year, month, day);
+        dateDialog.setButton(DatePickerDialog.BUTTON_POSITIVE,getString(R.string.accept),dateDialog);
+        dateDialog.setButton(DatePickerDialog.BUTTON_NEGATIVE,getString(R.string.cancel),dateDialog);
+        dateDialog.show();
+        Window window = dateDialog.getWindow();
+        if(window != null)
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -243,21 +253,28 @@ public class BeforeDoctorFragment extends Fragment {
         try {inMemory.setTime(df.parse(time.getText().toString()));} catch(Exception ignore){inMemory = null;}
         hour = (inMemory == null) ? currentTime.get(Calendar.HOUR_OF_DAY) : inMemory.get(Calendar.HOUR_OF_DAY);
         min = (inMemory == null) ? currentTime.get(Calendar.MINUTE) : inMemory.get(Calendar.MINUTE);
-        new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
-            public void onTimeSet(TimePicker timePicker, int i, int i1) {
-                Calendar calendar = Calendar.getInstance();
-                int year = currentTime.get(Calendar.YEAR);
-                int month = currentTime.get(Calendar.MONTH);
-                int day = currentTime.get(Calendar.DAY_OF_MONTH);
-                calendar.set(year,month,day,i,i1);
-                String display = df.format(calendar.getTime());
-                time.setText(display);
-                prefs.edit().putString((String)time.getTag(),display).apply();
-                shouldEnableAppointmentButton();
-            }
-        },hour,min,true).show();
+        TimePickerDialog timePicker = new TimePickerDialog(getActivity(),
+                android.R.style.Theme_Holo_Light_Dialog,
+                new TimePickerDialog.OnTimeSetListener() {
+                    public void onTimeSet(TimePicker timePicker, int i, int i1) {
+                        Calendar calendar = Calendar.getInstance();
+                        int year = currentTime.get(Calendar.YEAR);
+                        int month = currentTime.get(Calendar.MONTH);
+                        int day = currentTime.get(Calendar.DAY_OF_MONTH);
+                        calendar.set(year,month,day,i,i1);
+                        String display = df.format(calendar.getTime());
+                        time.setText(display);
+                        prefs.edit().putString((String)time.getTag(),display).apply();
+                        shouldEnableAppointmentButton();
+                    }
+                },hour,min,true);
+        timePicker.setButton(DatePickerDialog.BUTTON_POSITIVE,getString(R.string.accept),timePicker);
+        timePicker.setButton(DatePickerDialog.BUTTON_NEGATIVE,getString(R.string.cancel),timePicker);
+        timePicker.show();
+        Window window = timePicker.getWindow();
+        if(window != null)
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
-
 
     public void reloadSavedFields() {
         if(alreadyUpdated)
@@ -280,7 +297,6 @@ public class BeforeDoctorFragment extends Fragment {
         additionalQuestionsToTheDoctor.setText(prefs.getString((String)additionalQuestionsToTheDoctor.getTag(),""));
         shouldEnableAppointmentButton();
     }
-
 
     @SuppressLint("ApplySharedPref")
     public void shouldEnableAppointmentButton() {
@@ -366,6 +382,5 @@ public class BeforeDoctorFragment extends Fragment {
         alreadyUpdated = false;
         reloadSavedFields();
     }
-
 
 }

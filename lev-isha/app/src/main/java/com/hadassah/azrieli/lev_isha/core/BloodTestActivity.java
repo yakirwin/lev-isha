@@ -2,9 +2,9 @@ package com.hadassah.azrieli.lev_isha.core;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,8 +16,6 @@ import com.hadassah.azrieli.lev_isha.R;
 import com.hadassah.azrieli.lev_isha.utility.ContextWrapper;
 import com.hadassah.azrieli.lev_isha.utility.GeneralPurposeService;
 import com.hadassah.azrieli.lev_isha.utility.PersonalProfile;
-
-import java.util.Locale;
 
 public class BloodTestActivity extends AppCompatActivity {
 
@@ -38,7 +36,10 @@ public class BloodTestActivity extends AppCompatActivity {
         collapseAll();
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null)
+        {
             actionBar.setTitle(R.string.blood_test_result_guide_label);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
         if(!GeneralPurposeService.isServiceRunning())
             this.startService(new Intent(this,GeneralPurposeService.class));
     }
@@ -136,22 +137,38 @@ public class BloodTestActivity extends AppCompatActivity {
 
     public void pressedToRead(View view) {
         Intent openWebView = new Intent(this,BloodTestWebViewActivity.class);
-        if(view == findViewById(R.id.blood_test_read_here_bmi))
+        if(view == findViewById(R.id.blood_test_read_here_bmi)) {
             openWebView.putExtra(BloodTestWebViewActivity.WEB_SITE_EXTRA,BloodTestWebViewActivity.BMI_ADDRESS);
-        else if(view == findViewById(R.id.blood_test_read_here_blood_pressure))
+            openWebView.putExtra(BloodTestWebViewActivity.ACTION_BAR_NAME_EXTRA,getString(R.string.blood_test_bmi_header));
+        }
+        else if(view == findViewById(R.id.blood_test_read_here_blood_pressure)) {
             openWebView.putExtra(BloodTestWebViewActivity.WEB_SITE_EXTRA,BloodTestWebViewActivity.BLOOD_PRESSURE_ADDRESS);
-        else if(view == findViewById(R.id.blood_test_read_here_cholesterol_general))
+            openWebView.putExtra(BloodTestWebViewActivity.ACTION_BAR_NAME_EXTRA,getString(R.string.blood_test_blood_pressure_header));
+        }
+        else if(view == findViewById(R.id.blood_test_read_here_cholesterol_general)) {
             openWebView.putExtra(BloodTestWebViewActivity.WEB_SITE_EXTRA,BloodTestWebViewActivity.CHOLESTEROL_GENERAL_ADDRESS);
-        else if(view == findViewById(R.id.blood_test_read_here_cholesterol_hdl))
+            openWebView.putExtra(BloodTestWebViewActivity.ACTION_BAR_NAME_EXTRA,getString(R.string.blood_test_cholesterol_general_header));
+        }
+        else if(view == findViewById(R.id.blood_test_read_here_cholesterol_hdl)) {
             openWebView.putExtra(BloodTestWebViewActivity.WEB_SITE_EXTRA,BloodTestWebViewActivity.CHOLESTEROL_HDL_ADDRESS);
-        else if(view == findViewById(R.id.blood_test_read_here_cholesterol_ldl))
+            openWebView.putExtra(BloodTestWebViewActivity.ACTION_BAR_NAME_EXTRA,getString(R.string.blood_test_cholesterol_hdl_header));
+        }
+        else if(view == findViewById(R.id.blood_test_read_here_cholesterol_ldl)) {
             openWebView.putExtra(BloodTestWebViewActivity.WEB_SITE_EXTRA,BloodTestWebViewActivity.CHOLESTEROL_LDL_ADDRESS);
-        else if(view == findViewById(R.id.blood_test_read_here_glucose_fasting))
+            openWebView.putExtra(BloodTestWebViewActivity.ACTION_BAR_NAME_EXTRA,getString(R.string.blood_test_cholesterol_ldl_header));
+        }
+        else if(view == findViewById(R.id.blood_test_read_here_glucose_fasting)) {
             openWebView.putExtra(BloodTestWebViewActivity.WEB_SITE_EXTRA,BloodTestWebViewActivity.GLUCOSE_FASTING_ADDRESS);
-        else if(view == findViewById(R.id.blood_test_read_here_HbA1C))
+            openWebView.putExtra(BloodTestWebViewActivity.ACTION_BAR_NAME_EXTRA,getString(R.string.blood_test_glucose_fasting_header));
+        }
+        else if(view == findViewById(R.id.blood_test_read_here_HbA1C)) {
             openWebView.putExtra(BloodTestWebViewActivity.WEB_SITE_EXTRA,BloodTestWebViewActivity.HBA1C_ADDRESS);
-        else if(view == findViewById(R.id.blood_test_read_here_triglyceride))
+            openWebView.putExtra(BloodTestWebViewActivity.ACTION_BAR_NAME_EXTRA,getString(R.string.blood_test_HbA1C_header));
+        }
+        else if(view == findViewById(R.id.blood_test_read_here_triglyceride)) {
             openWebView.putExtra(BloodTestWebViewActivity.WEB_SITE_EXTRA,BloodTestWebViewActivity.TRIGLYCERIDE_ADDRESS);
+            openWebView.putExtra(BloodTestWebViewActivity.ACTION_BAR_NAME_EXTRA,getString(R.string.blood_test_triglyceride_header));
+        }
         startActivity(openWebView);
     }
 
