@@ -11,11 +11,11 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="250dp">
+        android:layout_height="200dp">
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="150dp"
+            android:layout_width="140dp"
             android:layout_height="80dp"
             android:layout_alignParentTop="false"
             app:srcCompat="@drawable/lev_isha_main_logo" />
