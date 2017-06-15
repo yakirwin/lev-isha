@@ -1,92 +1,166 @@
 <resources>
+
     <string name="app_name">לבריאותך</string>
 
     <!-- MainMenu Labels <START> -->
-    <string name="personal_profile_label">Personal Profile</string>
-    <string name="blood_test_result_guide_label">Blood Test Guide</string>
-    <string name="personal_health_recommendation_label">Personal Health Recommendation</string>
-    <string name="checklist_label">Doctor Visit</string>
-    <string name="doctor_records_label">Doctor Records</string>
+    <string name="personal_profile_label">פרופיל אישי</string>
+    <string name="blood_test_result_guide_label">תוצאות בדיקת דם</string>
+    <string name="personal_health_recommendation_label">המלצות הבריאות שלך</string>
+    <string name="checklist_label">ביקור רופא</string>
     <!-- MainMenu Labels <END> -->
 
     <!-- Personal Profile Labels <START> -->
-    <string name="personal_profile">Personal Profile</string>
-    <string name="name">Name</string>
-    <string name="weight">Weight (KG)</string>
-    <string name="height">Height (CM)</string>
+    <string name="name">שם</string>
+    <string name="weight">משקל בק\"ג</string>
+    <string name="height">גובה בס\"מ</string>
     <string name="bmi">BMI</string>
-    <string name="birth_date">Birth Date</string>
-    <string name="smoking">Smoking</string>
-    <string name="family_history_personal_profile">Family Heart Disease History</string>
-    <string name="family_history_explanation">Is There Anyone In You Family (Parents And Sibling) With History Of Heart Disease, Stroke Or Hypertension?</string>
-    <string name="age">Age</string>
+    <string name="family_history_explanation">האם במשפחתך הקרובה (הורים ואחים) קיים רקע של מחלות לב, שבץ מוחי וכלי דם?</string>
     <!-- Personal Profile Labels <END> -->
 
     <!-- Checklist Labels <START> -->
-    <string name="check_list_1st_part_header">Before The Doctor</string>
-    <string name="doctor_name">Doctor\'s Name</string>
-    <string name="address">Address</string>
-    <string name="appointment">Appointment</string>
-    <string name="date">Date</string>
-    <string name="time">Time</string>
-    <string name="add_appointment_to_calendar">Add Appointment To Calendar</string>
-    <string name="remember_to_bring_with_you">Remember To Bring With You:</string>
-    <string name="references">References</string>
-    <string name="prescription">Prescription</string>
-    <string name="Previous_diagnoses">Previous Diagnoses</string>
-    <string name="tests_results">Tests Results</string>
-    <string name="subjects_i_want_to_talk_about">Subjects I Want To Talk About (From Most Important Least):</string>
-    <string name="subjects_i_want_to_talk_about_hint">Subjects I Want To Talk About…</string>
-    <string name="new_symptoms">New Symptoms (When It Started, When It Appears, Frequency, Intensity):</string>
-    <string name="new_symptoms_hint">New Symptoms…</string>
-    <string name="additional_information">Additional Information:</string>
-    <string name="changes_in_life_hint">Changes In Life</string>
-    <string name="personal_medical_history_hint">Personal Medical History</string>
-    <string name="family_health_background_hint">Family Health Background</string>
-    <string name="drugs_i_take">Drugs I Take (Names And Doses):</string>
-    <string name="drugs_i_take_hint">Drugs I Take…</string>
-    <string name="additional_questions_to_the_doctor">Additional Questions To The Doctor:</string>
-    <string name="additional_questions_to_the_doctor_hint">Additional Questions…</string>
-    <string name="check_list_2nd_part_header">At The Doctor</string>
-    <string name="summary_of_the_doctors_Remarks">Summary Of The Doctor\'s Remarks</string>
-    <string name="determine_your_risk_of_heart_disease">Determine Your Risk Of Heart Disease</string>
-    <string name="ask_about_future_treatment">Ask About Future Treatment</string>
-    <string name="should_you_come_back_for_further_inspections">Should You Come Back For Further Inspections?</string>
-    <string name="have_you_got_answers_for_these_questions">Have You Got Answers For These Questions:</string>
-    <string name="what_is_my_medical_condition">- What Is My Medical Condition?</string>
-    <string name="what_should_i_do_to_address_my_problem">- What Should I Do To Address My Problem?</string>
-    <string name="why_should_i_do_so">- Why Should I Do So?</string>
-    <string name="if_not_ask_again">If Not, Ask Again!</string>
-    <string name="clear_both">Clear Both Forms</string>
-    <string name="clear_before">Clear Before Doctor</string>
-    <string name="clear_after">Clear After Doctor</string>
+    <string name="check_list_1st_part_header">הכנה לרופא</string>
+    <string name="doctor_name">שם הרופא</string>
+    <string name="address">כתובת</string>
+    <string name="remember_to_bring_with_you">זכרי להביא איתך:</string>
+    <string name="references">הפניות</string>
+    <string name="prescription">מרשמים</string>
+    <string name="Previous_diagnoses">אבחונים קודמים</string>
+    <string name="tests_results">תוצאות בדיקות ותרשימים</string>
+    <string name="subjects_i_want_to_talk_about">נושאים אותם אני רוצה להעלות (מהחשוב יותר לחשוב פחות):</string>
+    <string name="new_symptoms">סימפטומים חדשים (מתי התחיל, מתי מופיע, תדירות, עצמה):</string>
+    <string name="additional_information">מידע נוסף:</string>
+    <string name="drugs_i_take">תרופות שאני לוקחת (שמות ומינונים):</string>
+    <string name="additional_questions_to_the_doctor">שאלות ספציפיות לרופא:</string>
+    <string name="check_list_2nd_part_header">אצל הרופא</string>
+    <string name="summary_of_the_doctors_Remarks">סיכום דבריו של הרופא</string>
+    <string name="determine_your_risk_of_heart_disease">בררי את הסיכון האישי שלך למחלות לב</string>
+    <string name="ask_about_future_treatment">בררי לגבי המשך טיפול/הפנייה לרופא אחר</string>
+    <string name="should_you_come_back_for_further_inspections">האם/מתי את צריכה לחזור לביקורת?</string>
+    <string name="have_you_got_answers_for_these_questions">האם קיבלת מענה לשלוש השאלות:</string>
+    <string name="what_is_my_medical_condition">מה הבעיה הרפואית שלי?</string>
+    <string name="what_should_i_do_to_address_my_problem">מה עליי לעשות על מנת לטפל בבעיה?</string>
+    <string name="why_should_i_do_so">למה חשוב שאעשה זאת?</string>
+    <string name="if_not_ask_again">אם לא- כדאי לשאול שנית ולוודא שקיבלת מענה</string>
     <!-- Checklist Labels <END> -->
 
     <!-- General Labels <START> -->
-    <string name="undefined">Undefined</string>
-    <string name="accept">Accept</string>
-    <string name="cancel">Cancel</string>
-    <string name="understood">Understood</string>
-    <string name="delete">Delete</string>
-    <string name="title_activity_check_list">CheckList</string>
-    <string name="welcome">Welcome</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="not_sure">Not Sure</string>
-    <string name="calendar_reminder_header">Doctor Examination</string>
-    <string name="missing_param_for_health_recommendations">To Provide Your Health\nRecommendations You Need To Provide The Following Details:</string>
-    <string name="setup_profile_initial_question">
-        Thank You For Using Our App!\n
-        It Is Highly Recommended To Set Up Your Profile As Soon As Possible,\n
-        Would You Like To Do So Now?</string>
-    <string name="doctor_record_start">Start Recording</string>
-    <string name="doctor_record_end">Stop Recording</string>
-    <string name="no_recordings">No Recordings Found</string>
-    <string name="delete_record_body">Would You Like To Delete The File</string>
-    <string name="failed_to_start_record">No Microphone Found.</string>
-    <string name="share_chooser_header">Share File Using…</string>
-    <string name="file_successfully_saved">File Successfully Saved.</string>
+    <string name="undefined">לחצי כאן בכדי לעדכן ערך זה</string>
+    <string name="this_field_will_be_auto_filled">ערך זה מחושב אוטומטית</string>
+    <string name="yes">כן</string>
+    <string name="personal_health_recommendations_disclaimer_header">אני מאשרת שקראתי והבנתי את ההערה הבאה:</string>
+    <string name ="personal_health_recommendations_disclaimer_body">
+        התכנים באפליקציה זאת מבוססים על המלצות רשמיות של משרד הבריאות, ההסתדרות הרפואית בישראל ומומחי המרכז לבריאות לב האישה.
+מטרתם לספק מידע בלבד, הם אינם מהווים תחליף להתייעצות עם רופא ואין לראות בהם הצדקה לקבלה או לדחייה של טיפול רפואי מכל סוג שהוא.
+המידע המוצג באתר הוא כללי ומותאם לנשים בריאות.
+לאור זאת, כל אישה שסובלת מבעיה בריאותית או כל מחלה הדורשת טיפול ומעקב, לרבות נשים שעברו אירוע לבבי, סרטן, שבץ מוחי,
+נשים הרות ומיניקות או מי שנוטלת תרופות מרשם - חייבת להיוועץ ברופא על מנת לקבל המלצות המתאימות למצבה.
+בכל מקרה של ספק או של חירום רפואי אין להסתמך על המידע שמספקת האפליקציה ,אלא לפנות לרופא או לבית חולים לקבלת עזרה רפואית.
+במקרים רבים, שיהוי בפניה לטיפול רפואי עלול להיות מסוכן ואף קטלני.
+    </string>
+    <string name="press_here_to_copy_this_text">לחצי כאן בכדי להעתיק את הודעת השגיאה</string>
+    <string name="error">שגיאה</string>
+    <string name="text_copied_successfully">הטקסט הועתק בהצלחה</string>
     <!-- General Labels <END> -->
+
+
+    <!-- Notification Messages <START> -->
+    <string name="notification_message_birthday_header">יום הולדת שמח!</string>
+    <string name="notification_message_happy_birthday">מזל טוב</string>
+    <string name="notification_message_birthday_body">כדי שגם השנה תוכלי לשמור על בריאותך, הכנסי לאפליקציית לבריאותך ובדקי אם ההמלצות שלך השתנו בהתאם לגילך החדש. זוהי גם הזדמנות טובה לקבוע תורים לבדיקות כלליות ושגרתיות. מאחלים שנה של אושר, הצלחה, ובריאות טובה, צוות לבריאותך.</string>
+    <string name="notification_message_birthday_body_short">הכנסי לאפליקציית לבריאותך ובדקי האם ההמלצות שלך השתנו.</string>
+    <string name="notification_message_half_year_header">כבר דאגת לבריאותך היום?</string>
+    <string name="notification_message_half_year_body">הכנסי לאפליקצייה ובדקי האם הגיע הזמן לבצע בדיקות שגרתיות, והאם את עומדת בהמלצות התזונה והפעילות גופנית המותאמים לך.\nקבעי תורים כבר היום לבדיקות שגרתיות ובדיקות סקר, והכניסי אותם ליומן ישירות דרך האפליקציה!\nרק בריאות, צוות לבריאותך.</string>
+    <string name="notification_message_half_year_body_short">הכנסי לאפליקצייה ובדקי האם הגיע הזמן לבצע בדיקות שגרתיות.</string>
+    <string name="notification_message_day_before_doctor_header_1">תזכורת: יש לך תור מחר</string>
+    <string name="notification_message_day_before_doctor_header_2">בשעה</string>
+    <string name="notification_message_day_before_doctor_header_3">ל</string>
+    <string name="notification_message_day_before_doctor_body_1">לחצי כאן בכדי למלא את טופס ההכנה לרופא</string>
+    <string name="notification_message_day_before_doctor_body_2">על מנת להגיע מוכנה ולהפיק את המירב מביקור הרופא.</string>
+    <string name="notification_message_10_min_before_doctor_header">תזכורת: תורך לרופא נקבע לדקות הקרובות</string>
+    <string name="notification_message_10_min_before_doctor_body">לחצי כאן בכדי לפתוח את טופס ההכנה לרופא, ושתפי את המידע ואת השאלות שהכנת.\nסכמי או הקליטי את הוראות הרופא ישר מהאפליקציה בלשונית הייעודית, כך תוכלי לשחזר את הוראות הרופא בצורה מדוייקת. בהצלחה ובריאות טובה!</string>
+    <string name="notification_message_10_min_before_doctor_body_short">לחצי כאן בכדי לפתוח את טופס ההכנה לרופא.</string>
+    <string name="accept">אישור</string>
+    <string name="add_appointment_to_calendar">הוסיפי את התור ליומן</string>
+    <string name="additional_questions_to_the_doctor_hint">שאלות נוספות…</string>
+    <string name="age">גיל</string>
+    <string name="appointment">תור</string>
+    <string name="birth_date">תאריך לידה</string>
+    <string name="calendar_reminder_header">תור לרופא</string>
+    <string name="calendar_reminder_header_doc">תור ל</string>
+    <string name="cancel">ביטול</string>
+    <string name="changes_in_life_hint">שינויים באורך חיים</string>
+    <string name="clear_after">ניקוי הטופס \"לאחר הרופא\"</string>
+    <string name="clear_before">ניקוי הטופס \"הכנה לרופא\"</string>
+    <string name="clear_both">ניקוי שני הטפסים</string>
+    <string name="date">תאריך</string>
+    <string name="delete">מחיקה</string>
+    <string name="delete_record_body">האם ברצונך למחוק את הקובץ</string>
+    <string name="doctor_record_end">הפסיקי להקליט</string>
+    <string name="doctor_record_start">התחילי להקליט</string>
+    <string name="doctor_records_label">הקלטות שמורות</string>
+    <string name="drugs_i_take_hint">תרופות שאני לוקחת…</string>
+    <string name="failed_to_start_record">לא ניתן להקליט.</string>
+    <string name="family_health_background_hint">רקע רפואי משפחתי</string>
+    <string name="family_history_personal_profile">היסטורית מחלות לב משפחתית</string>
+    <string name="file_successfully_saved">ההקלטה נשמרה בהצלחה.</string>
+    <string name="missing_param_for_health_recommendations">כדי לקבל את ההמלצות הרפואיות שלך עליך לספק את הפרטים הבאים:</string>
+    <string name="new_symptoms_hint">סימפטומים חדשים…</string>
+    <string name="no">לא</string>
+    <string name="no_recordings">לא נמצאו הקלטות</string>+
+    <string name="not_sure">לא בטוחה</string>
+    <string name="personal_medical_history_hint">היסטוריה רפואית אישית</string>
+    <string name="personal_profile">פרופיל אישי</string>
+    <string name="setup_profile_initial_question">אנו מודים לך על שהחלטת להשתמש באפליקציה שלנו. אנו ממליצים בחום להגדיר את הפרופיל האישי שלך בהקדם האפשרי, האם תרצי לבצע זאת כעת?</string>
+    <string name="share_chooser_header">שתפי קובץ באמצעות…</string>
+    <string name="smoking">האם את מעשנת?</string>
+    <string name="subjects_i_want_to_talk_about_hint">נושאים שברצוני לדבר עליהם…</string>
+    <string name="time">שעה</string>
+    <string name="title_activity_check_list">ביקור רופא</string>
+    <string name="understood">הבנתי</string>
+    <string name="welcome">ברוכה הבאה</string>
+    <string name="height_given_is_out_of_bound">אנא הכניסי את גובהך בס\"מ, לדוגמא 165</string>
+    <string name="weight_given_is_out_of_bound">אנא הכניסי את משקלך בק\"ג, לדוגמא 75</string>
+    <string name="age_given_is_out_of_bound">אפליקציה זו מותאמת לנשים מגיל 20 ומעלה</string>
+    <string name="enter_name_popup_header">הכניסי שם</string>
+    <!-- Notification Messages <END> -->
+
+
+    <!-- BloodTest Messages <START> -->
+    <string name="read_here">קראי כאן</string>
+    <string name="blood_test_bmi_header">מדד מסת גוף - BMI</string>
+    <string name="blood_test_bmi_1"><b>ערך מומלץ: בין 18.5 עד 25.</b></string>
+    <string name="blood_test_bmi_2">מה זה BMI?</string>
+    <string name="blood_test_blood_pressure_header">לחץ דם</string>
+    <string name="blood_test_blood_pressure_1"><b>ערך מומלץ: נמוך מ-140/90.</b></string>
+    <string name="blood_test_blood_pressure_2">מה זה לחץ דם?</string>
+    <string name="blood_test_cholesterol_general_header">כולסטרול כללי</string>
+    <string name="blood_test_cholesterol_general_1"><b>ערך מומלץ: נמוך מ-200 מ\"ג/ד\"ל.</b></string>
+    <string name="blood_test_cholesterol_general_2">מה זה כולסטרול וכיצד זה נראה</string>
+    <string name="blood_test_cholesterol_general_3">בבדיקות הדם שלך?</string>
+    <string name="blood_test_cholesterol_ldl_header">כולסטרול LDL</string>
+    <string name="blood_test_cholesterol_ldl_1"><b>ערך מומלץ: נמוך מ-100 מ\"ג/ד\"ל,</b></string>
+    <string name="blood_test_cholesterol_ldl_2"><b>אם עברת אירוע לבבי- נמוך מ-70 מ\"ג/ד\"ל.</b></string>
+    <string name="blood_test_cholesterol_ldl_3">מה זה LDL וכיצד זה נראה</string>
+    <string name="blood_test_cholesterol_ldl_4">בבדיקות הדם שלך?</string>
+    <string name="blood_test_cholesterol_hdl_header">כולסטרול HDL</string>
+    <string name="blood_test_cholesterol_hdl_1"><b>ערך מומלץ: גבוה מ-50 מ\"ג/ד\"ל.</b></string>
+    <string name="blood_test_cholesterol_hdl_2">מה זה HDL וכיצד זה נראה</string>
+    <string name="blood_test_cholesterol_hdl_3">בבדיקות הדם שלך?</string>
+    <string name="blood_test_triglyceride_header">טריגליצרידים</string>
+    <string name="blood_test_triglyceride_1"><b>ערך מומלץ: נמוך מ-150 מ\"ג/ד\"ל.</b></string>
+    <string name="blood_test_triglyceride_2">מה זה טריגליצרידים וכיצד זה</string>
+    <string name="blood_test_triglyceride_3">נראה בבדיקות הדם שלך?</string>
+    <string name="blood_test_glucose_fasting_header">גלוקוז בצום</string>
+    <string name="blood_test_glucose_fasting_1"><b>ערך מומלץ: עד 100 מ\"ג/ד\"ל.</b></string>
+    <string name="blood_test_glucose_fasting_2">מה זה גלוקוז וכיצד זה נראה</string>
+    <string name="blood_test_glucose_fasting_3">בבדיקות הדם שלך?</string>
+    <string name="blood_test_HbA1C_header">HbA1C</string>
+    <string name="blood_test_HbA1C_1"><b>ערך מומלץ: נמוך מ-6.5%.</b></string>
+    <string name="blood_test_HbA1C_2">מה זה HbA1C וכיצד זה נראה</string>
+    <string name="blood_test_HbA1C_3">בבדיקות הדם שלך?</string>
+    <string name="blood_test_option_collapse_all_sections">כיווץ כל הקטגוריות</string>
+    <string name="blood_test_option_expand_all_sections">פתיחת כל הקטגוריות</string>
+    <!-- BloodTest Messages <END> -->
 
 
 </resources>
