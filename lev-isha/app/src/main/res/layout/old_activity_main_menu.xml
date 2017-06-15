@@ -9,28 +9,11 @@
     android:paddingTop="20dp"
     tools:context="com.hadassah.azrieli.lev_isha.core.MainMenuActivity">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="250dp">
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="150dp"
-            android:layout_height="80dp"
-            android:layout_alignParentTop="false"
-            app:srcCompat="@drawable/lev_isha_main_logo" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/chani_nachmias_main_menu" />
-    </RelativeLayout>
-
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="5dip"
-        android:background="#5d6287" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        app:srcCompat="@drawable/lev_isha_main_logo" />
 
     <TableLayout
         android:layout_width="match_parent"
