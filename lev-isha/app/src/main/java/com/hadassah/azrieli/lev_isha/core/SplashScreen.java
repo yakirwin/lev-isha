@@ -34,16 +34,16 @@ public class SplashScreen extends AppCompatActivity {
         final ImageView logo = (ImageView)this.findViewById(R.id.splash_screen_logo);
         final Animation zoomIn = AnimationUtils.loadAnimation(this, R.anim.splash_screen_zoom_in);
         final Animation zoomOut = AnimationUtils.loadAnimation(SplashScreen.this, R.anim.splash_screen_zoom_out);
+        final Intent intent = new Intent(getApplicationContext(),MainMenuActivity.class);
         zoomIn.setAnimationListener(new Animation.AnimationListener() {
             public void onAnimationStart(Animation animation) {}
             public void onAnimationEnd(Animation animation) {
                 zoomOut.setAnimationListener(new Animation.AnimationListener() {
                     public void onAnimationStart(Animation animation) {}
                     public void onAnimationEnd(Animation animation) {
-                        Intent intent = new Intent(getApplicationContext(),MainMenuActivity.class);
-                        MainMenuActivity.animateButtons = true;
                         startActivity(intent);
                         finish();
+                        overridePendingTransition(R.anim.activity_in,R.anim.activity_out);
                     }
                     public void onAnimationRepeat(Animation animation) {}
                 });

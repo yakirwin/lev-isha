@@ -63,12 +63,16 @@ public class ChecklistActivity extends AppCompatActivity {
             customPagerAdapter.clearAfter();
             return true;
         }
-        if(item.getItemId() == R.id.checklist_options_clear_after) {
+        else if(item.getItemId() == R.id.checklist_options_clear_after) {
             customPagerAdapter.clearAfter();
             return true;
         }
-        if(item.getItemId() == R.id.checklist_options_clear_before) {
+        else if(item.getItemId() == R.id.checklist_options_clear_before) {
             customPagerAdapter.clearBefore();
+            return true;
+        }
+        else if(item.getItemId() == android.R.id.home) {
+            finish();
             return true;
         }
         return false;

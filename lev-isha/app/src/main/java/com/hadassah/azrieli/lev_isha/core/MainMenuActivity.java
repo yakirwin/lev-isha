@@ -5,11 +5,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
@@ -34,7 +38,6 @@ public class MainMenuActivity extends AppCompatActivity {
     private LinearLayout bloodTestButton;
     private LinearLayout DoctorRecordsButton;
     private Intent personHealthRecommendationsIntent;
-    public static boolean animateButtons = false;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,17 +47,21 @@ public class MainMenuActivity extends AppCompatActivity {
         checklistButton = (LinearLayout)findViewById(R.id.checklist_btn);
         bloodTestButton = (LinearLayout)findViewById(R.id.blood_result_btn);
         DoctorRecordsButton = (LinearLayout)findViewById(R.id.doctor_records_btn);
+        changeIconsVisibility(View.INVISIBLE);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         if(prefs.getBoolean("show_question_to_setup_profile",true)) {
             prefs.edit().putBoolean("show_question_to_setup_profile", false).apply();
             showMessageToSetupProfile();
         }
-        if(animateButtons)
-            animateButtons();
+        (new Handler()).postDelayed(new Runnable() {
+            public void run() {
+                changeIconsVisibility(View.VISIBLE);
+                animateButtons();
+            }
+        },1200);
         OverallNotificationManager.setUpNotificationTimers(this,OverallNotificationManager.NO_ADDITIONAL_ID);
         if(!GeneralPurposeService.isServiceRunning())
             this.startService(new Intent(this,GeneralPurposeService.class));
-        animateButtons = false;
     }
 
     protected void attachBaseContext(Context newBase) {
@@ -182,5 +189,12 @@ public class MainMenuActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    private void changeIconsVisibility(int mode) {
+        personalProfileButton.setVisibility(mode);
+        personHealthRecommendationsButton.setVisibility(mode);
+        checklistButton.setVisibility(mode);
+        bloodTestButton.setVisibility(mode);
+        DoctorRecordsButton.setVisibility(mode);
+    }
 
 }

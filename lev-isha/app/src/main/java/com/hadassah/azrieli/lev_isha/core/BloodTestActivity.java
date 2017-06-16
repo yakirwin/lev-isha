@@ -59,8 +59,12 @@ public class BloodTestActivity extends AppCompatActivity {
             collapseAll();
             return true;
         }
-        if(item.getItemId() == R.id.blood_test_options_expand_all_sections) {
+        else if(item.getItemId() == R.id.blood_test_options_expand_all_sections) {
             expandAll();
+            return true;
+        }
+        else if(item.getItemId() == android.R.id.home) {
+            finish();
             return true;
         }
         return false;

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.webkit.WebResourceRequest;
@@ -69,6 +70,14 @@ public class HealthRecommendationsActivity extends AppCompatActivity {
     protected void attachBaseContext(Context newBase) {
         Context context = ContextWrapper.wrap(newBase,  PersonalProfile.getCurrentLocale());
         super.attachBaseContext(context);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return false;
     }
 
     private class WebViewController extends WebViewClient {

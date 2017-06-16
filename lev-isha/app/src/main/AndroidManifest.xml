@@ -37,9 +37,6 @@
             android:screenOrientation="portrait"
             android:label="@string/personal_profile"
             android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".core.MainMenuActivity" />
         </activity>
         <activity
             android:name=".core.ChecklistActivity"
@@ -47,40 +44,25 @@
             android:label="@string/title_activity_check_list"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".core.MainMenuActivity" />
         </activity>
         <activity
             android:name=".core.HealthRecommendationsActivity"
             android:screenOrientation="portrait"
             android:label="@string/personal_health_recommendation_label">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".core.MainMenuActivity" />
         </activity>
         <activity
             android:name=".core.RecordsActivity"
             android:screenOrientation="portrait"
             android:label="@string/doctor_records_label">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".core.MainMenuActivity" />
         </activity>
         <activity
             android:name=".core.BloodTestActivity"
             android:screenOrientation="portrait"
             android:label="@string/blood_test_result_guide_label">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".core.MainMenuActivity" />
         </activity>
         <activity
             android:name=".core.BloodTestWebViewActivity"
             android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".core.BloodTestActivity" />
         </activity>
 
         <service

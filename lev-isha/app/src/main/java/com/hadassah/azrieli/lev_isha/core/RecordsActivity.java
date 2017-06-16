@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -67,6 +68,14 @@ public class RecordsActivity extends AppCompatActivity {
     protected void attachBaseContext(Context newBase) {
         Context context = ContextWrapper.wrap(newBase,  PersonalProfile.getCurrentLocale());
         super.attachBaseContext(context);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return false;
     }
 
     class recordsAdapter extends RecyclerView.Adapter<recordsAdapter.ViewHolder> {
