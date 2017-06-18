@@ -14,14 +14,12 @@
         android:layout_height="200dp">
 
         <ImageView
-            android:id="@+id/imageView2"
             android:layout_width="140dp"
             android:layout_height="80dp"
             android:layout_alignParentTop="false"
             app:srcCompat="@drawable/lev_isha_main_logo" />
 
         <ImageView
-            android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/chani_nachmias_main_menu" />

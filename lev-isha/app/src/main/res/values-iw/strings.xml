@@ -66,7 +66,7 @@
     <!-- Notification Messages <START> -->
     <string name="notification_message_birthday_header">יום הולדת שמח!</string>
     <string name="notification_message_happy_birthday">מזל טוב</string>
-    <string name="notification_message_birthday_body">כדי שגם השנה תוכלי לשמור על בריאותך, הכנסי לאפליקציית לבריאותך ובדקי אם ההמלצות שלך השתנו בהתאם לגילך החדש. זוהי גם הזדמנות טובה לקבוע תורים לבדיקות כלליות ושגרתיות. מאחלים שנה של אושר, הצלחה, ובריאות טובה, צוות לבריאותך.</string>
+    <string name="notification_message_birthday_body">כדי שגם השנה תוכלי לשמור על בריאותך, הכנסי לאפליקציית לבריאותך ובדקי אם ההמלצות שלך השתנו בהתאם לגילך החדש. זוהי גם הזדמנות טובה לקבוע תורים לבדיקות כלליות ושגרתיות. מאחלים שנה של אושר, הצלחה ובריאות טובה, צוות לבריאותך.</string>
     <string name="notification_message_birthday_body_short">הכנסי לאפליקציית לבריאותך ובדקי האם ההמלצות שלך השתנו.</string>
     <string name="notification_message_half_year_header">כבר דאגת לבריאותך היום?</string>
     <string name="notification_message_half_year_body">הכנסי לאפליקצייה ובדקי האם הגיע הזמן לבצע בדיקות שגרתיות, והאם את עומדת בהמלצות התזונה והפעילות גופנית המותאמים לך.\nקבעי תורים כבר היום לבדיקות שגרתיות ובדיקות סקר, והכניסי אותם ליומן ישירות דרך האפליקציה!\nרק בריאות, צוות לבריאותך.</string>
