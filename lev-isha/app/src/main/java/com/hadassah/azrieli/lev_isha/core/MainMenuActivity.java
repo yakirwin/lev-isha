@@ -34,7 +34,6 @@ public class MainMenuActivity extends AppCompatActivity {
     private LinearLayout checklistButton;
     private LinearLayout bloodTestButton;
     private LinearLayout DoctorRecordsButton;
-    private Intent personHealthRecommendationsIntent;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,6 +91,16 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     public void personHealthRecommendations(View view) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if(prefs.getBoolean("first_time_entering_personal_health_recc",true)) {
+            prefs.edit().putBoolean("first_time_entering_personal_health_recc", false).apply();
+            showFirstTimeMessagePersonalHealthRecc();
+        }
+        else
+            personHealthRecommendationsFollowUp();
+    }
+
+    public void personHealthRecommendationsFollowUp() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         PersonalProfile profile = PersonalProfile.getInstance(this);
         String missing = "\n\n";
@@ -113,30 +122,29 @@ public class MainMenuActivity extends AppCompatActivity {
         {
             builder.setMessage(res.getText(R.string.missing_param_for_health_recommendations)+missing);
             builder.setNeutralButton(res.getText(R.string.understood),null).create().show();
+            return;
         }
-        else {
-            personHealthRecommendationsIntent = new Intent(this, HealthRecommendationsActivity.class);
-            personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_SMOKE,(smoke.equals(YES_VALUE)) ? "yes" : "no");
-            switch (history) {
-                case YES_VALUE:
-                    personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_HISTORY, "yes");
-                    break;
-                case NO_VALUE:
-                    personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_HISTORY, "no");
-                    break;
-                default:
-                    personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_HISTORY, "dont");
-                    break;
-            }
-            personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_HEIGHT, bmi_h);
-            personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_WEIGHT, bmi_w);
-            personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_AGE,age);
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            if(!prefs.getBoolean("personal_health_recommendations_disclaimer_approved", false))
-                askUserForHisConsent();
-            else
-                startActivity(personHealthRecommendationsIntent);
+        Intent personHealthRecommendationsIntent = new Intent(this, HealthRecommendationsActivity.class);
+        personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_SMOKE,(smoke.equals(YES_VALUE)) ? "yes" : "no");
+        switch (history) {
+            case YES_VALUE:
+                personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_HISTORY, "yes");
+                break;
+            case NO_VALUE:
+                personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_HISTORY, "no");
+                break;
+            default:
+                personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_HISTORY, "dont");
+                break;
         }
+        personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_HEIGHT, bmi_h);
+        personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_WEIGHT, bmi_w);
+        personHealthRecommendationsIntent.putExtra(HealthRecommendationsActivity.EXTRA_AGE,age);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if(!prefs.getBoolean("personal_health_recommendations_disclaimer_approved", false))
+            askUserForHisConsent(personHealthRecommendationsIntent);
+        else
+            startActivity(personHealthRecommendationsIntent);
     }
 
     private int calculateAge(String format) {
@@ -170,7 +178,7 @@ public class MainMenuActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void askUserForHisConsent() {
+    private void askUserForHisConsent(final Intent personHealthRecommendationsIntent) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getResources().getText(R.string.personal_health_recommendations_disclaimer_header));
         builder.setMessage(getResources().getText(R.string.personal_health_recommendations_disclaimer_body));
@@ -180,6 +188,19 @@ public class MainMenuActivity extends AppCompatActivity {
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 prefs.edit().putBoolean("personal_health_recommendations_disclaimer_approved", true).apply();
                 startActivity(personHealthRecommendationsIntent);
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void showFirstTimeMessagePersonalHealthRecc() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getResources().getText(R.string.personal_health_recommendation_label));
+        builder.setMessage(getResources().getText(R.string.personal_health_recommandations_first_time_message));
+        builder.setPositiveButton(R.string.understood, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogInterface, int i) {
+                personHealthRecommendationsFollowUp();
             }
         });
         AlertDialog dialog = builder.create();

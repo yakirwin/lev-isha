@@ -18,7 +18,7 @@
     <!-- Personal Profile Labels <END> -->
 
     <!-- Checklist Labels <START> -->
-    <string name="check_list_1st_part_header">הכנה לרופא</string>
+    <string name="check_list_prep_to_the_doctor_header">הכנה לרופא</string>
     <string name="doctor_name">שם הרופא</string>
     <string name="address">כתובת</string>
     <string name="remember_to_bring_with_you">זכרי להביא איתך:</string>
@@ -31,7 +31,7 @@
     <string name="additional_information">מידע נוסף:</string>
     <string name="drugs_i_take">תרופות שאני לוקחת (שמות ומינונים):</string>
     <string name="additional_questions_to_the_doctor">שאלות ספציפיות לרופא:</string>
-    <string name="check_list_2nd_part_header">אצל הרופא</string>
+    <string name="check_list_at_the_doctor_header">אצל הרופא</string>
     <string name="summary_of_the_doctors_Remarks">סיכום דבריו של הרופא</string>
     <string name="determine_your_risk_of_heart_disease">בררי את הסיכון האישי שלך למחלות לב</string>
     <string name="ask_about_future_treatment">בררי לגבי המשך טיפול/הפנייה לרופא אחר</string>
@@ -60,6 +60,32 @@
     <string name="press_here_to_copy_this_text">לחצי כאן בכדי להעתיק את הודעת השגיאה</string>
     <string name="error">שגיאה</string>
     <string name="text_copied_successfully">הטקסט הועתק בהצלחה</string>
+
+    <string name="checklist_first_time_message">
+        כאן תוכלי להכניס ליומן האישי פרטים על תור שקבעת לרופא.
+בנוסף, תוכלי להתכונן לביקור הרופא על ידי מילוי דף הכנה.
+האפליקציה תזכיר לך למלא את דף ההכנה יום לפני התור,
+ותציג לך את  הדף 10 דקות לפני התור על מנת שתוכלי להיעזר בו.
+לשונית נוספת נועדה לסייע לך בזמן הביקור אצל הרופא.
+תמצאי שם מקום לסכם את דברי הרופא ולהקליט את המלצותיו ישירות
+לאפליקציה, באישורו כמובן, לצורך שמיעה חוזרת בזמן מאוחר יותר.
+    </string>
+
+    <string name="personal_health_recommandations_first_time_message">
+המלצות הבריאות האישיות שלך מתקבלות בהתאם
+לנתונייך האישיים - גיל, גובה ומשקל, רקע משפחתי של מחלות לב ועישון.
+לאחר מילוי פרטייך בדף הפרופיל, תקבלי גישה לרשימה של כל הבדיקות
+שעלייך לבצע, גורמי הסיכון אחריהם עלייך לעקוב, חיסונים, המלצות תזונה
+ופעילות גופנית, ונושאים עליהם כדאי לך לדבר עם הרופא. את ההמלצות
+ניתן להדפיס או לשלוח במייל.
+    </string>
+
+    <string name="blood_test_first_time_message">
+    כאן תוכלי למצוא מדריך לקריאת תוצאות בדיקות דם
+ומדדים מרכזיים אחרים, כמו גם מידע לגבי ערכים רצויים.
+    </string>
+
+    <string name="doctor_records_first_time_message">כאן מרוכזים עבורך ההקלטות שהקלטת אצל הרופא, עם המלצותיו ו/או הערותיו.</string>
     <!-- General Labels <END> -->
 
 

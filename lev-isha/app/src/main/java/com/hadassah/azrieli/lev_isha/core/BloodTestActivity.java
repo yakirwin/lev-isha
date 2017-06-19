@@ -2,8 +2,11 @@ package com.hadassah.azrieli.lev_isha.core;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -40,6 +43,11 @@ public class BloodTestActivity extends AppCompatActivity {
         }
         if(!GeneralPurposeService.isServiceRunning())
             this.startService(new Intent(this,GeneralPurposeService.class));
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if(prefs.getBoolean("first_time_entering_blood_test_activity",true)) {
+            prefs.edit().putBoolean("first_time_entering_blood_test_activity", false).apply();
+            showFirstTimeMessage();
+        }
     }
 
     protected void attachBaseContext(Context newBase) {
@@ -172,6 +180,17 @@ public class BloodTestActivity extends AppCompatActivity {
             openWebView.putExtra(BloodTestWebViewActivity.ACTION_BAR_NAME_EXTRA,getString(R.string.blood_test_triglyceride_header));
         }
         startActivity(openWebView);
+    }
+
+
+
+    public void showFirstTimeMessage() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getResources().getText(R.string.blood_test_result_guide_label));
+        builder.setMessage(getResources().getText(R.string.blood_test_first_time_message));
+        builder.setPositiveButton(R.string.understood,null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
 }

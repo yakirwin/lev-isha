@@ -1,13 +1,20 @@
 package com.hadassah.azrieli.lev_isha.core;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBar;
@@ -36,6 +43,7 @@ public class RecordsActivity extends AppCompatActivity {
 
     private recordsAdapter mAdapter;
     private recordsAdapter.ViewHolder currentlyPlaying;
+    private final static int PERMISSION_ASKING_CODE = 145;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,22 +55,36 @@ public class RecordsActivity extends AppCompatActivity {
             actionBar.setTitle(R.string.doctor_records_label);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+        NestedScrollView nScroll = (NestedScrollView)this.findViewById(R.id.recordings_scroll_view);
+        nScroll.setVisibility(View.GONE);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if(prefs.getBoolean("first_time_entering_records_activity",true)) {
+            prefs.edit().putBoolean("first_time_entering_records_activity", false).apply();
+            showFirstTimeMessage();
+        }
+        else
+            checkForPermission();
+        if(!GeneralPurposeService.isServiceRunning())
+            this.startService(new Intent(this,GeneralPurposeService.class));
+    }
+
+    private void setUpRecordsActivity() {
         File[] fileList = VoiceRecorder.getAllRecordings();
+        NestedScrollView nScroll = (NestedScrollView)this.findViewById(R.id.recordings_scroll_view);
+        TextView errorText = (TextView)this.findViewById(R.id.no_recordings_found);
         if(fileList == null || fileList.length == 0) {
-            NestedScrollView nScroll = (NestedScrollView)this.findViewById(R.id.recordings_scroll_view);
             nScroll.setVisibility(View.GONE);
+            errorText.setVisibility(View.VISIBLE);
             return;
         }
-        TextView errorText = (TextView)this.findViewById(R.id.no_recordings_found);
         errorText.setVisibility(View.GONE);
+        nScroll.setVisibility(View.VISIBLE);
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.doctor_records_Recycler_view);
         mRecyclerView.setHasFixedSize(false);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new recordsAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
-        if(!GeneralPurposeService.isServiceRunning())
-            this.startService(new Intent(this,GeneralPurposeService.class));
     }
 
     protected void attachBaseContext(Context newBase) {
@@ -196,6 +218,24 @@ public class RecordsActivity extends AppCompatActivity {
         mediaPlayer.start();
     }
 
+    public void checkForPermission() {
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
+            setUpRecordsActivity();
+        else {
+            if(ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+                requestPermissions(new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},PERMISSION_ASKING_CODE);
+            else
+                setUpRecordsActivity();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == PERMISSION_ASKING_CODE && permissions.length == grantResults.length)
+            setUpRecordsActivity();
+    }
+
     public void pausePlayingRecord() {
         currentlyPlaying.mediaPlayer.pause();
         currentlyPlaying.play.setBackgroundResource(R.drawable.play_icon);
@@ -243,6 +283,21 @@ public class RecordsActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
         return true;
+    }
+
+
+
+    public void showFirstTimeMessage() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getResources().getText(R.string.doctor_records_label));
+        builder.setMessage(getResources().getText(R.string.doctor_records_first_time_message));
+        builder.setPositiveButton(R.string.understood, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogInterface, int i) {
+                checkForPermission();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
 }
