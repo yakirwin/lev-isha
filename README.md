@@ -20,14 +20,13 @@ We're trying to use the best tools and practices in order to produce a quality e
 | Test Coverege | [![codecov.io](https://codecov.io/github/jce-il/project-template/coverage.svg?branch=master)](https://codecov.io/github/jce-il/project-template?branch=master) |
 | Code Quality | [![Code Climate](https://codeclimate.com/github/jce-il/project-template.svg)](https://codeclimate.com/github/jce-il/project-template) |
 | Code Style | [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/jce-il/project-template) |
-| Current Release | [![Current Version](https://img.shields.io/github/release/jce-il/project-template.svg?style=flat)](https://github.com/jce-il/project-template/releases) |
+| Current Release | [![Current Version](https://play.google.com/store/apps/details?id=com.hadassah.azrieli.lev_isha&hl=en)](https://github.com/jce-il/project-template/releases) |
 | Github Issues | [![GitHub issues](https://img.shields.io/github/issues/yakirwin/lev-isha.svg?style=flat)](https://github.com/yakirwin/lev-isha/issues) |
 | Project Management Board| [Project Board](https://github.com/yakirwin/lev-isha/projects/1) |
-| Deployment | ![Heroku](http://heroku-badge.herokuapp.com/?app=my-app&style=flat&svg=1&root=index.html) |
 | Security | [![Known Vulnerabilities](https://snyk.io/test/github/jce-il/project-template/badge.svg)](https://snyk.io/test/github/jce-il/project-template) |
-| Project Course Status | Progressing |
+| Project Course Status | Completed |
 
-## Please visit our [application prototype](https://github.com/yakirwin/lev-isha/tree/master/lev-isha)
+## Please visit our [application Store Page](https://play.google.com/store/apps/details?id=com.hadassah.azrieli.lev_isha&hl=en)
 
 
 ## Disclaimer
@@ -47,5 +46,5 @@ Please visit our wiki for furthur project info:
 ### Iteration Pages
 - [Iteration 0 - ZFR](../../wiki/Iter0-ZFR)
 - [Iteration 1 - MVP](../../wiki/Iter1-MVP)
-- [Iteration 2](../../wiki/Iter2-AOFF)
-- [Iteration 3](../../wiki/Iter3-AONF)
+- [Iteration 2 - AOFF](../../wiki/Iter2-AOFF)
+- [Iteration 3 - BF](../../wiki/Iter3-BF)
